@@ -10,7 +10,7 @@
   --ink-dim: #5e5d5a;
   --rule: #b9b6ae;
   --marker: #f4e04d;
-  --gbr: #e0464e; --fra: #3e7be6; --prt: #2fb36b; --nld: #f08a24; --oth: #9b86c9;
+  --gbr: #cc6a55;   /* terracotta */ --fra: #5d8bd4;   /* slate blue */ --prt: #47a37e;   /* jade sage */ --nld: #bb8b32;   /* ochre */ --oth: #ab7ac9;   /* lavender */
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --f-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;

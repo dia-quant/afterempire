@@ -63,7 +63,7 @@
       <nav class="pages" aria-label="Sections">
         <div class="lbl">Observatory</div>
         <a class="pg active" href="index.html" aria-current="page">Territorial Ledger</a>
-        <span class="pg soon" title="Built in Phase 4">Flows of Empire <em>P4</em></span>
+        <a class="pg" href="flows.html">Flows of Empire <em>↗</em></a>
         <div class="lbl">Record Room</div>
         <span class="pg soon" title="Built in Phase 5">Inherited Systems <em>P5</em></span>
         <span class="pg soon" title="Built in Phase 5">Divergence Metrics <em>P5</em></span>
@@ -74,6 +74,7 @@
 
       <div class="toggles">
         <div class="lbl">Display</div>
+        <label class="tg"><input type="checkbox" id="tg-flows" checked><span>Trade flows</span></label>
         <label class="tg"><input type="checkbox" id="tg-labels"><span>Labels</span></label>
         <label class="tg"><input type="checkbox" id="tg-callouts" checked><span>Event callouts</span></label>
         <label class="tg"><input type="checkbox" id="tg-contrast"><span>High contrast</span></label>
@@ -81,6 +82,9 @@
       </div>
 
       <div class="legend">
+        <div class="lbl">Flow key</div>
+        <div class="wkey" aria-hidden="true"><i style="height:1px"></i><i style="height:2px"></i><i style="height:3px"></i><i style="height:4px"></i><i style="height:5px"></i><i style="height:6px"></i></div>
+        <p class="keynote">Line width = rank among the flows shown for that year. Widths compare flows within a year, not across years. Moving dots run from the net exporter to the net importer.</p>
         <div class="lbl">Status key</div>
         <div class="lg"><i class="b solid"></i>Colony · protectorate · mandate</div>
         <div class="lg"><i class="b ringed"></i>Integrated · still dependent</div>
@@ -97,11 +101,13 @@
     <svg id="leader" class="leader" aria-hidden="true"><line id="leader-line"/><circle id="leader-dot" r="4"/></svg>
     <div class="crt" aria-hidden="true"></div>
     <div class="toast" id="toast" role="status" hidden></div>
+    <div class="flowtip" id="flowtip" hidden></div>
 
     <!-- Year + meters (htop-style) -->
     <section class="meters" aria-live="polite" aria-label="Holdings under rule this year">
       <div class="yr"><span class="k">YEAR</span><span id="year-big">1800</span></div>
       <div id="meter-rows" class="meter-rows"></div>
+      <div class="flowline" id="flowline"></div>
     </section>
 
     <!-- Transfer log -->
@@ -119,6 +125,7 @@
         <dl class="kv" id="p-rec"></dl>
         <div class="mini-lbl"><span>1800</span><span>OWNERSHIP</span><span>2025</span></div>
         <div class="tl" id="p-tl"></div>
+        <div id="p-trade" class="p-trade"></div>
         <div class="mini-lbl"><span>TRANSFERS</span><span id="p-count"></span></div>
         <div class="p-events-wrap"><table class="p-events" id="p-events"><thead><tr><th>YEAR</th><th>CTRL</th><th>STATUS</th><th>ENTRY</th></tr></thead><tbody></tbody></table></div>
         <div class="p-foot"><span class="soon-chip">OPEN FILE → INHERITED SYSTEMS [P5]</span></div>

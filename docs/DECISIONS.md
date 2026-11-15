@@ -27,6 +27,13 @@ Everything agreed during the scoping discussion. If a later change contradicts t
 - **Hover:** a HUD box with approximate total, rank, and the **direction ratio** as a simple fraction (e.g. 3:2), plus which side ran the surplus. Flows recorded by only one partner are labelled "one-sided estimate".
 - Values are approximate. Estimation and interpolation are acceptable and always flagged.
 
+### Trade data as built (Phase 4)
+- 1800–1826 RICardo (ODbL 1.0: derived flows are shared under ODbL), 1827–2014 TRADHIST v4 (Etalab 2.0), 2015–2020 CEPII Gravity / BACI (Etalab 2.0). 2021–2025 show 2020, labelled "latest available".
+- Units: thousand £ sterling (current) to 2014; thousand US$ (current) from 2015. The unit is shown with every value.
+- Colonial aggregates in the sources (e.g. British West Indies) are placed at a representative holding and named as aggregates.
+- Records before about 1820 are sparse; the site says so instead of interpolating.
+- Build: `python pipeline/build_trade.py` (crosswalk in data/curated/trade_codes.csv).
+
 ## Development origins
 - ~10 dimensions describe each economy's "development system": planning regime, planning institution, monetary arrangement, central bank independence, legal origin, state ownership, trade orientation, fiscal structure, administrative tradition, geopolitical alignment.
 - Colonisers are profiled at decolonisation. Ex-colonies are profiled by decade after independence.

@@ -8,7 +8,7 @@ Each phase ends with a ✅ checkpoint reviewed by the project owner.
 | 1 | **Holdings gazetteer**: every holding of GBR/FRA/PRT/NLD 1800–2025 from Wikidata, cross-checked with COLDAT and ICOW, gaps hand-filled. Status-over-time coding. Entity crosswalk (one ID ↔ names in RICardo/TRADHIST/Wikidata/ISO). Licence audit. | Browse holdings spreadsheet | done (v0.1; Wikidata/ICOW cross-links = Phase 1b) |
 | 2 | **Visual prototype** (parallel to 1): Territorial Ledger mock (globe, dots, bubbles, slider, filter strip, HUD) + one Record Room page | Look-and-feel sign-off | done (review deferred to built site) |
 | 3 | Territorial Ledger on real data: transfers, status styles, event callouts, intro tour, historical borders | Live preview | **v0.1 built** (globe, flat, intro, feed, panel, table, Archive) |
-| 4 | Trade pipeline (RICardo, TRADHIST, BACI, IMF) → percentile width classes, hover ratios, focus view. Flows of Empire page | Preview + spot-check known cases | |
+| 4 | Trade pipeline (RICardo, TRADHIST, BACI, IMF) → percentile width classes, hover ratios, focus view. Flows of Empire page | Preview + spot-check known cases | **v0.1 built** (arcs, hover ratio, focus view, Flows of Empire page) |
 | 5 | Development data: coloniser profiles, automatic dimensions, drafted hand codings → review sheet. Inherited Systems + Divergence Metrics | Spot-check review sheet | |
 | 6 | The Archive, Terms of Account, Correspondence | | |
 | 7 | Monthly refresh Action, "updated on" stamps, Cloudflare Pages + R2 deploy, accessibility/mobile/performance pass, Zenodo DOI | Launch | |
