@@ -1,0 +1,111 @@
+code,name,lat,lon,holding_id,note
+ADEN,Aden,,,ade,
+YMD,South Yemen,,,ade,
+ANT,Netherlands Antilles,,,cuw,
+AOFAEF,French West & Equatorial Africa (aggregate),,,sen,placed at Dakar
+FRAAOF,French West Africa (aggregate),,,sen,placed at Dakar
+FRAAFRI,French Africa (aggregate),,,sen,placed at Dakar
+FRAAEF,French Equatorial Africa (aggregate),,,cog,placed at Brazzaville
+FRAEAFRI,French East Africa (aggregate),,,dji,placed at Djibouti
+FRAIND,French India,,,pdy,placed at Pondichéry
+FRAOCEA,French Oceania (aggregate),,,pyf,
+FRAWINDIES,French West Indies (aggregate),,,mtq,placed at Martinique
+INDOCHI,French Indochina,,,vnm_s,placed at Saigon
+GBRAFRI,British Africa (aggregate),,,nga,placed at Nigeria
+GBRWAFRI,British West Africa (aggregate),,,nga,placed at Nigeria
+GBRBORNEO,British Borneo,,,nbo,
+GBRIND,British India,,,ind,
+GBRMEDI,British Mediterranean (aggregate),,,mlt,
+GBRPAPUA,British Papua,,,pap,
+GBRSOM,British Somaliland,,,sml,
+GBRWINDIES,British West Indies (aggregate),,,jam,placed at Jamaica
+STRAITS,Straits Settlements,,,sgp,
+FEDMYS,Federated Malay States,,,fms,
+UNFEDMYS,Unfederated Malay States,,,fms,
+ZAFCAP,Cape Colony,,,cap,
+ZAFNAT,Natal,,,nat,
+ZAFORA,Orange Free State,,,ofs,
+ZAFTRA,Transvaal,,,trv,
+ZANZ,Zanzibar,,,zan,
+NFLD,Newfoundland,,,nfl,
+RHOD,Rhodesia,,,zwe,
+SYRLBN,Syria and Lebanon (French Mandate),,,syr,
+TGOCMR,French Togo and Cameroon (aggregate),,,cmr,
+DEUAFRI,German East Africa,,,tza,
+DEUNEWGUI,German New Guinea,,,ngu,
+DEUWAF,German West Africa (aggregate),,,cmr,
+ITAEAFRI,Italian East Africa (aggregate),,,eri,
+ITASOM,Italian Somaliland,,,som,
+PRTIND,Portuguese India,,,goa,
+PRTAFRI,Portuguese Africa (aggregate),,,moz,placed at Mozambique
+PRTWAFRI,Portuguese West Africa (aggregate),,,ago,placed at Angola
+CANPRINCED,Prince Edward Island,46.24,-63.13,can,
+CANQBCONT,Canada (Quebec),,,can,
+AUSNSW,New South Wales,-33.87,151.21,aus,
+AUSQUE,Queensland,-27.47,153.03,aus,
+AUSSTH,South Australia,-34.93,138.6,aus,
+AUSTAS,Tasmania,-42.88,147.33,aus,
+AUSVIC,Victoria,-37.81,144.96,aus,
+AUSWST,Western Australia,-31.95,115.86,aus,
+ISR,Palestine / Israel,,,pse,
+PSE,Palestine,,,pse,
+ION,Ionian Islands,,,ion,RICardo only
+TOB,Tobago,,,tob,RICardo only
+DNKIND,Danish India,,,trq,RICardo only
+2SICIL,Two Sicilies,40.85,14.27,,
+ALASKA,Alaska,61.2,-149.9,,
+ALSLOR,Alsace-Lorraine,48.58,7.75,,
+AUTHUN,Austria-Hungary,48.21,16.37,,
+AZORES,Azores,37.74,-25.67,,
+BARBAR,Barbary States,36.8,3.06,,
+BREMEN,Bremen,53.08,8.8,,
+CANARY,Canary Islands,28.1,-15.41,,
+CHISL,Channel Islands,49.46,-2.54,,
+CZSK,Czechoslovakia,50.08,14.42,,
+DANTZ,Danzig,54.35,18.65,,
+EDEU,East Germany,52.52,13.4,,
+WDEU,West Germany,50.73,7.1,,
+FIUME,Fiume,45.33,14.44,,
+HAMBG,Hamburg,53.55,9.99,,
+HANOV,Hanover,52.37,9.73,,
+HANS,Hanseatic towns,53.55,9.99,,
+HWI,Hawaii,21.31,-157.86,,
+KWANTU,Kwantung,38.8,121.26,,
+LUBECK,Lübeck,53.87,10.69,,
+MADEIRA,Madeira,32.65,-16.91,,
+MANCHU,Manchukuo,43.88,125.32,,
+MARESP,Spanish Morocco,35.57,-5.37,,
+MECKL,Mecklenburg,53.63,11.41,,
+OLDENB,Oldenburg,53.14,8.21,,
+OTTO,Ottoman Empire,41.01,28.98,,
+PRUS,Prussia,52.52,13.4,,
+ROM,Romania,44.43,26.1,,
+ROME,Papal States,41.9,12.5,,
+RWABDI,Ruanda-Urundi,-3.38,29.36,,
+SARD,Sardinia-Piedmont,45.07,7.69,,
+SARRE,Saar,49.23,7.0,,
+SCHLES,Schleswig-Holstein,54.5,9.5,,
+SWENOR,Sweden-Norway,59.33,18.07,,
+TANGER,Tangier,35.76,-5.83,,
+TEXAS,Texas,30.27,-97.74,,
+TRIEST,Trieste,45.65,13.78,,
+TUSC,Tuscany,43.77,11.25,,
+UKNLD,United Kingdom of the Netherlands,52.37,4.9,,
+ULSTER,Northern Ireland,54.6,-5.93,,
+USSR,Soviet Union,55.75,37.62,,
+YAR,North Yemen,15.35,44.2,,
+YUG,Yugoslavia,44.8,20.46,,
+ZOLL,German Zollverein,50.11,8.68,,
+GBR,United Kingdom,51.51,-0.13,,London
+FRA,France,48.86,2.35,,Paris
+PRT,Portugal,38.72,-9.14,,Lisbon
+NLD,Netherlands,52.37,4.9,,Amsterdam
+USA,United States,38.9,-77.04,,Washington
+DEU,Germany,52.52,13.4,,Berlin
+ESP,Spain,40.42,-3.7,,Madrid
+BEL,Belgium,50.85,4.35,,Brussels
+DNK,Denmark,55.68,12.57,,Copenhagen
+ITA,Italy,41.9,12.5,,Rome
+JPN,Japan,35.68,139.69,,Tokyo
+CHN,China,39.9,116.4,,Beijing
+RUS,Russia,55.75,37.62,,Moscow

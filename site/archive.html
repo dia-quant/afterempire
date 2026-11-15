@@ -14,6 +14,7 @@
 <header class="topbar">
   <a class="wordmark" href="index.html">Afterempire</a>
   <nav aria-label="Record Room">
+    <a href="flows.html">Flows of Empire</a>
     <span title="Phase 5">Inherited Systems</span>
     <span title="Phase 5">Divergence Metrics</span>
     <a href="archive.html" aria-current="page">The Archive</a>
@@ -26,14 +27,14 @@
   <div class="crumbs">RECORD ROOM / SOURCES</div>
   <h1>The Archive</h1>
   <p class="lede">Every dataset, document and tool behind Afterempire, filed alphabetically. Open a card for its citation, coverage and licence. Planned sources are listed now so their licences can be checked before any data from them reaches the site.</p>
-  <p class="stamp"><mark>19 cards</mark> · 6 in use · 13 planned · updated <span id="updated">2026-11-15</span></p>
+  <p class="stamp"><mark>21 cards</mark> · 10 in use · 11 planned · updated <span id="updated">2026-11-15</span></p>
   <div class="key"><span><span class="chip use">In use</span> data or code on the site today</span><span><span class="chip plan">Planned</span> scheduled for a later phase</span></div>
   <section class="drawer" aria-label="Source cards">
 <div class="divider" style="--x:2%" role="separator"><span><b>A</b><b>001</b></span></div>
 <details class="card" style="--x:30%" id="src-01">
   <summary><div class="tab" aria-hidden="true"><span class="no">001</span><span>Afterempire holdings gazetteer</span></div><h2>Afterempire holdings gazetteer</h2><span class="chip use">In use</span><span class="use-line">Ownership and status of every holding shown on the Territorial Ledger.</span></summary>
   <div class="body"><dl>
-    <dt>Citation</dt><dd class="cite">Afterempire project (2026). Holdings gazetteer v0.1: data/curated/holdings.csv and periods.csv. 177 holdings, 638 control periods.</dd>
+    <dt>Citation</dt><dd class="cite">Afterempire project (2026). Holdings gazetteer v0.1: data/curated/holdings.csv and periods.csv. 177 holdings, 638 control periods. Trade crosswalk: data/curated/trade_codes.csv.</dd>
     <dt>Coverage</dt><dd>1800–2025 · GBR, FRA, PRT, NLD and powers that took their holdings</dd>
     <dt>Licence</dt><dd>To be decided by the project owner (CC BY 4.0 suggested).</dd>
     <dt>Link</dt><dd><a href="https://github.com/dia-quant/afterempire" target="_blank" rel="noopener">https://github.com/dia-quant/afterempire</a></dd>
@@ -41,7 +42,7 @@
 </details>
 <div class="divider" style="--x:30%" role="separator"><span><b>B</b><b>001</b></span></div>
 <details class="card" style="--x:58%" id="src-02">
-  <summary><div class="tab" aria-hidden="true"><span class="no">002</span><span>BACI world trade</span></div><h2>BACI world trade (CEPII)</h2><span class="chip plan">Planned</span><span class="use-line">Modern bilateral trade flows for Flows of Empire (Phase 4).</span></summary>
+  <summary><div class="tab" aria-hidden="true"><span class="no">002</span><span>BACI world trade</span></div><h2>BACI world trade (CEPII)</h2><span class="chip plan">Planned</span><span class="use-line">Reached through CEPII Gravity (below); not downloaded separately.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Gaulier, G. and Zignago, S. (2010). BACI: International Trade Database at the Product-Level. CEPII Working Paper 2010-23.</dd>
     <dt>Coverage</dt><dd>1995–present</dd>
@@ -49,9 +50,18 @@
     <dt>Link</dt><dd><a href="https://www.cepii.fr/" target="_blank" rel="noopener">https://www.cepii.fr/</a></dd>
   </dl></div>
 </details>
-<div class="divider" style="--x:58%" role="separator"><span><b>C</b><b>002</b></span></div>
+<div class="divider" style="--x:58%" role="separator"><span><b>C</b><b>003</b></span></div>
 <details class="card" style="--x:2%" id="src-03">
-  <summary><div class="tab" aria-hidden="true"><span class="no">003</span><span>COLDAT</span></div><h2>COLDAT: Colonial Dates Dataset</h2><span class="chip use">In use</span><span class="use-line">Cross-check of start and end dates of colonial rule (see the validation report).</span></summary>
+  <summary><div class="tab" aria-hidden="true"><span class="no">003</span><span>CEPII Gravity database</span></div><h2>CEPII Gravity database</h2><span class="chip use">In use</span><span class="use-line">Bilateral trade flows for 2015–2020 (BACI trade flow, with IMF data as fallback). 2021–2025 show 2020 as the latest available year.</span></summary>
+  <div class="body"><dl>
+    <dt>Citation</dt><dd class="cite">Conte, M., Cotterlaz, P. and Mayer, T. (2022). The CEPII Gravity Database. CEPII Working Paper 2022-05. Version V202211.</dd>
+    <dt>Coverage</dt><dd>1948–2020 (used for 2015–2020)</dd>
+    <dt>Licence</dt><dd>Etalab Open Licence 2.0 (attribution).</dd>
+    <dt>Link</dt><dd><a href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8" target="_blank" rel="noopener">https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8</a></dd>
+  </dl></div>
+</details>
+<details class="card" style="--x:30%" id="src-04">
+  <summary><div class="tab" aria-hidden="true"><span class="no">004</span><span>COLDAT</span></div><h2>COLDAT: Colonial Dates Dataset</h2><span class="chip use">In use</span><span class="use-line">Cross-check of start and end dates of colonial rule (see the validation report).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Becker, B. (2019). Introducing COLDAT: The Colonial Dates Dataset. Harvard Dataverse. doi:10.7910/DVN/T9SDEW.</dd>
     <dt>Coverage</dt><dd>Eight European empires, country level</dd>
@@ -59,8 +69,8 @@
     <dt>Link</dt><dd><a href="https://doi.org/10.7910/DVN/T9SDEW" target="_blank" rel="noopener">https://doi.org/10.7910/DVN/T9SDEW</a></dd>
   </dl></div>
 </details>
-<details class="card" style="--x:30%" id="src-04">
-  <summary><div class="tab" aria-hidden="true"><span class="no">004</span><span>Correlates of War Trade</span></div><h2>Correlates of War Trade</h2><span class="chip plan">Planned</span><span class="use-line">Cross-check of bilateral trade totals, 1870 onward (Phase 4).</span></summary>
+<details class="card" style="--x:58%" id="src-05">
+  <summary><div class="tab" aria-hidden="true"><span class="no">005</span><span>Correlates of War Trade</span></div><h2>Correlates of War Trade</h2><span class="chip plan">Planned</span><span class="use-line">Cross-check of bilateral trade totals, 1870 onward (Phase 4).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Barbieri, K. and Keshk, O. Correlates of War Project Trade Data Set, version 4.</dd>
     <dt>Coverage</dt><dd>1870–2014</dd>
@@ -69,8 +79,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:2%" role="separator"><span><b>D</b><b>001</b></span></div>
-<details class="card" style="--x:58%" id="src-05">
-  <summary><div class="tab" aria-hidden="true"><span class="no">005</span><span>d3</span></div><h2>d3</h2><span class="chip use">In use</span><span class="use-line">Flat-map projection (Equal Earth), zoom and the loading globe.</span></summary>
+<details class="card" style="--x:2%" id="src-06">
+  <summary><div class="tab" aria-hidden="true"><span class="no">006</span><span>d3</span></div><h2>d3</h2><span class="chip use">In use</span><span class="use-line">Flat-map projection (Equal Earth), zoom and the loading globe.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Bostock, M. et al. D3: Data-Driven Documents, version 7.9.0.</dd>
     <dt>Coverage</dt><dd>Software</dd>
@@ -79,8 +89,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:30%" role="separator"><span><b>F</b><b>001</b></span></div>
-<details class="card" style="--x:2%" id="src-06">
-  <summary><div class="tab" aria-hidden="true"><span class="no">006</span><span>Federico-Tena World Trade Historical Database</span></div><h2>Federico-Tena World Trade Historical Database</h2><span class="chip plan">Planned</span><span class="use-line">Benchmark totals for checking nineteenth-century trade (Phase 4).</span></summary>
+<details class="card" style="--x:30%" id="src-07">
+  <summary><div class="tab" aria-hidden="true"><span class="no">007</span><span>Federico-Tena World Trade Historical Database</span></div><h2>Federico-Tena World Trade Historical Database</h2><span class="chip plan">Planned</span><span class="use-line">Benchmark totals for checking nineteenth-century trade (Phase 4).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Federico, G. and Tena-Junguito, A. (2016). World Trade Historical Database.</dd>
     <dt>Coverage</dt><dd>1800–1938</dd>
@@ -89,8 +99,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:58%" role="separator"><span><b>G</b><b>002</b></span></div>
-<details class="card" style="--x:30%" id="src-07">
-  <summary><div class="tab" aria-hidden="true"><span class="no">007</span><span>Garriga Central Bank Independence</span></div><h2>Garriga Central Bank Independence</h2><span class="chip plan">Planned</span><span class="use-line">Central bank independence dimension in Inherited Systems (Phase 5).</span></summary>
+<details class="card" style="--x:58%" id="src-08">
+  <summary><div class="tab" aria-hidden="true"><span class="no">008</span><span>Garriga Central Bank Independence</span></div><h2>Garriga Central Bank Independence</h2><span class="chip plan">Planned</span><span class="use-line">Central bank independence dimension in Inherited Systems (Phase 5).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Garriga, A. C. (2016). Central Bank Independence in the World: A New Data Set. International Interactions 42(5).</dd>
     <dt>Coverage</dt><dd>1970–2023</dd>
@@ -98,8 +108,8 @@
     <dt>Link</dt><dd>To be added once the source is retrieved.</dd>
   </dl></div>
 </details>
-<details class="card" style="--x:58%" id="src-08">
-  <summary><div class="tab" aria-hidden="true"><span class="no">008</span><span>globe.gl</span></div><h2>globe.gl</h2><span class="chip use">In use</span><span class="use-line">Three-dimensional globe, particles, borders and markers.</span></summary>
+<details class="card" style="--x:2%" id="src-09">
+  <summary><div class="tab" aria-hidden="true"><span class="no">009</span><span>globe.gl</span></div><h2>globe.gl</h2><span class="chip use">In use</span><span class="use-line">Three-dimensional globe, particles, borders and markers.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Asturiano, V. globe.gl, version 2.45.3.</dd>
     <dt>Coverage</dt><dd>Software</dd>
@@ -107,9 +117,18 @@
     <dt>Link</dt><dd><a href="https://globe.gl/" target="_blank" rel="noopener">https://globe.gl/</a></dd>
   </dl></div>
 </details>
-<div class="divider" style="--x:2%" role="separator"><span><b>H</b><b>001</b></span></div>
-<details class="card" style="--x:2%" id="src-09">
-  <summary><div class="tab" aria-hidden="true"><span class="no">009</span><span>Historical Basemaps</span></div><h2>Historical Basemaps</h2><span class="chip use">In use</span><span class="use-line">Faint historical borders behind the holdings, swapped at 13 snapshot years.</span></summary>
+<div class="divider" style="--x:2%" role="separator"><span><b>H</b><b>002</b></span></div>
+<details class="card" style="--x:30%" id="src-10">
+  <summary><div class="tab" aria-hidden="true"><span class="no">010</span><span>Head, Mayer &amp; Ries</span></div><h2>Head, Mayer &amp; Ries (2010)</h2><span class="chip use">In use</span><span class="use-line">Reference result for the erosion curve on Flows of Empire.</span></summary>
+  <div class="body"><dl>
+    <dt>Citation</dt><dd class="cite">Head, K., Mayer, T. and Ries, J. (2010). The erosion of colonial trade linkages after independence. Journal of International Economics 81(1), 1–14.</dd>
+    <dt>Coverage</dt><dd>Literature</dd>
+    <dt>Licence</dt><dd>Published article; cited, not redistributed.</dd>
+    <dt>Link</dt><dd><a href="https://doi.org/10.1016/j.jinteco.2010.01.002" target="_blank" rel="noopener">https://doi.org/10.1016/j.jinteco.2010.01.002</a></dd>
+  </dl></div>
+</details>
+<details class="card" style="--x:58%" id="src-11">
+  <summary><div class="tab" aria-hidden="true"><span class="no">011</span><span>Historical Basemaps</span></div><h2>Historical Basemaps</h2><span class="chip use">In use</span><span class="use-line">Faint historical borders behind the holdings, swapped at 13 snapshot years.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Ourednik, A. historical-basemaps: world borders through history. GitHub repository.</dd>
     <dt>Coverage</dt><dd>Snapshots 1800, 1815, 1880 … 2010</dd>
@@ -118,8 +137,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:30%" role="separator"><span><b>I</b><b>001</b></span></div>
-<details class="card" style="--x:30%" id="src-10">
-  <summary><div class="tab" aria-hidden="true"><span class="no">010</span><span>ICOW Colonial History</span></div><h2>ICOW Colonial History</h2><span class="chip plan">Planned</span><span class="use-line">Second cross-check of independence dates and types (Phase 1b).</span></summary>
+<details class="card" style="--x:2%" id="src-12">
+  <summary><div class="tab" aria-hidden="true"><span class="no">012</span><span>ICOW Colonial History</span></div><h2>ICOW Colonial History</h2><span class="chip plan">Planned</span><span class="use-line">Second cross-check of independence dates and types (Phase 1b).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Hensel, P. R. ICOW Colonial History Data Set, version 1.1.</dd>
     <dt>Coverage</dt><dd>Country level</dd>
@@ -128,8 +147,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:58%" role="separator"><span><b>M</b><b>001</b></span></div>
-<details class="card" style="--x:58%" id="src-11">
-  <summary><div class="tab" aria-hidden="true"><span class="no">011</span><span>Maddison Project Database</span></div><h2>Maddison Project Database</h2><span class="chip plan">Planned</span><span class="use-line">Long-run GDP per capita for context in Inherited Systems (Phase 5).</span></summary>
+<details class="card" style="--x:30%" id="src-13">
+  <summary><div class="tab" aria-hidden="true"><span class="no">013</span><span>Maddison Project Database</span></div><h2>Maddison Project Database</h2><span class="chip plan">Planned</span><span class="use-line">Long-run GDP per capita for context in Inherited Systems (Phase 5).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Bolt, J. and van Zanden, J. L. (2024). Maddison style estimates of the evolution of the world economy. Maddison Project Database 2023.</dd>
     <dt>Coverage</dt><dd>Pre-1800 to 2022</dd>
@@ -138,8 +157,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:2%" role="separator"><span><b>N</b><b>002</b></span></div>
-<details class="card" style="--x:2%" id="src-12">
-  <summary><div class="tab" aria-hidden="true"><span class="no">012</span><span>National development plans</span></div><h2>National development plans (primary documents)</h2><span class="chip plan">Planned</span><span class="use-line">Hand-coded planning dimensions, drawn from the colonised countries&#x27; own records (Phase 5).</span></summary>
+<details class="card" style="--x:58%" id="src-14">
+  <summary><div class="tab" aria-hidden="true"><span class="no">014</span><span>National development plans</span></div><h2>National development plans (primary documents)</h2><span class="chip plan">Planned</span><span class="use-line">Hand-coded planning dimensions, drawn from the colonised countries&#x27; own records (Phase 5).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">e.g. Government of India Planning Commission, First to Twelfth Five-Year Plans; Government of Ghana, Seven-Year Development Plan 1963/64–1969/70; Republic of Indonesia, Repelita I–VI.</dd>
     <dt>Coverage</dt><dd>Post-independence</dd>
@@ -147,8 +166,8 @@
     <dt>Link</dt><dd><a href="https://www.niti.gov.in/" target="_blank" rel="noopener">https://www.niti.gov.in/</a></dd>
   </dl></div>
 </details>
-<details class="card" style="--x:30%" id="src-13">
-  <summary><div class="tab" aria-hidden="true"><span class="no">013</span><span>Natural Earth land</span></div><h2>Natural Earth land (via world-atlas)</h2><span class="chip use">In use</span><span class="use-line">Land outline from which the dotted earth is generated.</span></summary>
+<details class="card" style="--x:2%" id="src-15">
+  <summary><div class="tab" aria-hidden="true"><span class="no">015</span><span>Natural Earth land</span></div><h2>Natural Earth land (via world-atlas)</h2><span class="chip use">In use</span><span class="use-line">Land outline from which the dotted earth is generated.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Natural Earth 1:110m land, packaged as world-atlas 2.0.2 (Bostock, M.).</dd>
     <dt>Coverage</dt><dd>Global</dd>
@@ -157,8 +176,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:30%" role="separator"><span><b>P</b><b>001</b></span></div>
-<details class="card" style="--x:58%" id="src-14">
-  <summary><div class="tab" aria-hidden="true"><span class="no">014</span><span>Penn World Table</span></div><h2>Penn World Table</h2><span class="chip plan">Planned</span><span class="use-line">Post-independence output and productivity (Phase 5).</span></summary>
+<details class="card" style="--x:30%" id="src-16">
+  <summary><div class="tab" aria-hidden="true"><span class="no">016</span><span>Penn World Table</span></div><h2>Penn World Table</h2><span class="chip plan">Planned</span><span class="use-line">Post-independence output and productivity (Phase 5).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Feenstra, R. C., Inklaar, R. and Timmer, M. P. (2015). The Next Generation of the Penn World Table. American Economic Review 105(10).</dd>
     <dt>Coverage</dt><dd>1950–2019</dd>
@@ -167,28 +186,28 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:58%" role="separator"><span><b>R</b><b>001</b></span></div>
-<details class="card" style="--x:2%" id="src-15">
-  <summary><div class="tab" aria-hidden="true"><span class="no">015</span><span>RICardo</span></div><h2>RICardo</h2><span class="chip plan">Planned</span><span class="use-line">Main source of bilateral trade flows before 1938, including colonies as separate entities (Phase 4).</span></summary>
+<details class="card" style="--x:58%" id="src-17">
+  <summary><div class="tab" aria-hidden="true"><span class="no">017</span><span>RICardo</span></div><h2>RICardo</h2><span class="chip use">In use</span><span class="use-line">Bilateral trade flows for 1800–1826 on the Territorial Ledger and Flows of Empire.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Dedinger, B. and Girard, P. (2017). Exploring trade globalization in the long run: the RICardo project. Historical Methods 50(1).</dd>
     <dt>Coverage</dt><dd>1787–1938</dd>
-    <dt>Licence</dt><dd>To be checked before use.</dd>
+    <dt>Licence</dt><dd>Open Database License (ODbL 1.0); contents under the Database Contents License. Our derived 1800–1826 flows in site/data/trade.json are shared under ODbL.</dd>
     <dt>Link</dt><dd><a href="https://ricardo.medialab.sciences-po.fr/" target="_blank" rel="noopener">https://ricardo.medialab.sciences-po.fr/</a></dd>
   </dl></div>
 </details>
 <div class="divider" style="--x:2%" role="separator"><span><b>T</b><b>001</b></span></div>
-<details class="card" style="--x:30%" id="src-16">
-  <summary><div class="tab" aria-hidden="true"><span class="no">016</span><span>TRADHIST</span></div><h2>TRADHIST (CEPII)</h2><span class="chip plan">Planned</span><span class="use-line">Bilateral trade across independence, linking the colonial and post-colonial periods (Phase 4).</span></summary>
+<details class="card" style="--x:2%" id="src-18">
+  <summary><div class="tab" aria-hidden="true"><span class="no">018</span><span>TRADHIST</span></div><h2>TRADHIST (CEPII)</h2><span class="chip use">In use</span><span class="use-line">Bilateral trade flows for 1827–2014, including colonial entities such as British India and the Straits Settlements.</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Fouquin, M. and Hugot, J. (2016). Two Centuries of Bilateral Trade and Gravity Data: 1827–2014. CEPII Working Paper 2016-14.</dd>
     <dt>Coverage</dt><dd>1827–2014</dd>
-    <dt>Licence</dt><dd>To be checked before use.</dd>
+    <dt>Licence</dt><dd>Etalab Open Licence 2.0 (attribution).</dd>
     <dt>Link</dt><dd><a href="https://www.cepii.fr/" target="_blank" rel="noopener">https://www.cepii.fr/</a></dd>
   </dl></div>
 </details>
 <div class="divider" style="--x:30%" role="separator"><span><b>V</b><b>001</b></span></div>
-<details class="card" style="--x:58%" id="src-17">
-  <summary><div class="tab" aria-hidden="true"><span class="no">017</span><span>V-Dem</span></div><h2>V-Dem</h2><span class="chip plan">Planned</span><span class="use-line">State ownership of the economy and institutional context (Phase 5).</span></summary>
+<details class="card" style="--x:30%" id="src-19">
+  <summary><div class="tab" aria-hidden="true"><span class="no">019</span><span>V-Dem</span></div><h2>V-Dem</h2><span class="chip plan">Planned</span><span class="use-line">State ownership of the economy and institutional context (Phase 5).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Coppedge, M. et al. V-Dem Dataset. Varieties of Democracy Project.</dd>
     <dt>Coverage</dt><dd>1789–present</dd>
@@ -197,8 +216,8 @@
   </dl></div>
 </details>
 <div class="divider" style="--x:58%" role="separator"><span><b>W</b><b>002</b></span></div>
-<details class="card" style="--x:2%" id="src-18">
-  <summary><div class="tab" aria-hidden="true"><span class="no">018</span><span>Wikidata</span></div><h2>Wikidata</h2><span class="chip plan">Planned</span><span class="use-line">Links each holding to a stable identifier and cross-checks transfer dates (Phase 1b).</span></summary>
+<details class="card" style="--x:58%" id="src-20">
+  <summary><div class="tab" aria-hidden="true"><span class="no">020</span><span>Wikidata</span></div><h2>Wikidata</h2><span class="chip plan">Planned</span><span class="use-line">Links each holding to a stable identifier and cross-checks transfer dates (Phase 1b).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">Wikidata contributors. Wikidata, the free knowledge base.</dd>
     <dt>Coverage</dt><dd>Global</dd>
@@ -206,8 +225,8 @@
     <dt>Link</dt><dd><a href="https://www.wikidata.org/" target="_blank" rel="noopener">https://www.wikidata.org/</a></dd>
   </dl></div>
 </details>
-<details class="card" style="--x:30%" id="src-19">
-  <summary><div class="tab" aria-hidden="true"><span class="no">019</span><span>World Bank World Development Indicators</span></div><h2>World Bank World Development Indicators</h2><span class="chip plan">Planned</span><span class="use-line">Post-independence indicators, refreshed monthly by the site&#x27;s build (Phase 7).</span></summary>
+<details class="card" style="--x:2%" id="src-21">
+  <summary><div class="tab" aria-hidden="true"><span class="no">021</span><span>World Bank World Development Indicators</span></div><h2>World Bank World Development Indicators</h2><span class="chip plan">Planned</span><span class="use-line">Post-independence indicators, refreshed monthly by the site&#x27;s build (Phase 7).</span></summary>
   <div class="body"><dl>
     <dt>Citation</dt><dd class="cite">World Bank. World Development Indicators (API v2).</dd>
     <dt>Coverage</dt><dd>1960–present</dd>

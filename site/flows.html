@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flows of Empire · Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/observatory.css">
+<link rel="stylesheet" href="css/flows.css">
+</head>
+<body class="page">
+<header class="ptop">
+  <a class="wordmark" href="index.html">Afterempire</a>
+  <nav aria-label="Observatory">
+    <a href="index.html">Territorial Ledger</a>
+    <a href="flows.html" aria-current="page">Flows of Empire</a>
+    <a href="archive.html">The Archive ↗</a>
+  </nav>
+  <span class="stamp" id="stamp">TRADE.DB</span>
+</header>
+
+<main class="pwrap">
+  <section class="intro-block">
+    <div class="crumbs">OBSERVATORY / TRADE</div>
+    <h1>Flows of Empire</h1>
+    <p class="lede">How much of a colony's trade ran through its metropole, and how quickly that tie loosened after independence. Built from RICardo (1800–1826), TRADHIST (1827–2014) and CEPII Gravity (2015–2020). All values are approximate and in current prices.</p>
+  </section>
+
+  <!-- 1. Erosion curve -->
+  <section class="frame-s" aria-labelledby="h-erosion">
+    <header class="bar"><span id="h-erosion">01 · THE EROSION CURVE</span><span id="ero-n"></span></header>
+    <div class="sbody">
+      <p class="note">Median share of each former holding's recorded trade that went to or came from its former metropole, by years since independence. Lines appear where at least three holdings have data. Head, Mayer &amp; Ries (2010) estimate that trade with the former coloniser falls by about 65% within four decades.</p>
+      <div class="legend-row" id="ero-legend"></div>
+      <div class="chart" id="ero-chart"></div>
+      <details class="tview"><summary>View as table</summary><div class="twrap" id="ero-table"></div></details>
+    </div>
+  </section>
+
+  <!-- 2. Holding explorer -->
+  <section class="frame-s" aria-labelledby="h-explorer">
+    <header class="bar"><span id="h-explorer">02 · HOLDING EXPLORER</span><span id="ex-code"></span></header>
+    <div class="sbody">
+      <div class="controls">
+        <label for="ex-select" class="k">holding&gt;</label>
+        <select id="ex-select"></select>
+      </div>
+      <div class="ex-grid">
+        <div>
+          <div class="ctitle">Share of trade with the metropole <span id="ex-metro"></span></div>
+          <div class="chart" id="ex-share"></div>
+        </div>
+        <div>
+          <div class="ctitle">Recorded trade, current prices (log scale)</div>
+          <div class="chart" id="ex-total"></div>
+        </div>
+      </div>
+      <div class="ctitle">Largest partners by decade</div>
+      <div class="twrap"><table class="dtable" id="ex-partners"></table></div>
+    </div>
+  </section>
+
+  <!-- 3. Ranking -->
+  <section class="frame-s" aria-labelledby="h-rank">
+    <header class="bar"><span id="h-rank">03 · LARGEST FLOWS IN A YEAR</span><span id="rk-src"></span></header>
+    <div class="sbody">
+      <div class="controls">
+        <label for="rk-year" class="k">year&gt;</label>
+        <input id="rk-year" type="range" min="1806" max="2020" step="1" value="1913" aria-label="Year">
+        <output id="rk-year-out">1913</output>
+      </div>
+      <div class="twrap"><table class="dtable" id="rk-table"></table></div>
+    </div>
+  </section>
+
+  <p class="foot">Shares use each holding's own recorded bilateral trade, so they depend on what the sources captured. Aggregates such as “British West Indies” appear where the sources report them. Sources and licences are listed in <a href="archive.html">The Archive</a>.</p>
+</main>
+
+<div class="ttip" id="ttip" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="js/flows.js"></script>
+</body>
+</html>

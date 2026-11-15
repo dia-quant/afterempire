@@ -33,6 +33,7 @@
     filters: new Set([...FOCUS, "OTH"]), labels: false, callouts: true,
     borders: new Map(), bordersYear: null, land: null, dots: null,
     intro: { on: false, i: 0, timer: null, ids: null, paused: false }, zoom: d3.zoomIdentity,
+    trade: null, flowsOn: true, flowCache: new Map(), arcs: [], hoverArc: null, mouse: [0, 0],
   };
 
   // ---------------------------------------------------------------- data helpers
@@ -91,7 +92,7 @@
   async function loadAll() {
     const jobs = [
       ["holdings", "data/holdings.json"], ["dots", "data/land_dots.json"],
-      ["b1800", "data/borders/borders_1800.json"],
+      ["b1800", "data/borders/borders_1800.json"], ["trade", "data/trade.json"],
     ];
     let done = 0;
     const out = {};
@@ -102,7 +103,7 @@
       if (k === "dots") S.dots = out[k];
       done++; $("loader-pct").textContent = `${String(Math.round((done / jobs.length) * 100)).padStart(3, "0")}%`;
     }));
-    S.data = out.holdings; S.dots = out.dots;
+    S.data = out.holdings; S.dots = out.dots; S.trade = out.trade;
     S.borders.set(1800, flattenLines(out.b1800));
     for (const h of S.data.holdings) S.byId.set(h.id, h);
   }
@@ -205,6 +206,7 @@
     }
     const mat = globe.globeMaterial();
     if (mat && mat.color) { mat.color.set("#05080e"); if (mat.emissive) mat.emissive.set("#03060b"); mat.shininess = 4; }
+    initArcs();
     const ctr = globe.controls(); ctr.enableDamping = true; ctr.dampingFactor = 0.12; ctr.rotateSpeed = 0.6; ctr.zoomSpeed = 0.8;
     sizeGlobe();
   }
@@ -265,6 +267,13 @@
     flat.ctx = flat.cv.getContext("2d");
     const zoom = d3.zoom().scaleExtent([1, 10]).on("zoom", (e) => { S.zoom = e.transform; drawFlat(); });
     d3.select(flat.cv).call(zoom).on("dblclick.zoom", null);
+    flat.cv.addEventListener("mousemove", (e) => {
+      const r = flat.cv.getBoundingClientRect();
+      const [x, y] = S.zoom.invert([e.clientX - r.left, e.clientY - r.top]);
+      const f = flatArcAt(x, y);
+      if (f !== S.hoverArc) { S.hoverArc = f; renderFlowTip(); drawFlat(); }
+    });
+    flat.cv.addEventListener("mouseleave", () => { if (S.hoverArc) { S.hoverArc = null; renderFlowTip(); drawFlat(); } });
     flat.cv.addEventListener("click", (e) => {
       const r = flat.cv.getBoundingClientRect();
       const [x, y] = S.zoom.invert([e.clientX - r.left, e.clientY - r.top]);
@@ -302,6 +311,7 @@
     const snap = currentBorderLines();
     if (snap) { ctx.beginPath(); path({ type: "MultiLineString", coordinates: snap }); ctx.strokeStyle = COLOR.border; ctx.lineWidth = 0.8 / k; ctx.stroke(); }
 
+    drawFlatArcs(ctx, k);
     flat.hits = [];
     const sel = [];
     for (const h of S.data.holdings) {
@@ -373,7 +383,9 @@
     $("year").value = y;
     $("year-big").textContent = y;
     renderMeters();
-    if (S.view === "globe") renderGlobe(); else drawFlat();
+    S.arcs = computeArcs();
+    if (S.view === "globe") { renderGlobe(); renderArcs(); } else { renderFlowLine(); drawFlat(); }
+    if (S.hoverArc) { S.hoverArc = null; $("flowtip").hidden = true; }
     pulseChanges();
     renderFeed();
     if (S.selected) renderPanel();
@@ -454,6 +466,9 @@
   // ---------------------------------------------------------------- selection & panel
   function select(id) {
     S.selected = id;
+    if (id && S.trade && !S.flowCache.has(id)) loadHoldingFlows(id).then(() => { if (S.selected === id) { renderPanel(); S.arcs = computeArcs(); if (S.view === "globe") renderArcs(); else drawFlat(); renderFlowLine(); } });
+    S.arcs = computeArcs();
+    if (S.view === "globe") renderArcs(); else renderFlowLine();
     $("panel").hidden = !id;
     $("feed").hidden = !!id;
     markers.forEach((m) => m.el.classList.toggle("sel", m.h.id === id));
@@ -492,6 +507,7 @@
     $("p-tl").innerHTML = `<span style="width:${lead}%"></span>${segs}<span class="cursor" style="left:${cur}%"></span>`;
     // events
     const t = tOf(S.year);
+    renderPanelTrade(h);
     $("p-count").textContent = `${String(h.periods.length).padStart(2, "0")} REC`;
     $("p-events").tBodies[0].innerHTML = h.periods.map((p) => {
       const cc = p.c === "SOV" ? (lastColonial(h, p.s) || "SOV") : p.c;
@@ -681,6 +697,227 @@
     }
   }
 
+  // ---------------------------------------------------------------- trade flows
+  const WIDTH_GLOBE = [0.12, 0.2, 0.3, 0.42, 0.58, 0.78];
+  const WIDTH_FLAT = [0.6, 1, 1.5, 2.2, 3.1, 4.2];
+  const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tradeKey(y) {
+    const latest = S.trade.meta.latest;
+    return { key: String(Math.min(y, latest)), carried: y > latest, latest };
+  }
+  function unitFor(y) {
+    const u = S.trade.meta.units.find((u) => y >= u.from && y <= u.to) || S.trade.meta.units[S.trade.meta.units.length - 1];
+    return u;
+  }
+  function fmtMoney(vk, y) {
+    if (vk == null) return "—";
+    const u = unitFor(y), sym = u.unit.startsWith("US$") ? "US$" : "£";
+    const v = vk * 1000;
+    if (v >= 1e9) return `${sym}${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1)}bn`;
+    if (v >= 1e6) return `${sym}${(v / 1e6).toFixed(v >= 1e8 ? 0 : 1)}m`;
+    return `${sym}${Math.round(v / 1e3)}k`;
+  }
+  function simpleRatio(a, b) {
+    const r = a / b;
+    if (r >= 6) return "> 5 : 1";
+    if (r <= 1 / 6) return "1 : > 5";
+    let best = [1, 1], bd = Infinity;
+    for (let p = 1; p <= 5; p++) for (let q = 1; q <= 5; q++) {
+      const d = Math.abs(Math.log(p / q) - Math.log(r));
+      if (d < bd) { bd = d; best = [p, q]; }
+    }
+    return `${best[0]} : ${best[1]}`;
+  }
+  const nodeOf = (c) => S.trade.nodes[c];
+  function flowSideColour(code) {
+    const n = nodeOf(code); if (!n || !n.h) return null;
+    const st = stateOf(S.byId.get(n.h), S.year);
+    return st ? { st, colour: st.color, visible: visible(st), colonial: st.ctrl !== "SOV" } : null;
+  }
+  async function loadHoldingFlows(hid) {
+    if (S.flowCache.has(hid)) return S.flowCache.get(hid);
+    S.flowCache.set(hid, null);
+    try {
+      const r = await fetch(`data/trade_h/${hid}.json`);
+      const d = r.ok ? await r.json() : {};
+      S.flowCache.set(hid, d);
+    } catch { S.flowCache.set(hid, {}); }
+    return S.flowCache.get(hid);
+  }
+  function computeArcs() {
+    if (!S.trade || !S.flowsOn) return [];
+    const { key } = tradeKey(S.year);
+    let rows = [];
+    const focus = S.selected && S.flowCache.get(S.selected);
+    if (S.selected && focus) {
+      rows = (focus[key] || []).map(([other, tot, out, inn, me]) => [me, other, tot, out, inn]);
+    } else if (!S.selected) {
+      for (const r of S.trade.years[key] || []) {
+        const A = flowSideColour(r[0]), B = flowSideColour(r[1]);
+        if ((A && A.visible) || (B && B.visible)) rows.push(r);
+        if (rows.length >= 50) break;
+      }
+    }
+    const n = rows.length;
+    return rows.map(([a, b, tot, ab, ba], i) => {
+      const na = nodeOf(a), nb = nodeOf(b);
+      if (!na || !nb) return null;
+      const pct = n > 1 ? 1 - i / (n - 1) : 1;
+      const cls = Math.min(5, Math.floor(pct * 6));
+      const A = flowSideColour(a), B = flowSideColour(b);
+      const side = A && A.colonial ? A : B && B.colonial ? B : A || B;
+      const fwd = ba == null || (ab != null && ab >= ba);
+      const [s0, s1] = fwd ? [na, nb] : [nb, na];
+      return { a, b, tot, ab, ba, rank: i + 1, n, cls, colour: side ? side.colour : COLOR.SOV,
+        sLat: s0.lat, sLng: s0.lon, eLat: s1.lat, eLng: s1.lon };
+    }).filter(Boolean);
+  }
+  const rgba = (hex, a) => {
+    const m = hex.replace("#", "");
+    const v = parseInt(m.length === 3 ? m.split("").map((c) => c + c).join("") : m, 16);
+    return `rgba(${(v >> 16) & 255},${(v >> 8) & 255},${v & 255},${a})`;
+  };
+  function initArcs() {
+    globe
+      .arcStartLat((d) => d.f.sLat).arcStartLng((d) => d.f.sLng).arcEndLat((d) => d.f.eLat).arcEndLng((d) => d.f.eLng)
+      .arcColor((d) => (d.p ? rgba(d.f.colour, 0.95) : rgba(d.f.colour, S.hoverArc === d.f ? 0.95 : 0.45)))
+      .arcStroke((d) => (d.p ? WIDTH_GLOBE[d.f.cls] * 0.9 : WIDTH_GLOBE[d.f.cls] * (S.hoverArc === d.f ? 1.6 : 1)))
+      .arcAltitudeAutoScale(0.32)
+      .arcDashLength((d) => (d.p ? 0.025 : 1)).arcDashGap((d) => (d.p ? 0.11 : 0))
+      .arcDashInitialGap((d) => (d.p ? (d.f.rank * 0.137) % 1 : 0))
+      .arcDashAnimateTime((d) => (d.p ? 5200 - d.f.cls * 450 : 0))
+      .arcsTransitionDuration(0)
+      .onArcHover((d) => { S.hoverArc = d ? d.f : null; renderFlowTip(); refreshArcStyle(); });
+  }
+  function refreshArcStyle() { if (globe) globe.arcColor(globe.arcColor()).arcStroke(globe.arcStroke()); }
+  function renderArcs() {
+    S.arcs = computeArcs();
+    if (globe && S.view === "globe") {
+      const items = [];
+      for (const f of S.arcs) { items.push({ f, p: false }); if (!REDUCED) items.push({ f, p: true }); }
+      globe.arcsData(items);
+    }
+    renderFlowLine();
+  }
+  function renderFlowLine() {
+    const el = $("flowline");
+    if (!S.trade || !S.flowsOn) { el.textContent = "TRADE LAYER OFF"; return; }
+    const { key, carried, latest } = tradeKey(S.year);
+    const src = S.trade.meta.sources[key] || "—";
+    const n = S.arcs.length;
+    const what = S.selected ? `${n} partners of the selected holding` : `${n} largest flows`;
+    el.innerHTML = n
+      ? `TRADE <b>${what}</b> · ${escapeHtml(src)}${carried ? ` · <b>latest available: ${latest}</b>` : ""}`
+      : `TRADE <b>no recorded flows</b> touching the shown holdings in ${S.year}${S.year < 1820 ? " · records before 1820 are sparse" : ""}`;
+  }
+  function renderFlowTip() {
+    const tip = $("flowtip"), f = S.hoverArc;
+    if (!f) { tip.hidden = true; return; }
+    const na = nodeOf(f.a), nb = nodeOf(f.b);
+    const { key, carried } = tradeKey(S.year);
+    const y = +key;
+    const src = S.trade.meta.sources[key] || "";
+    let ratio, split = "", who = "";
+    if (f.ab != null && f.ba != null && f.ab > 0 && f.ba > 0) {
+      ratio = `<div class="row"><span class="k">${escapeHtml(f.a)}→${escapeHtml(f.b)} : ${escapeHtml(f.b)}→${escapeHtml(f.a)}</span><span>≈ ${simpleRatio(f.ab, f.ba)}</span></div>`;
+      const pa = (f.ab / (f.ab + f.ba)) * 100;
+      const ca = (flowSideColour(f.a) || {}).colour || COLOR.SOV, cb = (flowSideColour(f.b) || {}).colour || COLOR.SOV;
+      split = `<div class="split"><span style="width:${pa}%;background:${ca}"></span><span style="width:${100 - pa}%;background:${cb};opacity:.55"></span></div>`;
+      const big = f.ab >= f.ba ? na.n : nb.n;
+      who = Math.abs(f.ab - f.ba) / (f.ab + f.ba) < 0.05 ? "roughly balanced" : `${escapeHtml(big)} exports more`;
+      who = `<div class="note">${who}</div>`;
+    } else {
+      const known = f.ab != null ? `${f.a}→${f.b}` : `${f.b}→${f.a}`;
+      ratio = `<div class="warn">One-sided estimate: only ${escapeHtml(known)} is recorded.</div>`;
+    }
+    tip.innerHTML = `<header class="bar"><span>FLOW · ${S.year}${carried ? ` (DATA ${y})` : ""}</span><span>RANK ${f.rank}/${f.n}</span></header>
+      <div class="bd"><div class="pair">${escapeHtml(na.n)} ⇄ ${escapeHtml(nb.n)}</div>
+      <div class="row"><span class="k">Total</span><span>≈ ${fmtMoney(f.tot, y)}</span></div>
+      ${ratio}${split}${who}<div class="note">src: ${escapeHtml(src)} · approximate · ${escapeHtml(unitFor(y).label)}</div></div>`;
+    tip.hidden = false;
+    placeFlowTip();
+  }
+  function placeFlowTip() {
+    const tip = $("flowtip"); if (tip.hidden) return;
+    const st = $("stage").getBoundingClientRect();
+    let x = S.mouse[0] + 16, y = S.mouse[1] + 16;
+    if (x + 310 > st.width) x = S.mouse[0] - 316;
+    if (y + tip.offsetHeight + 10 > st.height) y = S.mouse[1] - tip.offsetHeight - 12;
+    tip.style.left = `${Math.max(8, x)}px`; tip.style.top = `${Math.max(8, y)}px`;
+  }
+  // flat map: great-circle polylines
+  function arcPath(f) {
+    const interp = d3.geoInterpolate([f.sLng, f.sLat], [f.eLng, f.eLat]);
+    const pts = [];
+    for (let i = 0; i <= 32; i++) pts.push(flat.proj(interp(i / 32)));
+    return pts;
+  }
+  function drawFlatArcs(ctx, k) {
+    flat.arcHits = [];
+    for (const f of S.arcs) {
+      const pts = arcPath(f);
+      ctx.beginPath();
+      let prev = null;
+      for (const p of pts) {
+        if (!p) { prev = null; continue; }
+        if (!prev || Math.abs(p[0] - prev[0]) > flat.w / 3) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]);
+        prev = p;
+      }
+      ctx.strokeStyle = rgba(f.colour, S.hoverArc === f ? 0.95 : 0.6);
+      ctx.lineWidth = (WIDTH_FLAT[f.cls] * (S.hoverArc === f ? 1.5 : 1)) / Math.sqrt(k);
+      ctx.stroke();
+      flat.arcHits.push({ f, pts });
+    }
+  }
+  function flatArcAt(x, y) {
+    let best = null, bd = 6 / S.zoom.k;
+    for (const { f, pts } of flat.arcHits || []) {
+      for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i]; if (!a || !b || Math.abs(a[0] - b[0]) > flat.w / 3) continue;
+        const dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy || 1;
+        const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L));
+        const d = Math.hypot(x - (a[0] + t * dx), y - (a[1] + t * dy));
+        if (d < bd) { bd = d; best = f; }
+      }
+    }
+    return best;
+  }
+  // record card: trade section
+  function renderPanelTrade(h) {
+    const box = $("p-trade");
+    if (!S.trade) { box.innerHTML = ""; return; }
+    const series = S.trade.share[h.id];
+    if (!series || !series.length) { box.innerHTML = `<div class="mini-lbl"><span>TRADE</span></div><div class="row"><span class="k">no recorded bilateral trade for this holding</span></div>`; return; }
+    const { key } = tradeKey(S.year);
+    const y = +key;
+    let cur = null;
+    for (const r of series) if (r[0] <= y) cur = r;
+    const ind = S.trade.indep[h.id];
+    // sparkline of metropole share
+    const w = 300, hh = 46, x0 = 1800, x1 = 2025;
+    const X = (yy) => ((yy - x0) / (x1 - x0)) * w, Y = (v) => hh - 4 - v * (hh - 10);
+    const pts = series.filter((r) => r[1] > 0).map((r) => [X(r[0]), Y(r[2] / r[1])]);
+    let d = "";
+    let last = null;
+    for (const p of pts) { d += (last && p[0] - last[0] > X(x0 + 6) ? "M" : d ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); last = p; }
+    const metro = cur ? cur[3] : null;
+    const share = cur && cur[1] ? Math.round((cur[2] / cur[1]) * 100) : null;
+    const flows = S.flowCache.get(h.id);
+    const top = flows && flows[key] ? flows[key].slice(0, 5) : null;
+    box.innerHTML = `<div class="mini-lbl"><span>TRADE · ${y}${y !== S.year ? " (latest)" : ""}</span><span>${escapeHtml(S.trade.meta.sources[key] || "")}</span></div>
+      <div class="row"><span class="k">Recorded trade</span><span>${cur ? fmtMoney(cur[1], cur[0]) : "—"}${cur && cur[0] !== y ? ` (${cur[0]})` : ""}</span></div>
+      <div class="row"><span class="k">Share with ${metro ? escapeHtml(metro) : "metropole"}</span><span>${share == null ? "—" : share + "%"}</span></div>
+      <svg viewBox="0 0 ${w} ${hh}" preserveAspectRatio="none" role="img" aria-label="Share of trade with the metropole, 1800 to 2025">
+        <line x1="0" x2="${w}" y1="${Y(0)}" y2="${Y(0)}" stroke="rgba(200,219,255,.15)" stroke-width="1"/>
+        <line x1="0" x2="${w}" y1="${Y(1)}" y2="${Y(1)}" stroke="rgba(200,219,255,.08)" stroke-width="1"/>
+        ${ind ? `<line x1="${X(ind)}" x2="${X(ind)}" y1="2" y2="${hh}" stroke="rgba(200,219,255,.45)" stroke-dasharray="2 2"/><text x="${X(ind) + 3}" y="9" font-size="8" fill="#6f7f99" font-family="IBM Plex Mono, monospace">indep. ${ind}</text>` : ""}
+        <path d="${d}" fill="none" stroke="#8fb4f0" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+        <line x1="${X(S.year)}" x2="${X(S.year)}" y1="0" y2="${hh}" stroke="#c8dbff" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <text x="2" y="${hh - 6}" font-size="8" fill="#6f7f99" font-family="IBM Plex Mono, monospace">0%</text><text x="2" y="12" font-size="8" fill="#6f7f99" font-family="IBM Plex Mono, monospace">100%</text>
+      </svg>
+      ${top ? `<ol>${top.map((r) => `<li><span>${escapeHtml((nodeOf(r[0]) || { n: r[0] }).n)}</span><span>${fmtMoney(r[1], y)}</span></li>`).join("")}</ol>` : ""}`;
+  }
+
   // ---------------------------------------------------------------- view switching
   function setView(v) {
     S.view = v;
@@ -691,6 +928,7 @@
     if (v === "globe" && !globe) initGlobe();
     if (v === "flat" && !flat.ctx) initFlat();
     if (v === "flat") { sizeFlat(); }
+    if (globe) globe.arcsData(v === "globe" ? globe.arcsData() : []);
     setYear(S.year);
   }
 
@@ -773,6 +1011,10 @@
       b.classList.toggle("on", S.filters.has(e)); b.setAttribute("aria-pressed", S.filters.has(e));
       setYear(S.year);
     }));
+    $("tg-flows").addEventListener("change", (e) => { S.flowsOn = e.target.checked; S.hoverArc = null; $("flowtip").hidden = true; setYear(S.year); });
+    $("stage").addEventListener("mousemove", (e) => {
+      const r = $("stage").getBoundingClientRect(); S.mouse = [e.clientX - r.left, e.clientY - r.top]; placeFlowTip();
+    });
     $("tg-labels").addEventListener("change", (e) => { S.labels = e.target.checked; $("stage").classList.toggle("labels", S.labels); drawFlat(); });
     $("tg-callouts").addEventListener("change", (e) => { S.callouts = e.target.checked; setYear(S.year); });
     $("tg-contrast").addEventListener("change", (e) => {

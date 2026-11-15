@@ -1,0 +1,191 @@
+[
+ {
+  "name": "Afterempire holdings gazetteer",
+  "status": "use",
+  "use": "Ownership and status of every holding shown on the Territorial Ledger.",
+  "citation": "Afterempire project (2026). Holdings gazetteer v0.1: data/curated/holdings.csv and periods.csv. 177 holdings, 638 control periods. Trade crosswalk: data/curated/trade_codes.csv.",
+  "licence": "To be decided by the project owner (CC BY 4.0 suggested).",
+  "coverage": "1800–2025 · GBR, FRA, PRT, NLD and powers that took their holdings",
+  "link": "https://github.com/dia-quant/afterempire"
+ },
+ {
+  "name": "BACI world trade (CEPII)",
+  "status": "plan",
+  "use": "Reached through CEPII Gravity (below); not downloaded separately.",
+  "citation": "Gaulier, G. and Zignago, S. (2010). BACI: International Trade Database at the Product-Level. CEPII Working Paper 2010-23.",
+  "licence": "To be checked before use.",
+  "coverage": "1995–present",
+  "link": "https://www.cepii.fr/"
+ },
+ {
+  "name": "CEPII Gravity database",
+  "status": "use",
+  "use": "Bilateral trade flows for 2015–2020 (BACI trade flow, with IMF data as fallback). 2021–2025 show 2020 as the latest available year.",
+  "citation": "Conte, M., Cotterlaz, P. and Mayer, T. (2022). The CEPII Gravity Database. CEPII Working Paper 2022-05. Version V202211.",
+  "licence": "Etalab Open Licence 2.0 (attribution).",
+  "coverage": "1948–2020 (used for 2015–2020)",
+  "link": "https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8"
+ },
+ {
+  "name": "COLDAT: Colonial Dates Dataset",
+  "status": "use",
+  "use": "Cross-check of start and end dates of colonial rule (see the validation report).",
+  "citation": "Becker, B. (2019). Introducing COLDAT: The Colonial Dates Dataset. Harvard Dataverse. doi:10.7910/DVN/T9SDEW.",
+  "licence": "CC0 1.0 (public domain dedication).",
+  "coverage": "Eight European empires, country level",
+  "link": "https://doi.org/10.7910/DVN/T9SDEW"
+ },
+ {
+  "name": "Correlates of War Trade",
+  "status": "plan",
+  "use": "Cross-check of bilateral trade totals, 1870 onward (Phase 4).",
+  "citation": "Barbieri, K. and Keshk, O. Correlates of War Project Trade Data Set, version 4.",
+  "licence": "To be checked before use.",
+  "coverage": "1870–2014",
+  "link": "https://correlatesofwar.org/"
+ },
+ {
+  "name": "d3",
+  "status": "use",
+  "use": "Flat-map projection (Equal Earth), zoom and the loading globe.",
+  "citation": "Bostock, M. et al. D3: Data-Driven Documents, version 7.9.0.",
+  "licence": "ISC.",
+  "coverage": "Software",
+  "link": "https://d3js.org/"
+ },
+ {
+  "name": "Federico-Tena World Trade Historical Database",
+  "status": "plan",
+  "use": "Benchmark totals for checking nineteenth-century trade (Phase 4).",
+  "citation": "Federico, G. and Tena-Junguito, A. (2016). World Trade Historical Database.",
+  "licence": "To be checked before use.",
+  "coverage": "1800–1938",
+  "link": ""
+ },
+ {
+  "name": "Garriga Central Bank Independence",
+  "status": "plan",
+  "use": "Central bank independence dimension in Inherited Systems (Phase 5).",
+  "citation": "Garriga, A. C. (2016). Central Bank Independence in the World: A New Data Set. International Interactions 42(5).",
+  "licence": "To be checked before use.",
+  "coverage": "1970–2023",
+  "link": ""
+ },
+ {
+  "name": "globe.gl",
+  "status": "use",
+  "use": "Three-dimensional globe, particles, borders and markers.",
+  "citation": "Asturiano, V. globe.gl, version 2.45.3.",
+  "licence": "MIT.",
+  "coverage": "Software",
+  "link": "https://globe.gl/"
+ },
+ {
+  "name": "Head, Mayer & Ries (2010)",
+  "status": "use",
+  "use": "Reference result for the erosion curve on Flows of Empire.",
+  "citation": "Head, K., Mayer, T. and Ries, J. (2010). The erosion of colonial trade linkages after independence. Journal of International Economics 81(1), 1–14.",
+  "licence": "Published article; cited, not redistributed.",
+  "coverage": "Literature",
+  "link": "https://doi.org/10.1016/j.jinteco.2010.01.002"
+ },
+ {
+  "name": "Historical Basemaps",
+  "status": "use",
+  "use": "Faint historical borders behind the holdings, swapped at 13 snapshot years.",
+  "citation": "Ourednik, A. historical-basemaps: world borders through history. GitHub repository.",
+  "licence": "GPL-3.0. Our simplified border files (site/data/borders) are derived works under the same licence.",
+  "coverage": "Snapshots 1800, 1815, 1880 … 2010",
+  "link": "https://github.com/aourednik/historical-basemaps"
+ },
+ {
+  "name": "ICOW Colonial History",
+  "status": "plan",
+  "use": "Second cross-check of independence dates and types (Phase 1b).",
+  "citation": "Hensel, P. R. ICOW Colonial History Data Set, version 1.1.",
+  "licence": "To be checked before use.",
+  "coverage": "Country level",
+  "link": "https://www.paulhensel.org/icowcol.html"
+ },
+ {
+  "name": "Maddison Project Database",
+  "status": "plan",
+  "use": "Long-run GDP per capita for context in Inherited Systems (Phase 5).",
+  "citation": "Bolt, J. and van Zanden, J. L. (2024). Maddison style estimates of the evolution of the world economy. Maddison Project Database 2023.",
+  "licence": "To be checked before use.",
+  "coverage": "Pre-1800 to 2022",
+  "link": "https://www.rug.nl/ggdc/historicaldevelopment/maddison/"
+ },
+ {
+  "name": "National development plans (primary documents)",
+  "status": "plan",
+  "use": "Hand-coded planning dimensions, drawn from the colonised countries' own records (Phase 5).",
+  "citation": "e.g. Government of India Planning Commission, First to Twelfth Five-Year Plans; Government of Ghana, Seven-Year Development Plan 1963/64–1969/70; Republic of Indonesia, Repelita I–VI.",
+  "licence": "Public documents; cited individually.",
+  "coverage": "Post-independence",
+  "link": "https://www.niti.gov.in/"
+ },
+ {
+  "name": "Natural Earth land (via world-atlas)",
+  "status": "use",
+  "use": "Land outline from which the dotted earth is generated.",
+  "citation": "Natural Earth 1:110m land, packaged as world-atlas 2.0.2 (Bostock, M.).",
+  "licence": "Natural Earth: public domain. world-atlas: ISC.",
+  "coverage": "Global",
+  "link": "https://www.naturalearthdata.com/"
+ },
+ {
+  "name": "Penn World Table",
+  "status": "plan",
+  "use": "Post-independence output and productivity (Phase 5).",
+  "citation": "Feenstra, R. C., Inklaar, R. and Timmer, M. P. (2015). The Next Generation of the Penn World Table. American Economic Review 105(10).",
+  "licence": "To be checked before use.",
+  "coverage": "1950–2019",
+  "link": "https://www.rug.nl/ggdc/productivity/pwt/"
+ },
+ {
+  "name": "RICardo",
+  "status": "use",
+  "use": "Bilateral trade flows for 1800–1826 on the Territorial Ledger and Flows of Empire.",
+  "citation": "Dedinger, B. and Girard, P. (2017). Exploring trade globalization in the long run: the RICardo project. Historical Methods 50(1).",
+  "licence": "Open Database License (ODbL 1.0); contents under the Database Contents License. Our derived 1800–1826 flows in site/data/trade.json are shared under ODbL.",
+  "coverage": "1787–1938",
+  "link": "https://ricardo.medialab.sciences-po.fr/"
+ },
+ {
+  "name": "TRADHIST (CEPII)",
+  "status": "use",
+  "use": "Bilateral trade flows for 1827–2014, including colonial entities such as British India and the Straits Settlements.",
+  "citation": "Fouquin, M. and Hugot, J. (2016). Two Centuries of Bilateral Trade and Gravity Data: 1827–2014. CEPII Working Paper 2016-14.",
+  "licence": "Etalab Open Licence 2.0 (attribution).",
+  "coverage": "1827–2014",
+  "link": "https://www.cepii.fr/"
+ },
+ {
+  "name": "V-Dem",
+  "status": "plan",
+  "use": "State ownership of the economy and institutional context (Phase 5).",
+  "citation": "Coppedge, M. et al. V-Dem Dataset. Varieties of Democracy Project.",
+  "licence": "To be checked before use.",
+  "coverage": "1789–present",
+  "link": "https://v-dem.net/"
+ },
+ {
+  "name": "Wikidata",
+  "status": "plan",
+  "use": "Links each holding to a stable identifier and cross-checks transfer dates (Phase 1b).",
+  "citation": "Wikidata contributors. Wikidata, the free knowledge base.",
+  "licence": "CC0 1.0.",
+  "coverage": "Global",
+  "link": "https://www.wikidata.org/"
+ },
+ {
+  "name": "World Bank World Development Indicators",
+  "status": "plan",
+  "use": "Post-independence indicators, refreshed monthly by the site's build (Phase 7).",
+  "citation": "World Bank. World Development Indicators (API v2).",
+  "licence": "CC BY 4.0.",
+  "coverage": "1960–present",
+  "link": "https://data.worldbank.org/"
+ }
+]
