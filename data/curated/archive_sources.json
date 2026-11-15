@@ -118,8 +118,8 @@
  },
  {
   "name": "National development plans (primary documents)",
-  "status": "plan",
-  "use": "Hand-coded planning dimensions, drawn from the colonised countries' own records (Phase 5).",
+  "status": "use",
+  "use": "Hand-coded planning regimes and institutions, and the evidence notes in Inherited Systems, drawn from the countries' own plan documents.",
   "citation": "e.g. Government of India Planning Commission, First to Twelfth Five-Year Plans; Government of Ghana, Seven-Year Development Plan 1963/64–1969/70; Republic of Indonesia, Repelita I–VI.",
   "licence": "Public documents; cited individually.",
   "coverage": "Post-independence",
@@ -136,11 +136,11 @@
  },
  {
   "name": "Penn World Table",
-  "status": "plan",
-  "use": "Post-independence output and productivity (Phase 5).",
-  "citation": "Feenstra, R. C., Inklaar, R. and Timmer, M. P. (2015). The Next Generation of the Penn World Table. American Economic Review 105(10).",
-  "licence": "To be checked before use.",
-  "coverage": "1950–2019",
+  "status": "use",
+  "use": "Trade openness and government share of GDP by decade, shown as context in each Inherited Systems file.",
+  "citation": "Feenstra, R. C., Inklaar, R. and Timmer, M. P. (2015). The Next Generation of the Penn World Table. American Economic Review 105(10). Version 11.0 (2025), national accounts file.",
+  "licence": "Free for research use with citation (Groningen Growth and Development Centre).",
+  "coverage": "1950–2019 (used)",
   "link": "https://www.rug.nl/ggdc/productivity/pwt/"
  },
  {
@@ -187,5 +187,32 @@
   "licence": "CC BY 4.0.",
   "coverage": "1960–present",
   "link": "https://data.worldbank.org/"
+ },
+ {
+  "name": "UN General Assembly voting data",
+  "status": "use",
+  "use": "Voting agreement with the former coloniser, the US and the USSR/Russia by decade (Divergence Metrics).",
+  "citation": "Bailey, M. A., Strezhnev, A. and Voeten, E. (2017). Estimating Dynamic State Preferences from United Nations Voting Data. Journal of Conflict Resolution 61(2). Harvard Dataverse doi:10.7910/DVN/LEJUQZ.",
+  "licence": "CC0 1.0.",
+  "coverage": "1946–2025",
+  "link": "https://doi.org/10.7910/DVN/LEJUQZ"
+ },
+ {
+  "name": "La Porta, Lopez-de-Silanes & Shleifer (2008)",
+  "status": "use",
+  "use": "Legal-origin classification for the curated files.",
+  "citation": "La Porta, R., Lopez-de-Silanes, F. and Shleifer, A. (2008). The Economic Consequences of Legal Origins. Journal of Economic Literature 46(2), 285–332.",
+  "licence": "Published article; cited, not redistributed.",
+  "coverage": "Literature",
+  "link": "https://doi.org/10.1257/jel.46.2.285"
+ },
+ {
+  "name": "Afterempire development codings",
+  "status": "use",
+  "use": "Planning regime, planning institution and monetary arrangement by decade for 21 countries, with qualitative lineages.",
+  "citation": "Afterempire project (2026). data/curated/systems_codings.csv (review sheet) and data/curated/lineages.json. Drafted from the sources cited row by row; awaiting review.",
+  "licence": "To be decided by the project owner (CC BY 4.0 suggested).",
+  "coverage": "1950s–2010s",
+  "link": "https://github.com/dia-quant/afterempire"
  }
 ]

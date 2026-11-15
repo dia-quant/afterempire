@@ -1,0 +1,154 @@
+{
+  "_about": "Editorial assessment by the Afterempire project of the influences on each country's first post-independence economic system (roughly the first two decades). Shares sum to 100 and are judgements drawn from the cited sources, not measurements. Review flags go in the review field.",
+  "sources_key": ["coloniser", "soviet", "us_wb_imf", "regional", "homegrown"],
+  "models": {
+    "GBR": {"name": "United Kingdom, c.1945–65", "planning_regime": 0.25, "planning_institution": "advisory", "monetary_arrangement": "coloniser_zone", "legal_origin": "common",
+            "note": "Nationalisation of 'commanding heights' under Attlee without a binding plan; Treasury-led demand management; indicative planning only from the National Economic Development Council (1962). Colonies held sterling balances in the Sterling Area through currency boards."},
+    "FRA": {"name": "France, c.1946–65", "planning_regime": 0.5, "planning_institution": "plan_ministry", "monetary_arrangement": "coloniser_zone", "legal_origin": "civil",
+            "note": "Indicative planning through the Commissariat général du Plan (Monnet Plan, 1946); FIDES funds carried planned investment to the colonies; franc zone and CFA franc (1945)."},
+    "PRT": {"name": "Portugal, c.1953–74", "planning_regime": 0.5, "planning_institution": "plan_ministry", "monetary_arrangement": "coloniser_zone", "legal_origin": "civil",
+            "note": "Estado Novo corporatism with Planos de Fomento (from 1953) covering metropole and overseas provinces; escudo zone."},
+    "NLD": {"name": "Netherlands, c.1945–62", "planning_regime": 0.25, "planning_institution": "advisory", "monetary_arrangement": "coloniser_zone", "legal_origin": "civil",
+            "note": "Centraal Planbureau (1945, Tinbergen): macroeconomic forecasting and policy advice rather than directive plans; guilder-linked colonial currencies."},
+    "SUN": {"name": "Soviet model", "planning_regime": 1.0, "planning_institution": "central_committee", "monetary_arrangement": "nonconvertible", "legal_origin": "socialist",
+            "note": "Gosplan five-year plans, state ownership, non-convertible currency, bloc trade."},
+    "USA": {"name": "United States / Bretton Woods model", "planning_regime": 0.0, "planning_institution": "none", "monetary_arrangement": "own_float", "legal_origin": "common",
+            "note": "Market allocation with project-based aid; after 1980 the World Bank and IMF adjustment agenda (liberalised trade and prices, floating or flexible exchange rates)."}
+  },
+  "institution_affinity": {
+    "central_committee": {"SUN": 1, "FRA": 0.25, "PRT": 0.25},
+    "plan_ministry": {"FRA": 1, "PRT": 1, "SUN": 0.5},
+    "planning_commission": {"SUN": 0.5, "FRA": 0.5, "PRT": 0.5, "GBR": 0.25, "NLD": 0.25},
+    "technocratic_board": {"NLD": 0.5, "GBR": 0.5, "USA": 0.5, "FRA": 0.25, "PRT": 0.25},
+    "advisory": {"GBR": 1, "NLD": 1, "USA": 0.25},
+    "none": {"USA": 1, "GBR": 0.25}
+  },
+  "monetary_affinity": {
+    "coloniser_zone": {"_coloniser": 1},
+    "own_peg": {"_coloniser": 0.5, "GBR": 0.5, "FRA": 0.5, "PRT": 0.5, "NLD": 0.5, "USA": 0.5, "SUN": 0.25},
+    "own_float": {"USA": 1, "GBR": 0.25, "FRA": 0.25, "PRT": 0.25, "NLD": 0.25},
+    "nonconvertible": {"SUN": 1}
+  },
+  "countries": {
+    "IND": {"shares": {"coloniser": 20, "soviet": 30, "us_wb_imf": 10, "regional": 0, "homegrown": 40}, "confidence": "high",
+      "summary": "A British administrative and legal frame carrying a planning model borrowed largely from the Soviet Union and from India's own pre-independence plans.",
+      "notes": [
+        {"t": "1944", "text": "The Bombay Plan, drafted by Indian industrialists, already called for state-led heavy industry and planned investment.", "src": "Thakurdas, P. et al. (1944) A Brief Memorandum Outlining a Plan of Economic Development for India"},
+        {"t": "1950", "text": "Planning Commission set up under the Prime Minister; the First Five-Year Plan (1951) is largely a public investment programme.", "src": "Government of India, First Five Year Plan (1952)"},
+        {"t": "1956", "text": "The Second Plan follows P. C. Mahalanobis's two-sector model, prioritising heavy industry in the Soviet manner.", "src": "Mahalanobis, P. C. (1955) The approach of operational research to planning in India, Sankhyā 16"},
+        {"t": "1991", "text": "Balance-of-payments crisis and IMF programme; the Eighth Plan (1992) moves to indicative planning.", "src": "Government of India, Eighth Five Year Plan (1992)"},
+        {"t": "2015", "text": "Planning Commission replaced by NITI Aayog, a policy think tank without allocative powers.", "src": "Government of India Cabinet Resolution, 1 January 2015"}]},
+    "PAK": {"shares": {"coloniser": 30, "soviet": 5, "us_wb_imf": 45, "regional": 0, "homegrown": 20}, "confidence": "medium",
+      "summary": "Inherited the Indian civil service and planning-commission form, but its early plans were drafted with US technical advisers.",
+      "notes": [
+        {"t": "1955", "text": "First Five-Year Plan prepared with the Harvard Advisory Group, funded by the Ford Foundation.", "src": "Papanek, G. (1967) Pakistan's Development: Social Goals and Private Incentives"},
+        {"t": "1960s", "text": "Ayub Khan era: private-sector-led industrialisation steered by the Planning Commission and import licensing.", "src": "Government of Pakistan, Second Five Year Plan 1960–65"},
+        {"t": "1972", "text": "Bhutto nationalises banks and heavy industry.", "src": "Noman, O. (1988) The Political Economy of Pakistan 1947–85"}]},
+    "BGD": {"shares": {"coloniser": 15, "soviet": 20, "us_wb_imf": 30, "regional": 15, "homegrown": 20}, "confidence": "medium",
+      "summary": "Began with nationalisation and a socialist-leaning first plan, then moved under donor influence towards liberalisation.",
+      "notes": [
+        {"t": "1972", "text": "Mass nationalisation of industry and banks after independence.", "src": "Sobhan, R. and Ahmad, M. (1980) Public Enterprise in an Intermediate Regime"},
+        {"t": "1973", "text": "First Five Year Plan 1973–78 drafted by the Planning Commission under Nurul Islam.", "src": "Islam, N. (1977) Development Planning in Bangladesh"},
+        {"t": "1980s", "text": "Denationalisation under donor-supported adjustment.", "src": "World Bank country reports, 1980s"}]},
+    "LKA": {"shares": {"coloniser": 30, "soviet": 10, "us_wb_imf": 25, "regional": 5, "homegrown": 30}, "confidence": "medium",
+      "summary": "Swung between welfare-state planning and liberalisation; a British-style state with alternating left and right governments.",
+      "notes": [
+        {"t": "1959", "text": "National Planning Council's Ten-Year Plan.", "src": "National Planning Council (1959) The Ten-Year Plan"},
+        {"t": "1970–77", "text": "United Front government nationalises plantations and expands controls.", "src": "Five-Year Plan 1972–76"},
+        {"t": "1977", "text": "Jayewardene government liberalises trade, one of the first in South Asia.", "src": "Athukorala, P. and Jayasuriya, S. (1994) Macroeconomic Policies, Crises and Growth in Sri Lanka 1969–90"}]},
+    "MMR": {"shares": {"coloniser": 10, "soviet": 25, "us_wb_imf": 15, "regional": 0, "homegrown": 50}, "confidence": "medium",
+      "summary": "An American-drafted welfare plan in the 1950s, then an inward-looking military socialism of its own design.",
+      "notes": [
+        {"t": "1952", "text": "Pyidawtha eight-year plan drafted with the US engineering firm Knappen Tippetts Abbett.", "src": "Government of Burma (1954) Pyidawtha: The New Burma"},
+        {"t": "1962", "text": "Revolutionary Council publishes The Burmese Way to Socialism; nationalisation follows in 1963.", "src": "Revolutionary Council (1962) The Burmese Way to Socialism"}]},
+    "MYS": {"shares": {"coloniser": 35, "soviet": 0, "us_wb_imf": 25, "regional": 5, "homegrown": 35}, "confidence": "medium",
+      "summary": "Colonial-era development plans carried into independent Malaya; after 1969 a homegrown programme of ethnic economic restructuring.",
+      "notes": [
+        {"t": "1950", "text": "Draft Development Plan of the Federation of Malaya under British rule.", "src": "Federation of Malaya (1950) Draft Development Plan"},
+        {"t": "1961", "text": "Economic Planning Unit created in the Prime Minister's Department.", "src": "Economic Planning Unit history"},
+        {"t": "1971", "text": "New Economic Policy launched in the Second Malaysia Plan after the 1969 riots.", "src": "Government of Malaysia, Second Malaysia Plan 1971–75"}]},
+    "SGP": {"shares": {"coloniser": 25, "soviet": 0, "us_wb_imf": 15, "regional": 0, "homegrown": 60}, "confidence": "medium",
+      "summary": "A British legal and administrative frame with a homegrown developmental state built around the Economic Development Board.",
+      "notes": [
+        {"t": "1961", "text": "UN industrial survey mission led by Albert Winsemius recommends export-oriented industrialisation.", "src": "United Nations (1961) A Proposed Industrialization Programme for the State of Singapore"},
+        {"t": "1961", "text": "Economic Development Board founded; State Development Plan 1961–64.", "src": "State of Singapore, Development Plan 1961–1964"}]},
+    "IDN": {"shares": {"coloniser": 10, "soviet": 15, "us_wb_imf": 35, "regional": 0, "homegrown": 40}, "confidence": "medium",
+      "summary": "Little Dutch planning tradition was carried over; Guided Economy planning under Sukarno, then US-trained technocrats under Suharto.",
+      "notes": [
+        {"t": "1961", "text": "Eight-Year Overall Development Plan under Guided Democracy.", "src": "Depernas (1961) Rentjana Pembangunan Nasional Semesta Berentjana"},
+        {"t": "1969", "text": "Repelita I prepared by Bappenas under Widjojo Nitisastro and other Berkeley-trained economists.", "src": "Thee Kian Wie (ed.) (2003) Recollections: The Indonesian Economy 1950s–1990s"}]},
+    "VNM": {"shares": {"coloniser": 5, "soviet": 55, "us_wb_imf": 10, "regional": 10, "homegrown": 20}, "confidence": "high",
+      "summary": "Soviet-style central planning in the North, extended nationwide after 1976, then the Đổi Mới market transition.",
+      "notes": [
+        {"t": "1961", "text": "First Five-Year Plan of the Democratic Republic of Vietnam.", "src": "DRV, First Five-Year Plan 1961–65"},
+        {"t": "1986", "text": "Sixth Party Congress adopts Đổi Mới (renovation), opening to markets.", "src": "Communist Party of Vietnam, Sixth National Congress documents (1986)"}]},
+    "GHA": {"shares": {"coloniser": 25, "soviet": 25, "us_wb_imf": 20, "regional": 10, "homegrown": 20}, "confidence": "medium",
+      "summary": "British colonial development plans continued at first; Nkrumah's Seven-Year Plan turned socialist, before IMF-backed recovery in 1983.",
+      "notes": [
+        {"t": "1951", "text": "Colonial First Development Plan; Second Development Plan 1959–64 begun before independence.", "src": "Killick, T. (1978) Development Economics in Action"},
+        {"t": "1963", "text": "Seven-Year Development Plan aims at a socialist transformation, with state enterprises and Eastern-bloc ties.", "src": "Government of Ghana (1964) Seven-Year Plan for National Reconstruction and Development"},
+        {"t": "1983", "text": "Economic Recovery Programme with the IMF and World Bank.", "src": "Government of Ghana (1983) Economic Recovery Programme"}]},
+    "NGA": {"shares": {"coloniser": 35, "soviet": 0, "us_wb_imf": 30, "regional": 5, "homegrown": 30}, "confidence": "medium",
+      "summary": "Federal development plans in the British mould, an oil-financed state expansion in the 1970s, then structural adjustment.",
+      "notes": [
+        {"t": "1962", "text": "First National Development Plan 1962–68.", "src": "Federal Government of Nigeria (1962) National Development Plan 1962–68"},
+        {"t": "1972", "text": "Indigenisation decree and the Second National Development Plan expand the public sector.", "src": "Federal Government of Nigeria (1970) Second National Development Plan 1970–74"},
+        {"t": "1986", "text": "Structural Adjustment Programme.", "src": "Federal Government of Nigeria (1986) SAP"}]},
+    "KEN": {"shares": {"coloniser": 40, "soviet": 0, "us_wb_imf": 30, "regional": 5, "homegrown": 25}, "confidence": "medium",
+      "summary": "'African socialism' in name, a market economy with planning in practice, close to the late-colonial model.",
+      "notes": [
+        {"t": "1965", "text": "Sessional Paper No. 10 defines African socialism while protecting private property and foreign investment.", "src": "Republic of Kenya (1965) Sessional Paper No. 10"},
+        {"t": "1980s", "text": "World Bank structural adjustment lending.", "src": "World Bank (1980s) Kenya structural adjustment loans"}]},
+    "TZA": {"shares": {"coloniser": 15, "soviet": 15, "us_wb_imf": 15, "regional": 10, "homegrown": 45}, "confidence": "high",
+      "summary": "A largely homegrown socialism (ujamaa), with Chinese and Nordic support, reversed under IMF-backed recovery from 1986.",
+      "notes": [
+        {"t": "1967", "text": "The Arusha Declaration commits Tanzania to socialism and self-reliance; banks and major firms nationalised.", "src": "Nyerere, J. (1967) The Arusha Declaration"},
+        {"t": "1973–76", "text": "Villagisation programme.", "src": "Coulson, A. (1982) Tanzania: A Political Economy"},
+        {"t": "1986", "text": "Economic Recovery Programme with the IMF.", "src": "Government of Tanzania (1986) ERP"}]},
+    "SEN": {"shares": {"coloniser": 50, "soviet": 0, "us_wb_imf": 20, "regional": 5, "homegrown": 25}, "confidence": "medium",
+      "summary": "French-style plan ministry, CFA franc and French technical advisers; Mamadou Dia's African socialism ended in 1962.",
+      "notes": [
+        {"t": "1961", "text": "Plan quadriennal 1961–64 prepared with the French Dominican economist Louis-Joseph Lebret (IRFED).", "src": "République du Sénégal (1961) Plan quadriennal de développement"},
+        {"t": "1962", "text": "Fall of Mamadou Dia; the cooperative programme is diluted.", "src": "Gellar, S. (1982) Senegal: An African Nation between Islam and the West"},
+        {"t": "1945–", "text": "Remains in the CFA franc zone throughout.", "src": "BCEAO"}]},
+    "CIV": {"shares": {"coloniser": 60, "soviet": 0, "us_wb_imf": 20, "regional": 0, "homegrown": 20}, "confidence": "high",
+      "summary": "The closest continuation of the French model: indicative plans, French advisers in ministries and the CFA franc.",
+      "notes": [
+        {"t": "1960", "text": "Perspectives décennales de développement 1960–1970 under Houphouët-Boigny.", "src": "Ministère du Plan, Perspectives décennales"},
+        {"t": "1960s–70s", "text": "French technical assistants staff key ministries.", "src": "Zartman, I. W. and Delgado, C. (1984) The Political Economy of Ivory Coast"}]},
+    "GIN": {"shares": {"coloniser": 5, "soviet": 50, "us_wb_imf": 15, "regional": 5, "homegrown": 25}, "confidence": "medium",
+      "summary": "The sharpest break with France: a 'No' vote in 1958, exit from the franc zone and a Soviet-bloc planned economy.",
+      "notes": [
+        {"t": "1958", "text": "Guinea rejects the French Community; French personnel withdraw.", "src": "Referendum of 28 September 1958"},
+        {"t": "1960", "text": "Own currency outside the franc zone; three-year plan with Eastern-bloc aid.", "src": "Plan triennal 1960–63"},
+        {"t": "1985", "text": "Conté government begins liberalisation with the IMF.", "src": "IMF Guinea programmes, 1986"}]},
+    "DZA": {"shares": {"coloniser": 15, "soviet": 35, "us_wb_imf": 10, "regional": 5, "homegrown": 35}, "confidence": "high",
+      "summary": "French planning forms filled with a Soviet-style industrial strategy, designed partly by the French economist Destanne de Bernis.",
+      "notes": [
+        {"t": "1963", "text": "Autogestion (self-management) of abandoned settler estates.", "src": "March decrees, 1963"},
+        {"t": "1967–77", "text": "Triennial and four-year plans built on 'industrialising industries' and hydrocarbons.", "src": "de Bernis, G. D. (1971) Les industries industrialisantes et les options algériennes, Tiers-Monde 47"},
+        {"t": "1994", "text": "IMF stand-by and structural adjustment.", "src": "IMF Algeria programme (1994)"}]},
+    "TUN": {"shares": {"coloniser": 40, "soviet": 10, "us_wb_imf": 20, "regional": 0, "homegrown": 30}, "confidence": "medium",
+      "summary": "French administrative planning; a cooperative socialist experiment in the 1960s, then gradual liberalisation.",
+      "notes": [
+        {"t": "1962", "text": "Perspectives décennales 1962–71 under Ahmed Ben Salah; agricultural cooperatives expanded.", "src": "République tunisienne (1962) Perspectives décennales"},
+        {"t": "1969", "text": "Cooperative programme abandoned; Ben Salah dismissed.", "src": "Bellin, E. (2002) Stalled Democracy"}]},
+    "MAR": {"shares": {"coloniser": 45, "soviet": 0, "us_wb_imf": 25, "regional": 5, "homegrown": 25}, "confidence": "medium",
+      "summary": "French-style plans and a mixed economy under the monarchy, with Moroccanisation in 1973 and adjustment from 1983.",
+      "notes": [
+        {"t": "1960", "text": "Plan quinquennal 1960–64 under Abderrahim Bouabid.", "src": "Royaume du Maroc (1960) Plan quinquennal"},
+        {"t": "1973", "text": "Moroccanisation decree transfers foreign-owned firms and land.", "src": "Dahir of 2 March 1973"},
+        {"t": "1983", "text": "Structural adjustment with the IMF and World Bank.", "src": "IMF Morocco programmes (1983)"}]},
+    "AGO": {"shares": {"coloniser": 10, "soviet": 50, "us_wb_imf": 10, "regional": 5, "homegrown": 25}, "confidence": "medium",
+      "summary": "Independence in war; the MPLA adopted Marxism-Leninism and central planning with Soviet and Cuban support, alongside an oil enclave.",
+      "notes": [
+        {"t": "1977", "text": "MPLA First Congress declares a Marxist-Leninist programme.", "src": "MPLA (1977) Orientações Fundamentais"},
+        {"t": "1987", "text": "Programa de Saneamento Económico e Financeiro begins the market turn.", "src": "Government of Angola (1987) SEF"}]},
+    "MOZ": {"shares": {"coloniser": 5, "soviet": 50, "us_wb_imf": 20, "regional": 5, "homegrown": 20}, "confidence": "medium",
+      "summary": "FRELIMO's socialist central planning after 1977, reversed by the 1987 rehabilitation programme with the World Bank and IMF.",
+      "notes": [
+        {"t": "1977", "text": "FRELIMO Third Congress adopts Marxism-Leninism.", "src": "FRELIMO (1977) Third Congress documents"},
+        {"t": "1981", "text": "Indicative Prospective Plan (PPI) for a decade of development.", "src": "Plano Prospectivo Indicativo (1981)"},
+        {"t": "1987", "text": "Programa de Reabilitação Económica with the IMF and World Bank.", "src": "Government of Mozambique (1987) PRE"}]}
+  }
+}

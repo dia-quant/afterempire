@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divergence Metrics · Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/systems.css">
+</head>
+<body class="graph">
+<header class="topbar" data-page="metrics"></header>
+<main class="wrap">
+  <div class="crumbs">RECORD ROOM / DEVELOPMENT / WORKSHEETS</div>
+  <h1>Divergence Metrics</h1>
+  <p class="lede">How closely each former colony's economic system resembled its former coloniser's, decade by decade, and when it turned towards the Soviet or the US / Bretton Woods model instead. Similarity is the average of up to five dimensions: planning regime, planning institution, monetary arrangement, legal origin and UN voting agreement. These figures describe resemblance; they do not establish cause.</p>
+  <p class="stamp"><mark id="n-c">—</mark> <span id="meta-line"></span> · <a class="dl" href="data/systems_panel.csv">Download the panel (CSV)</a></p>
+
+  <section class="worksheet" aria-labelledby="w1">
+    <header class="ws-head"><span class="no">SHEET 01</span><span class="ttl" id="w1">Inheritance index</span><span class="aux">0 = nothing in common · 1 = identical to the former coloniser</span></header>
+    <div class="ws-body">
+      <p class="wnote">Thin lines are the 21 curated countries (all five dimensions). Thick lines are the median for each former empire. Hover a line to name it.</p>
+      <div class="keyline" id="w1-key"></div>
+      <div class="chart" id="c1"></div>
+    </div>
+  </section>
+
+  <section class="worksheet" aria-labelledby="w2">
+    <header class="ws-head"><span class="no">SHEET 02</span><span class="ttl" id="w2">Nearest model by decade</span><span class="aux">own former coloniser · Soviet · US / Bretton Woods</span></header>
+    <div class="ws-body">
+      <div class="controls"><label><input type="checkbox" id="w2-all"> Include all ex-colonies (legal origin and UN voting only, shown faded)</label></div>
+      <div class="keyline"><span><i class="sw" style="--c:var(--ink-dim)"></i>Former coloniser (its empire colour)</span><span><i class="sw" style="--c:var(--soviet)"></i>Soviet model</span><span><i class="sw" style="--c:var(--uswb)"></i>US / Bretton Woods model</span></div>
+      <div class="twrap" style="overflow-x:auto"><table class="matrix" id="m2"></table></div>
+    </div>
+  </section>
+
+  <section class="worksheet" aria-labelledby="w3">
+    <header class="ws-head"><span class="no">SHEET 03</span><span class="ttl" id="w3">Persistence</span><span class="aux">years from independence to the first decade that departs from the coloniser</span></header>
+    <div class="ws-body">
+      <p class="wnote">A dimension "departs" when its similarity to the former coloniser falls below 0.75: for example, leaving the coloniser's currency zone, or adopting a planning regime two steps away from the coloniser's. Decade resolution: a value of 0 means the first full decade after independence had already departed.</p>
+      <div class="twrap"><table class="ctable" id="t3"></table></div>
+    </div>
+  </section>
+
+  <section class="worksheet" aria-labelledby="w4">
+    <header class="ws-head"><span class="no">SHEET 04</span><span class="ttl" id="w4">Trade ties and institutional ties</span><span class="aux" id="w4-r"></span></header>
+    <div class="ws-body">
+      <p class="wnote">Each point is one curated country in one decade: the share of its recorded trade with the former metropole (from Flows of Empire) against its inheritance index. Countries that kept their trade tied to the metropole tended to keep more of its system, but this pattern alone does not tell which way the influence ran.</p>
+      <div class="chart" id="c4"></div>
+    </div>
+  </section>
+  <p class="foot">Codings and weights are documented in the pipeline (pipeline/build_systems.py) and the review sheet. Openness and government share are kept as context in each file on <a href="systems.html">Inherited Systems</a>, not in the similarity score.</p>
+</main>
+<div class="ttip" id="ttip" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/metrics.js"></script>
+</body>
+</html>

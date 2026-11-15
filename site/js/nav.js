@@ -3,8 +3,8 @@
 (() => {
   const SECTIONS = [
     { id: "flows", name: "Flows of Empire", href: "flows.html" },
-    { id: "systems", name: "Inherited Systems", phase: "P5" },
-    { id: "metrics", name: "Divergence Metrics", phase: "P5" },
+    { id: "systems", name: "Inherited Systems", href: "systems.html" },
+    { id: "metrics", name: "Divergence Metrics", href: "metrics.html" },
     { id: "archive", name: "The Archive", href: "archive.html" },
     { id: "terms", name: "Terms of Account", phase: "P6" },
     { id: "correspondence", name: "Correspondence", phase: "P6" },
