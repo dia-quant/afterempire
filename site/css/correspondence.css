@@ -18,7 +18,7 @@
 body { margin: 0; background: var(--desk); color: var(--ink); font-family: var(--f-mono); font-size: 14px; line-height: 1.6; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--desk); }
 :focus-visible { outline: 2px solid var(--air-blue); outline-offset: 2px; }
-.topbar { --tb-bg: var(--desk); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--air-blue); --tb-btn-fg: #fff; --tb-accent: var(--air-blue); }
+.topbar, .sitefoot { --tb-bg: var(--desk); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--air-blue); --tb-btn-fg: #fff; --tb-accent: var(--air-blue); }
 
 .desk { padding-block: 40px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .letter {

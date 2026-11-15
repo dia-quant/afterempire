@@ -15,7 +15,22 @@
   const items = SECTIONS.map((s) => s.href
     ? `<a href="${s.href}"${s.id === cur ? ' aria-current="page"' : ""}>${s.name}</a>`
     : `<span class="soon" title="Built in phase ${s.phase.slice(1)}">${s.name}<sup>${s.phase}</sup></span>`).join("");
+  const foot = document.createElement("footer");
+  foot.className = "sitefoot";
+  foot.innerHTML = `<span>Afterempire · created by <b>Dia Atal</b></span>
+    <span><a class="ae-mail" href="#">Contact</a> · <a href="correspondence">Send a correction</a> · <a href="https://github.com/dia-quant/afterempire" target="_blank" rel="noopener">Data and code</a></span>`;
+  document.body.appendChild(foot);
   el.innerHTML = `<a class="tb-mark" href="./">Afterempire</a>
     <nav class="tb-nav" aria-label="Sections">${items}</nav>
     <a class="tb-back" href="./">← Return to Observatory</a>`;
+})();
+
+/* Contact address assembled in the browser so it is not sitting in the page source for scrapers. */
+(() => {
+  const u = ["dia", "atal", "158"].join(""), d = ["gmail", "com"].join(".");
+  document.querySelectorAll(".ae-mail").forEach((a) => {
+    a.href = `mailto:${u}@${d}`;
+    a.title = `${u}@${d}`;
+    if (a.dataset.show === "address") a.textContent = `${u}@${d}`;
+  });
 })();

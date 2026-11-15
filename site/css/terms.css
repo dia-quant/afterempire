@@ -27,7 +27,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 a { color: var(--rule-red); }
 code { font-family: var(--f-mono); font-size: 13px; background: rgba(184, 68, 58, 0.08); padding: 0 4px; }
 :focus-visible { outline: 2px solid var(--rule-red); outline-offset: 2px; }
-.topbar { --tb-bg: var(--leaf); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--rule-red); --tb-btn-fg: #fff; --tb-accent: var(--rule-red); }
+.topbar, .sitefoot { --tb-bg: var(--leaf); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--rule-red); --tb-btn-fg: #fff; --tb-accent: var(--rule-red); }
 
 .ledger {
   max-width: 1060px; margin: 0 auto;
@@ -35,6 +35,7 @@ code { font-family: var(--f-mono); font-size: 13px; background: rgba(184, 68, 58
 }
 .folio { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-dim); }
 h1 { font-weight: 400; font-size: clamp(44px, 7vw, 68px); line-height: 1.05; margin: 20px 0 14px; letter-spacing: -0.01em; }
+.byline { margin: -6px 0 14px; font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule-red); }
 .lede { max-width: 60ch; font-size: 20px; margin: 0 0 28px; color: var(--ink-2); font-style: italic; }
 
 .contents { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 8px 0 12px; max-width: 560px; }

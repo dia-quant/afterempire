@@ -30,7 +30,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 a { color: var(--blue); }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
-.topbar { --tb-bg: var(--stock); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--blue); --tb-btn-fg: var(--stock-hi); --tb-accent: var(--blue); }
+.topbar, .sitefoot { --tb-bg: var(--stock); --tb-fg: var(--ink); --tb-dim: var(--ink-dim); --tb-rule: var(--ink); --tb-btn-bg: var(--blue); --tb-btn-fg: var(--stock-hi); --tb-accent: var(--blue); }
 
 /* tractor-feed margins */
 .feed-l, .feed-r {
