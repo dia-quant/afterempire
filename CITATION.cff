@@ -5,6 +5,7 @@ type: dataset
 authors:
   - family-names: Atal
     given-names: Dia
+    email: diaatal158@gmail.com
 repository-code: "https://github.com/dia-quant/afterempire"
 url: "https://dia-quant.github.io/afterempire/"
 version: "0.1.0"
