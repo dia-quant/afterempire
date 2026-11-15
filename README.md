@@ -1,6 +1,6 @@
 # Afterempire
 
-Created by **Dia Atal**. Contact via the site footer; corrections through [Correspondence](https://dia-quant.github.io/afterempire/correspondence).
+Created by **Dia Atal** (diaatal158@gmail.com); corrections through [Correspondence](https://dia-quant.github.io/afterempire/correspondence).
 
 A geo-spatial, time-indexed tracker of colonial holdings and trade flows, 1800–2025, with an analysis of whether colonisers' development and planning systems shaped those of their former colonies.
 
