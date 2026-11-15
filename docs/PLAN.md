@@ -11,7 +11,7 @@ Each phase ends with a ✅ checkpoint reviewed by the project owner.
 | 4 | Trade pipeline (RICardo, TRADHIST, BACI, IMF) → percentile width classes, hover ratios, focus view. Flows of Empire page | Preview + spot-check known cases | **v0.1 built** (arcs, hover ratio, focus view, Flows of Empire page) |
 | 5 | Development data: coloniser profiles, automatic dimensions, drafted hand codings → review sheet. Inherited Systems + Divergence Metrics | Spot-check review sheet | **v0.1 built** (21 files, 94 ex-colonies, review sheet in docs/REVIEW_SHEET.md) |
 | 6 | The Archive, Terms of Account, Correspondence | | **v0.1 built** (Correspondence opens pre-filled GitHub issues; labels and issue templates in repo) |
-| 7 | Monthly refresh Action, "updated on" stamps, Cloudflare Pages + R2 deploy, accessibility/mobile/performance pass, Zenodo DOI | Launch | |
+| 7 | Monthly refresh Action, "updated on" stamps, Cloudflare Pages + R2 deploy, accessibility/mobile/performance pass, Zenodo DOI | Launch | **in progress**: deploy workflow, monthly source check, accessibility pass (0 axe violations) done; GitHub Pages switch-on and Zenodo pending |
 | 8 | Stories, more empires, earlier periods | | |
 
 ## Review approach
