@@ -77,7 +77,7 @@
     svg.append("g").attr("class", "axis").attr("transform", `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0%")));
     svg.append("line").attr("class", "zero").attr("x1", x(0)).attr("x2", x(0)).attr("y1", m.t).attr("y2", Hh - m.b);
     svg.append("text").attr("class", "dlabel").attr("x", x(0) + 6).attr("y", m.t + 10).text("independence");
-    svg.append("text").attr("class", "dlabel").attr("x", W - m.r).attr("y", Hh - 4).attr("text-anchor", "end").attr("fill", "var(--text-dim)").text("years since independence");
+    svg.append("text").attr("class", "dlabel").attr("x", W - m.r).attr("y", Hh - 4).attr("text-anchor", "end").classed("dim", true).text("years since independence");
     const line = d3.line().x((d) => x(d[0])).y((d) => y(d[1])).defined((d, i, a) => i === 0 || d[0] - a[i - 1][0] <= 3);
     for (const k of FOCUS) {
       if (!out[k].length) continue;
@@ -86,7 +86,7 @@
       svg.append("text").attr("class", "dlabel").attr("x", x(last[0]) + 6).attr("y", y(last[1]) + 4).text(`${NAME[k]} ${Math.round(last[1] * 100)}%`);
     }
     // crosshair
-    const cross = svg.append("line").attr("stroke", "#c8dbff").attr("y1", m.t).attr("y2", Hh - m.b).attr("opacity", 0);
+    const cross = svg.append("line").attr("stroke", C.ink).attr("y1", m.t).attr("y2", Hh - m.b).attr("opacity", 0);
     svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", W - m.l - m.r).attr("height", Hh - m.t - m.b).attr("fill", "transparent")
       .on("mousemove", (ev) => {
         const [px] = d3.pointer(ev); const t = Math.round(x.invert(px));
@@ -116,9 +116,9 @@
       svg.append("text").attr("class", "dlabel").attr("x", x(ind) + 4).attr("y", m.t + 10).text(`independence ${ind}`);
     }
     const line = d3.line().x((d) => x(d[0])).y((d) => y(d[1])).defined((d, i, a) => i === 0 || d[0] - a[i - 1][0] <= 5);
-    svg.append("path").datum(series).attr("fill", "none").attr("stroke", "#8fb4f0").attr("stroke-width", 2).attr("d", line);
-    const cross = svg.append("line").attr("stroke", "#c8dbff").attr("y1", m.t).attr("y2", Hh - m.b).attr("opacity", 0);
-    const dot = svg.append("circle").attr("r", 4).attr("fill", "#8fb4f0").attr("stroke", "#02040a").attr("stroke-width", 2).attr("opacity", 0);
+    svg.append("path").datum(series).attr("fill", "none").attr("stroke", C.trace).attr("stroke-width", 2).attr("d", line);
+    const cross = svg.append("line").attr("stroke", C.ink).attr("y1", m.t).attr("y2", Hh - m.b).attr("opacity", 0);
+    const dot = svg.append("circle").attr("r", 4).attr("fill", C.trace).attr("stroke", C.paper).attr("stroke-width", 2).attr("opacity", 0);
     svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", W - m.l - m.r).attr("height", Hh - m.t - m.b).attr("fill", "transparent")
       .on("mousemove", (ev) => {
         const [px] = d3.pointer(ev); const yr = x.invert(px);
@@ -180,10 +180,11 @@
 
   // ------------------------------------------------------------ boot
   (async function boot() {
-    Object.assign(C, { GBR: css("--gbr"), FRA: css("--fra"), PRT: css("--prt"), NLD: css("--nld"), OTH: css("--oth"), SOV: css("--sov") });
+    Object.assign(C, { GBR: css("--gbr"), FRA: css("--fra"), PRT: css("--prt"), NLD: css("--nld"), OTH: css("--oth"), SOV: css("--sov"),
+      ink: css("--ink"), trace: css("--trace"), paper: css("--stock-hi") });
     const [t, h] = await Promise.all([fetch("data/trade.json").then((r) => r.json()), fetch("data/holdings.json").then((r) => r.json())]);
     T = t; H = h; byId = new Map(H.holdings.map((x) => [x.id, x]));
-    $("stamp").textContent = `TRADE.DB · ${Object.keys(T.years).length} YEARS · UPDATED ${T.meta.generated}`;
+    $("stamp").textContent = `${Object.keys(T.years).length} YEARS · RUN ${T.meta.generated}`;
     drawErosion();
     const opts = Object.keys(T.share).filter((id) => byId.has(id) && T.share[id].length > 5).map((id) => [id, byId.get(id).name]).sort((a, b) => a[1].localeCompare(b[1]));
     $("ex-select").innerHTML = opts.map(([id, n]) => `<option value="${id}">${esc(n)}</option>`).join("");
