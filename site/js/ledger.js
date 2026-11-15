@@ -9,7 +9,7 @@
   const FOCUS = ["GBR", "FRA", "PRT", "NLD"];
   const BORDER_YEARS = [1800, 1815, 1880, 1900, 1914, 1920, 1930, 1938, 1945, 1960, 1994, 2000, 2010];
   const SIZE = { territory: 13, island: 9, enclave: 8 };
-  const STEP_MS = { normal: 650, fast: 130 };
+  const STEP_MS = { normal: 667, fast: 133 }; // ×1 = 1.5 yr/s, ×5 = 7.5 yr/s
   const $ = (id) => document.getElementById(id);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const COLOR = {};
@@ -69,18 +69,18 @@
   // ---------------------------------------------------------------- loading
   const loaderDots = (() => {
     const cv = $("loader-dots"), ctx = cv.getContext("2d");
-    const proj = d3.geoOrthographic().scale(100).translate([110, 110]).clipAngle(90);
+    const proj = d3.geoOrthographic().scale(84).translate([90, 90]).clipAngle(90);
     let raf, rot = 0;
     const pts = [];
     for (let lat = -80; lat <= 80; lat += 8) for (let lon = -180; lon < 180; lon += 8) pts.push([lon, lat]);
     function frame() {
       rot += 0.6; proj.rotate([rot, -18]);
-      ctx.clearRect(0, 0, 220, 220);
+      ctx.clearRect(0, 0, 180, 180);
       const src = S.dots || pts;
       for (const d of src) {
         const xy = proj(d); if (!xy) continue;
-        ctx.fillStyle = S.dots ? "rgba(120,170,230,.85)" : "rgba(120,140,170,.35)";
-        ctx.fillRect(xy[0] - 0.8, xy[1] - 0.8, 1.6, 1.6);
+        ctx.fillStyle = S.dots ? "rgba(200,219,255,.9)" : "rgba(143,180,240,.35)";
+        ctx.beginPath(); ctx.arc(xy[0], xy[1], 1.1, 0, 6.283); ctx.fill();
       }
       raf = requestAnimationFrame(frame);
     }
@@ -100,7 +100,7 @@
       if (!r.ok) throw new Error(`Could not load ${url} (${r.status})`);
       out[k] = await r.json();
       if (k === "dots") S.dots = out[k];
-      done++; $("loader-pct").textContent = `${Math.round((done / jobs.length) * 100)}%`;
+      done++; $("loader-pct").textContent = `${String(Math.round((done / jobs.length) * 100)).padStart(3, "0")}%`;
     }));
     S.data = out.holdings; S.dots = out.dots;
     S.borders.set(1800, flattenLines(out.b1800));
@@ -188,7 +188,7 @@
     globe = new Globe(el, { animateIn: false })
       .backgroundColor("rgba(0,0,0,0)")
       .showGraticules(true)
-      .showAtmosphere(true).atmosphereColor(css("--halo-a")).atmosphereAltitude(0.17)
+      .showAtmosphere(true).atmosphereColor(css("--halo")).atmosphereAltitude(0.17)
       .particlesData([S.dots]).particleLat((d) => d[1]).particleLng((d) => d[0]).particleAltitude(0.002)
       .particlesColor(() => COLOR.land).particlesSize(2.4).particlesSizeAttenuation(false)
       .pathPoints((d) => d).pathPointLat((p) => p[1]).pathPointLng((p) => p[0])
@@ -265,9 +265,9 @@
     ctx.clearRect(0, 0, flat.w, flat.h);
     ctx.save();
     ctx.translate(S.zoom.x, S.zoom.y); ctx.scale(k, k);
-    ctx.beginPath(); path({ type: "Sphere" }); ctx.fillStyle = "#04070c"; ctx.fill();
-    ctx.lineWidth = 1 / k; ctx.strokeStyle = "rgba(220,235,255,.28)"; ctx.stroke();
-    ctx.beginPath(); path(d3.geoGraticule10()); ctx.strokeStyle = "rgba(220,235,255,.10)"; ctx.stroke();
+    ctx.beginPath(); path({ type: "Sphere" }); ctx.fillStyle = "#03070f"; ctx.fill();
+    ctx.lineWidth = 1 / k; ctx.strokeStyle = "rgba(143,180,240,.35)"; ctx.stroke();
+    ctx.beginPath(); path(d3.geoGraticule10()); ctx.strokeStyle = "rgba(143,180,240,.10)"; ctx.stroke();
     ctx.fillStyle = COLOR.land;
     const r = Math.max(0.6, 0.95 / Math.sqrt(k));
     for (const d of S.dots) { const xy = proj(d); if (xy) { ctx.beginPath(); ctx.arc(xy[0], xy[1], r, 0, 6.283); ctx.fill(); } }
@@ -285,11 +285,11 @@
       flat.hits.push({ id: h.id, x: xy[0], y: xy[1] });
       if (S.labels && h.kind === "territory" || S.selected === h.id) sel.push([h, st, xy, rad]);
     }
-    ctx.font = `${11 / k}px "IBM Plex Sans", system-ui, sans-serif`;
+    ctx.font = `${10.5 / k}px "IBM Plex Mono", ui-monospace, monospace`;
     ctx.textBaseline = "middle";
     for (const [h, st, xy, rad] of sel) {
       ctx.fillStyle = "rgba(0,0,0,.7)"; ctx.fillText(displayName(h, st), xy[0] + rad + 4.5 / k, xy[1] + 0.6 / k);
-      ctx.fillStyle = "#e6ecf5"; ctx.fillText(displayName(h, st), xy[0] + rad + 4 / k, xy[1]);
+      ctx.fillStyle = "#c8dbff"; ctx.fillText(displayName(h, st), xy[0] + rad + 4 / k, xy[1]);
     }
     // callouts
     ctx.font = `${10.5 / k}px "IBM Plex Mono", ui-monospace, monospace`;
@@ -300,9 +300,9 @@
       const x = xy[0], y = xy[1] - (14 + (c.idx % 3) * 17) / k;
       const w = ctx.measureText(txt).width + 10 / k;
       ctx.globalAlpha = +c.el.style.opacity || 1;
-      ctx.fillStyle = "rgba(3,5,8,.75)"; ctx.fillRect(x - w / 2, y - 12 / k, w, 15 / k);
-      ctx.fillStyle = c.el.style.getPropertyValue("--c"); ctx.fillRect(x - w / 2, y - 12 / k, 1 / k, 15 / k);
-      ctx.fillStyle = "#eef3fa"; ctx.fillText(txt, x - w / 2 + 5 / k, y);
+      ctx.fillStyle = "rgba(2,4,10,.82)"; ctx.fillRect(x - w / 2, y - 12 / k, w, 15 / k);
+      ctx.fillStyle = c.el.style.getPropertyValue("--c"); ctx.fillRect(x - w / 2, y - 12 / k, 2 / k, 15 / k);
+      ctx.fillStyle = "#c8dbff"; ctx.fillText(txt, x - w / 2 + 6 / k, y);
       ctx.globalAlpha = 1;
     }
     ctx.restore();
@@ -342,8 +342,7 @@
     S.prevYear = S.year; S.year = y;
     $("year").value = y;
     $("year-big").textContent = y;
-    const ruled = S.data.holdings.reduce((n, h) => { const st = stateOf(h, y); return n + (visible(st) && st.ctrl !== "SOV" ? 1 : 0); }, 0);
-    $("year-sub").textContent = `${ruled} holdings under imperial rule`;
+    renderMeters();
     if (S.view === "globe") renderGlobe(); else drawFlat();
     pulseChanges();
     renderFeed();
@@ -367,24 +366,57 @@
     }
   }
 
-  // ---------------------------------------------------------------- feed
+  // ---------------------------------------------------------------- meters (htop-style)
+  const METER_KEYS = ["GBR", "FRA", "PRT", "NLD", "OTH"];
+  function countsFor(year) {
+    const c = { GBR: 0, FRA: 0, PRT: 0, NLD: 0, OTH: 0, _all: 0, _vis: 0 };
+    for (const h of S.data.holdings) {
+      const st = stateOf(h, year);
+      if (!st || st.ctrl === "SOV") continue;
+      for (const g of st.groups) c[g]++;
+      c._all++;
+      if (st.groups.some((g) => S.filters.has(g))) c._vis++;
+    }
+    return c;
+  }
+  function computeMeterScale() {
+    S.meterMax = { GBR: 1, FRA: 1, PRT: 1, NLD: 1, OTH: 1, ALL: 1 };
+    for (let y = 1800; y <= 2025; y++) {
+      const c = countsFor(y);
+      for (const k of METER_KEYS) S.meterMax[k] = Math.max(S.meterMax[k], c[k]);
+      S.meterMax.ALL = Math.max(S.meterMax.ALL, c._all);
+    }
+  }
+  function renderMeters() {
+    const c = countsFor(S.year);
+    const rows = METER_KEYS.filter((k) => S.filters.has(k));
+    const total = c._vis;
+    const row = (k, label, v, max, colour, cls = "") =>
+      `<div class="mrow ${cls}" style="--c:${colour}"><span class="k">${label}</span><span class="mbar"><span style="width:${(v / max) * 100}%"></span></span><span class="v">${String(v).padStart(3, " ")}</span></div>`;
+    $("meter-rows").innerHTML =
+      row("ALL", "RULED", total, S.meterMax.ALL, "var(--phos-hi)", "total") +
+      rows.map((k) => row(k, k, c[k], S.meterMax[k], COLOR[k])).join("");
+  }
+
+  // ---------------------------------------------------------------- transfer log
   function renderFeed() {
-    $("feed-year").textContent = S.year;
     const list = $("feed-list");
     const evs = S.data.events.filter((e) => Math.floor(e.t) === S.year).filter((e) => {
       const st = stateOf(S.byId.get(e.h), S.year);
       const groups = st ? st.groups : [groupOf(e.from || "OTH")];
       return groups.some((g) => S.filters.has(g));
     });
-    if (!evs.length) { list.innerHTML = `<li class="empty">No transfers recorded in ${S.year}.</li>`; return; }
-    list.innerHTML = evs.slice(0, 10).map((e) => {
+    $("feed-count").textContent = `${S.year} · ${String(evs.length).padStart(2, "0")} REC`;
+    if (!evs.length) { list.innerHTML = `<li class="empty">-- no transfers recorded in ${S.year} --</li>`; return; }
+    list.innerHTML = evs.map((e) => {
       const h = S.byId.get(e.h);
       const c = colorOf(e.to ? (e.to === "SOV" ? (e.from || "SOV") : e.to) : (e.from || "SOV"));
       const what = e.to ? (e.to === "SOV" ? "Independent" : `${ctrlName(e.to)} ${STATUS_NAME[e.st]}`) : "Merged";
       const nm = h.name.split(" / ")[e.to === "SOV" ? h.name.split(" / ").length - 1 : 0];
-      const detail = e.label.toLowerCase().includes((STATUS_NAME[e.st] || "~").split(" ")[0]) ? e.label : `${what} · ${e.label}`;
-      return `<li><button data-id="${h.id}" style="--c:${c}"><i></i><div><b>${escapeHtml(nm)}</b><span>${escapeHtml(detail)}</span></div></button></li>`;
-    }).join("") + (evs.length > 10 ? `<li class="empty">+ ${evs.length - 10} more in the ledger table</li>` : "");
+      const detail = !e.to || e.to === "SOV" || e.label.toLowerCase().includes((STATUS_NAME[e.st] || "~").split(" ")[0]) ? e.label : `${what} · ${e.label}`;
+      const code = e.to ? (e.from ? `${e.from === "GBRFRA" ? "CON" : e.from}>${e.to === "GBRFRA" ? "CON" : e.to}` : e.to) : `${e.from}>×`;
+      return `<li><button data-id="${h.id}" style="--c:${c}"><span class="t">${fmtYear(e.t)}</span><span class="c">${escapeHtml(code)}</span><span class="m"><b>${escapeHtml(nm)}</b> <span>${escapeHtml(detail)}</span></span></button></li>`;
+    }).join("");
     list.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { select(b.dataset.id); flyTo(S.byId.get(b.dataset.id)); }));
   }
 
@@ -403,10 +435,17 @@
     const st = stateOf(h, S.year);
     $("p-code").textContent = holdingCode(h);
     $("p-name").textContent = h.name;
-    $("p-meta").textContent = `${h.region} · ${h.kind} · ${h.lat.toFixed(1)}°, ${h.lon.toFixed(1)}°`;
-    $("p-status").innerHTML = st
-      ? `<i class="b ${st.style}${st.condo ? " condo" : ""}" style="--c:${st.color}"></i><span><b>${S.year}</b> · ${escapeHtml(ctrlName(st.ctrl))} ${escapeHtml(STATUS_NAME[st.p.st])}</span>`
-      : `<span>${S.year} · not a separate holding this year</span>`;
+    const ll = `${Math.abs(h.lat).toFixed(1)}°${h.lat >= 0 ? "N" : "S"} ${Math.abs(h.lon).toFixed(1)}°${h.lon >= 0 ? "E" : "W"}`;
+    const ctrlTxt = st && st.ctrl === "SOV"
+      ? `Sovereign${st.colourCtrl !== "SOV" ? ` (former ${st.colourCtrl} holding)` : ""}`
+      : st ? `${ctrlName(st.ctrl)} · ${STATUS_NAME[st.p.st]}` : "";
+    const ctrl = st
+      ? `<i class="sw b ${st.style}${st.condo ? " condo" : ""}" style="--c:${st.color}"></i>${escapeHtml(ctrlTxt)}`
+      : "not a separate holding";
+    $("p-rec").innerHTML = [
+      ["YEAR", S.year], ["CTRL", ctrl], ["SINCE", st ? fmtYear(st.p.s) : "—"],
+      ["REGION", escapeHtml(h.region)], ["TYPE", h.kind], ["COORD", ll],
+    ].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
     // timeline
     const span = 2025 - 1800;
     const segs = h.periods.map((p) => {
@@ -422,10 +461,12 @@
     $("p-tl").innerHTML = `<span style="width:${lead}%"></span>${segs}<span class="cursor" style="left:${cur}%"></span>`;
     // events
     const t = tOf(S.year);
-    $("p-events").innerHTML = h.periods.map((p) => {
+    $("p-count").textContent = `${String(h.periods.length).padStart(2, "0")} REC`;
+    $("p-events").tBodies[0].innerHTML = h.periods.map((p) => {
       const cc = p.c === "SOV" ? (lastColonial(h, p.s) || "SOV") : p.c;
       const now = p.s <= t && t < (p.e ?? 9999);
-      return `<li class="${now ? "now" : ""}"><span class="yr">${fmtYear(p.s)}</span><i style="--c:${colorOf(cc)}"></i><div>${escapeHtml(p.ev)}<br><span class="st">${escapeHtml(ctrlName(p.c))} · ${escapeHtml(STATUS_NAME[p.st])}</span>${p.cf === "medium" ? ` <span class="cf">· date debated</span>` : ""}</div></li>`;
+      const code = p.c === "GBRFRA" ? "CON" : p.c;
+      return `<tr class="${now ? "now" : ""}"><td>${fmtYear(p.s)}</td><td class="c" style="--c:${colorOf(cc)}">${code}</td><td class="s">${escapeHtml(STATUS_NAME[p.st])}</td><td>${escapeHtml(p.ev)}${p.cf === "medium" ? ` <span class="cf">[date debated]</span>` : ""}</td></tr>`;
     }).join("");
   }
   function updateLeader() {
@@ -472,9 +513,9 @@
     const bw = Math.max(1, (w - 2 * thumb) / 226 - 0.6);
     for (const d of den) {
       const bh = (d.active / max) * (h - 8);
-      ctx.fillStyle = d.y === S.year ? "#ffffff" : "rgba(95,211,198,.38)";
+      ctx.fillStyle = d.y === S.year ? "#c8dbff" : "rgba(143,180,240,.34)";
       ctx.fillRect(x(d.y) - bw / 2, h - bh, bw, bh);
-      if (d.events) { ctx.fillStyle = d.y === S.year ? "#fff" : "rgba(232,238,247,.75)"; ctx.fillRect(x(d.y) - bw / 2, 0, bw, Math.min(5, 1 + d.events)); }
+      if (d.events) { ctx.fillStyle = d.y === S.year ? "#c8dbff" : "rgba(200,219,255,.6)"; ctx.fillRect(x(d.y) - bw / 2, 0, bw, Math.min(5, 1 + d.events)); }
     }
   }
   function drawTicks() {
@@ -491,7 +532,7 @@
   // ---------------------------------------------------------------- playback
   function play(on) {
     S.playing = on;
-    $("btn-play").textContent = on ? "❚❚" : "▶";
+    $("play-ico").setAttribute("href", on ? "#i-pause" : "#i-play");
     $("btn-play").setAttribute("aria-label", on ? "Pause" : "Play");
     $("btn-play").classList.toggle("playing", on);
     clearInterval(S.timer);
@@ -524,7 +565,7 @@
     play(false); select(null);
     const s = TOUR[i];
     $("intro").hidden = false;
-    $("intro-step").textContent = `INTRO ${i + 1}/${TOUR.length}`;
+    $("intro-step").textContent = `INTRO ${String(i + 1).padStart(2, "0")}/${TOUR.length}`;
     $("intro-title").textContent = s.t;
     $("intro-text").textContent = s.x;
     setYear(s.y);
@@ -569,25 +610,57 @@
     });
     document.addEventListener("click", (e) => { if (!e.target.closest(".search")) out.hidden = true; });
   }
+  const T = { sort: { k: "ctrl", dir: 1 }, cur: 0, rows: [] };
   function renderTable() {
-    $("table-year").textContent = S.year;
+    const q = norm($("table-filter").value.trim());
+    let all = 0, ruled = 0;
     const rows = [];
-    for (const h of S.data.holdings) {
+    S.data.holdings.forEach((h, i) => {
       const st = stateOf(h, S.year);
-      if (!visible(st)) continue;
-      rows.push({ h, st });
-    }
-    rows.sort((a, b) => a.st.ctrl.localeCompare(b.st.ctrl) || a.h.name.localeCompare(b.h.name));
-    $("ledger-table").tBodies[0].innerHTML = rows.map(({ h, st }) =>
-      `<tr><td>${escapeHtml(displayName(h, st))}</td><td>${escapeHtml(h.region)}</td><td><i style="--c:${st.color}"></i>${escapeHtml(ctrlName(st.ctrl))}</td><td>${escapeHtml(STATUS_NAME[st.p.st])}</td><td>${fmtYear(st.p.s)}</td></tr>`).join("");
+      if (!visible(st)) return;
+      all++; if (st.ctrl !== "SOV") ruled++;
+      const r = {
+        h, st, n: i + 1, code: holdingCode(h), name: displayName(h, st), region: h.region,
+        ctrl: st.ctrl === "GBRFRA" ? "CON" : st.ctrl, st_: STATUS_NAME[st.p.st], since: Math.floor(st.p.s), cf: st.p.cf,
+      };
+      if (q && !norm(`${r.name} ${r.region} ${r.ctrl} ${ctrlName(st.ctrl)} ${r.st_} ${r.code}`).includes(q)) return;
+      rows.push(r);
+    });
+    const { k, dir } = T.sort;
+    const key = k === "st" ? "st_" : k;
+    rows.sort((a, b) => (typeof a[key] === "number" ? a[key] - b[key] : String(a[key]).localeCompare(String(b[key]))) * dir || a.name.localeCompare(b.name));
+    T.rows = rows; T.cur = Math.min(T.cur, Math.max(0, rows.length - 1));
+    $("table-title").textContent = `LEDGER.DB · ${S.year}`;
+    $("table-sum").textContent = `${all} records · ${ruled} under rule · ${rows.length} shown`;
+    document.querySelectorAll("#ledger-table th").forEach((th) => th.setAttribute("aria-sort", th.dataset.k === k ? (dir > 0 ? "ascending" : "descending") : "none"));
+    $("ledger-table").tBodies[0].innerHTML = rows.length ? rows.map((r, i) =>
+      `<tr data-id="${r.h.id}" class="${i === T.cur ? "cur" : ""}"><td class="num dim">${String(r.n).padStart(3, "0")}</td><td class="dim">${r.code}</td><td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.region)}</td><td><span class="sw" style="--c:${r.st.color}"></span>${r.ctrl}</td><td>${escapeHtml(r.st_)}</td><td class="num">${r.since}</td><td class="dim">${r.cf === "medium" ? "med" : "high"}</td></tr>`).join("")
+      : `<tr><td colspan="8" class="dim">-- no records match --</td></tr>`;
   }
+  function tableMove(d) {
+    if (!T.rows.length) return;
+    T.cur = Math.max(0, Math.min(T.rows.length - 1, T.cur + d));
+    const trs = $("ledger-table").tBodies[0].rows;
+    [...trs].forEach((tr, i) => tr.classList.toggle("cur", i === T.cur));
+    trs[T.cur]?.scrollIntoView({ block: "nearest" });
+  }
+  function tableOpen(id) {
+    $("table-dlg").close();
+    select(id); flyTo(S.byId.get(id));
+  }
+  function openTable() { T.cur = 0; renderTable(); $("table-dlg").showModal(); $("table-filter").focus(); }
 
   // ---------------------------------------------------------------- wiring
   function wire() {
     $("year").addEventListener("input", (e) => { stopIntro(); setYear(+e.target.value); });
     $("btn-play").addEventListener("click", () => { stopIntro(); play(!S.playing); });
-    $("btn-fast").addEventListener("click", () => {
-      S.fast = !S.fast; $("btn-fast").setAttribute("aria-pressed", S.fast);
+    $("btn-prev").addEventListener("click", () => { stopIntro(); play(false); setYear(S.year - 1); });
+    $("btn-next").addEventListener("click", () => { stopIntro(); play(false); setYear(S.year + 1); });
+    $("btn-speed").addEventListener("click", () => {
+      S.fast = !S.fast;
+      $("speed-val").textContent = S.fast ? "×5" : "×1";
+      $("btn-speed").classList.toggle("fast", S.fast);
+      $("btn-speed").setAttribute("aria-label", S.fast ? "Playback speed: fast, 7.5 years per second" : "Playback speed: normal, 1.5 years per second");
       if (S.playing) play(true);
     });
     document.querySelectorAll(".flt").forEach((b) => b.addEventListener("click", () => {
@@ -608,8 +681,22 @@
     $("p-close").addEventListener("click", () => select(null));
     $("btn-intro").addEventListener("click", () => runIntro(0));
     $("intro-stop").addEventListener("click", () => stopIntro(true));
-    $("btn-table").addEventListener("click", () => { renderTable(); $("table-dlg").showModal(); });
+    $("btn-table").addEventListener("click", openTable);
     $("table-close").addEventListener("click", () => $("table-dlg").close());
+    $("table-filter").addEventListener("input", () => { T.cur = 0; renderTable(); });
+    document.querySelectorAll("#ledger-table th").forEach((th) => th.addEventListener("click", () => {
+      const k = th.dataset.k;
+      T.sort = { k, dir: T.sort.k === k ? -T.sort.dir : 1 }; renderTable();
+    }));
+    $("ledger-table").tBodies[0].addEventListener("click", (e) => { const tr = e.target.closest("tr[data-id]"); if (tr) tableOpen(tr.dataset.id); });
+    $("table-dlg").addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") { e.preventDefault(); tableMove(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); tableMove(-1); }
+      else if (e.key === "PageDown") { e.preventDefault(); tableMove(15); }
+      else if (e.key === "PageUp") { e.preventDefault(); tableMove(-15); }
+      else if (e.key === "Enter" && T.rows[T.cur]) { e.preventDefault(); tableOpen(T.rows[T.cur].h.id); }
+      else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && e.target.id !== "table-filter") { e.preventDefault(); setYear(S.year + (e.key === "ArrowRight" ? 1 : -1)); }
+    });
     $("rail-toggle").addEventListener("click", () => {
       const open = $("rail").classList.toggle("open"); $("rail-toggle").setAttribute("aria-expanded", open);
     });
@@ -621,6 +708,7 @@
         setYear(S.year + (e.key === "ArrowRight" ? 1 : -1) * (e.shiftKey ? 10 : 1));
       } else if (e.key === " " && e.target === document.body) { e.preventDefault(); play(!S.playing); }
       else if (e.key === "Escape") select(null);
+      else if ((e.key === "t" || e.key === "T") && !e.target.closest("input")) { e.preventDefault(); openTable(); }
     });
     let rt;
     window.addEventListener("resize", () => {
@@ -639,6 +727,7 @@
       return;
     }
     $("updated").textContent = S.data.meta.generated;
+    computeMeterScale();
     wire(); initSearch(); drawTicks();
     const small = window.matchMedia("(max-width: 760px)").matches;
     setView(small ? "flat" : "globe");

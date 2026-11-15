@@ -8,16 +8,28 @@
 <meta name="description" content="Territorial Ledger: colonial holdings of the British, French, Portuguese and Dutch empires, 1800–2025.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/observatory.css">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 16 16"><path d="M3 2.5h2v11H3zM13 2.5v11L6 8z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 16 16"><path d="M11 2.5h2v11h-2zM3 2.5v11L10 8z"/></symbol>
+</svg>
 <div id="app" class="app">
 
-  <!-- ===== Loading screen ===== -->
+  <!-- ===== Loading window ===== -->
   <div id="loader" class="loader" role="status" aria-live="polite">
-    <canvas id="loader-dots" width="220" height="220" aria-hidden="true"></canvas>
-    <div class="loader-text"><span>LOADING ARCHIVE</span> · <span id="loader-pct">0%</span></div>
+    <div class="loader-win">
+      <div class="lw-title"><span>AFTEREMPIRE :: LOADING ARCHIVE</span><i></i></div>
+      <div class="lw-body">
+        <canvas id="loader-dots" width="180" height="180" aria-hidden="true"></canvas>
+        <span class="lw-wire" aria-hidden="true">· · · ·</span>
+        <div class="lw-stat"><span id="loader-pct">000%</span><small>holdings · borders · land</small></div>
+      </div>
+    </div>
   </div>
 
   <!-- ===== Left rail ===== -->
@@ -26,50 +38,50 @@
       <div class="wordmark">Afterempire</div>
       <div class="tag">TERRITORIAL LEDGER · 1800–2025</div>
     </div>
-    <button class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="rail-body">Menu</button>
+    <button class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="rail-body">MENU</button>
 
     <div class="rail-body" id="rail-body">
-      <button class="btn-intro" id="btn-intro">▶ Play intro</button>
+      <button class="btn-intro" id="btn-intro"><svg aria-hidden="true"><use href="#i-play"/></svg>Play intro</button>
 
       <div class="search">
-        <label for="search-input" class="lbl">Find a holding</label>
-        <input id="search-input" type="search" placeholder="Goa, Malacca, Cape Colony…" autocomplete="off">
+        <label for="search-input" class="lbl">Query holdings</label>
+        <div class="prompt"><span aria-hidden="true">&gt;</span><input id="search-input" type="search" placeholder="goa, malacca, cape…" autocomplete="off" spellcheck="false"></div>
         <ul id="search-results" class="search-results" hidden></ul>
       </div>
 
       <div class="viewmode" role="group" aria-label="Projection">
         <button id="view-globe" class="vm active" aria-pressed="true">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 7h14M5 17h14"/></svg>
-          Globe
+          GLOBE
         </button>
         <button id="view-flat" class="vm" aria-pressed="false">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6c3-2 6 2 9 0s6-2 9 0v12c-3-2-6 2-9 0s-6-2-9 0z"/><path d="M9 4.6v13M15 6v13"/></svg>
-          Flat
+          FLAT
         </button>
       </div>
 
       <nav class="pages" aria-label="Sections">
         <div class="lbl">Observatory</div>
         <a class="pg active" href="index.html" aria-current="page">Territorial Ledger</a>
-        <span class="pg soon" title="Built in Phase 4">Flows of Empire <em>phase 4</em></span>
+        <span class="pg soon" title="Built in Phase 4">Flows of Empire <em>P4</em></span>
         <div class="lbl">Record Room</div>
-        <span class="pg soon" title="Built in Phase 5">Inherited Systems <em>phase 5</em></span>
-        <span class="pg soon" title="Built in Phase 5">Divergence Metrics <em>phase 5</em></span>
-        <a class="pg" href="archive.html">The Archive</a>
-        <span class="pg soon" title="Built in Phase 6">Terms of Account <em>phase 6</em></span>
-        <span class="pg soon" title="Built in Phase 6">Correspondence <em>phase 6</em></span>
+        <span class="pg soon" title="Built in Phase 5">Inherited Systems <em>P5</em></span>
+        <span class="pg soon" title="Built in Phase 5">Divergence Metrics <em>P5</em></span>
+        <a class="pg" href="archive.html">The Archive <em>↗</em></a>
+        <span class="pg soon" title="Built in Phase 6">Terms of Account <em>P6</em></span>
+        <span class="pg soon" title="Built in Phase 6">Correspondence <em>P6</em></span>
       </nav>
 
       <div class="toggles">
         <div class="lbl">Display</div>
-        <label class="tg"><input type="checkbox" id="tg-labels"> Labels</label>
-        <label class="tg"><input type="checkbox" id="tg-callouts" checked> Event callouts</label>
-        <label class="tg"><input type="checkbox" id="tg-contrast"> High contrast</label>
-        <button class="linkish" id="btn-table">Open ledger table</button>
+        <label class="tg"><input type="checkbox" id="tg-labels"><span>Labels</span></label>
+        <label class="tg"><input type="checkbox" id="tg-callouts" checked><span>Event callouts</span></label>
+        <label class="tg"><input type="checkbox" id="tg-contrast"><span>High contrast</span></label>
+        <button class="btn-table" id="btn-table">Open ledger table <kbd>T</kbd></button>
       </div>
 
       <div class="legend">
-        <div class="lbl">Status</div>
+        <div class="lbl">Status key</div>
         <div class="lg"><i class="b solid"></i>Colony · protectorate · mandate</div>
         <div class="lg"><i class="b ringed"></i>Integrated · still dependent</div>
         <div class="lg"><i class="b half"></i>Self-governing · dominion</div>
@@ -83,38 +95,40 @@
     <div id="globe" class="globe" aria-label="Globe of colonial holdings"></div>
     <canvas id="flat" class="flat" hidden aria-label="Flat map of colonial holdings"></canvas>
     <svg id="leader" class="leader" aria-hidden="true"><line id="leader-line"/><circle id="leader-dot" r="4"/></svg>
+    <div class="crt" aria-hidden="true"></div>
 
-    <div class="yearplate" aria-live="polite"><span id="year-big">1800</span><small id="year-sub">1,800 · holdings under rule</small></div>
-
-    <!-- Ledger feed: events of the selected year -->
-    <section class="hud feed" id="feed" aria-label="Transfers this year">
-      <div class="hud-in">
-        <header><span>LEDGER FEED</span><span id="feed-year">1800</span></header>
-        <ol id="feed-list"></ol>
-      </div>
+    <!-- Year + meters (htop-style) -->
+    <section class="meters" aria-live="polite" aria-label="Holdings under rule this year">
+      <div class="yr"><span class="k">YEAR</span><span id="year-big">1800</span></div>
+      <div id="meter-rows" class="meter-rows"></div>
     </section>
 
-    <!-- Holding panel -->
-    <section class="hud panel" id="panel" hidden aria-label="Holding details">
-      <div class="hud-in">
-        <header><span id="p-code">HLD</span><button id="p-close" class="x" aria-label="Close">×</button></header>
+    <!-- Transfer log -->
+    <section class="frame feed" id="feed" aria-label="Transfers this year">
+      <header class="bar"><span>TRANSFER LOG</span><span id="feed-count">00 REC</span></header>
+      <div class="log-head" aria-hidden="true"><span>YEAR</span><span>CODE</span><span>ENTRY</span></div>
+      <ol id="feed-list" class="log" tabindex="0"></ol>
+    </section>
+
+    <!-- Holding record -->
+    <section class="record" id="panel" hidden aria-label="Holding record">
+      <div class="rec-in">
+        <header class="bar"><span>RECORD</span><button id="p-close" class="x" aria-label="Close record">ESC ×</button></header>
         <h2 id="p-name">—</h2>
-        <div class="p-meta" id="p-meta"></div>
-        <div class="p-status" id="p-status"></div>
-        <div class="p-timeline">
-          <div class="mini-lbl"><span>1800</span><span>OWNERSHIP</span><span>2025</span></div>
-          <div class="tl" id="p-tl"></div>
-        </div>
-        <div class="mini-lbl"><span>TRANSFERS</span></div>
-        <ol class="p-events" id="p-events"></ol>
-        <div class="p-foot"><span class="soon-chip">Open file → Inherited Systems · phase 5</span></div>
+        <dl class="kv" id="p-rec"></dl>
+        <div class="mini-lbl"><span>1800</span><span>OWNERSHIP</span><span>2025</span></div>
+        <div class="tl" id="p-tl"></div>
+        <div class="mini-lbl"><span>TRANSFERS</span><span id="p-count"></span></div>
+        <div class="p-events-wrap"><table class="p-events" id="p-events"><thead><tr><th>YEAR</th><th>CTRL</th><th>STATUS</th><th>ENTRY</th></tr></thead><tbody></tbody></table></div>
+        <div class="p-foot"><span class="soon-chip">OPEN FILE → INHERITED SYSTEMS [P5]</span></div>
       </div>
+      <div class="rec-tag"><span id="p-code">HLD</span><i></i></div>
     </section>
 
     <!-- Intro caption -->
-    <section class="hud intro" id="intro" hidden aria-live="polite">
-      <div class="hud-in">
-        <header><span id="intro-step">INTRO 1/12</span><button id="intro-stop" class="x" aria-label="Stop intro">×</button></header>
+    <section class="frame intro" id="intro" hidden aria-live="polite">
+      <header class="bar"><span id="intro-step">INTRO 01/12</span><button id="intro-stop" class="x" aria-label="Stop intro">STOP ×</button></header>
+      <div class="intro-body">
         <h3 id="intro-title"></h3>
         <p id="intro-text"></p>
       </div>
@@ -131,9 +145,13 @@
       <button class="flt on" data-emp="OTH" aria-pressed="true"><i></i>Other powers</button>
     </div>
     <div class="timebar">
-      <div class="transport">
-        <button id="btn-play" class="tp" aria-label="Play">▶</button>
-        <button id="btn-fast" class="tp" aria-label="Fast forward" aria-pressed="false">⏩</button>
+      <div class="transport" role="group" aria-label="Playback">
+        <button id="btn-prev" class="tp" aria-label="Previous year" title="Previous year (←)"><svg><use href="#i-prev"/></svg></button>
+        <button id="btn-play" class="tp" aria-label="Play" title="Play / pause (space)"><svg><use id="play-ico" href="#i-play"/></svg></button>
+        <button id="btn-next" class="tp" aria-label="Next year" title="Next year (→)"><svg><use href="#i-next"/></svg></button>
+        <button id="btn-speed" class="tp speed" aria-label="Playback speed: 1 year per step, slow" title="Playback speed">
+          <span class="k">SPEED</span><span id="speed-val">×1</span>
+        </button>
       </div>
       <div class="track">
         <canvas id="density" class="density" height="28" aria-hidden="true"></canvas>
@@ -141,14 +159,28 @@
         <div class="ticks" id="ticks" aria-hidden="true"></div>
       </div>
     </div>
-    <div class="dock-note">Density strip: holdings under imperial rule (bars) and transfers (ticks) per year · Data: curated gazetteer, cross-checked with COLDAT · updated <span id="updated">—</span></div>
+    <div class="dock-note">DENSITY: HOLDINGS UNDER RULE (BARS) · TRANSFERS (TICKS) · SPEED ×1 = 1.5 YR/S, ×5 = 7.5 YR/S · SRC: CURATED GAZETTEER × COLDAT · UPDATED <span id="updated">—</span></div>
   </footer>
 
-  <!-- ===== Ledger table (accessible equivalent) ===== -->
-  <dialog id="table-dlg" class="table-dlg" aria-labelledby="table-title">
-    <div class="hud-in">
-      <header><span id="table-title">LEDGER TABLE · <span id="table-year">1800</span></span><button class="x" id="table-close" aria-label="Close">×</button></header>
-      <div class="table-wrap"><table id="ledger-table"><thead><tr><th>Holding</th><th>Region</th><th>Controller</th><th>Status</th><th>Since</th></tr></thead><tbody></tbody></table></div>
+  <!-- ===== Ledger table (terminal) ===== -->
+  <dialog id="table-dlg" class="term" aria-labelledby="table-title">
+    <div class="term-top">
+      <span id="table-title">LEDGER.DB</span>
+      <span id="table-sum">—</span>
+      <button class="x" id="table-close" aria-label="Close ledger table">ESC ×</button>
+    </div>
+    <div class="term-filter"><label for="table-filter">filter&gt;</label><input id="table-filter" type="text" autocomplete="off" spellcheck="false" placeholder="type to filter by name, region, controller or status"></div>
+    <div class="term-wrap" id="term-wrap">
+      <table id="ledger-table">
+        <thead><tr>
+          <th data-k="n" class="num">#</th><th data-k="code">CODE</th><th data-k="name">HOLDING</th><th data-k="region">REGION</th>
+          <th data-k="ctrl">CTRL</th><th data-k="st">STATUS</th><th data-k="since" class="num">SINCE</th><th data-k="cf">CONF</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="term-keys" aria-hidden="true">
+      <span><b>↑↓</b>Move</span><span><b>Enter</b>Open record</span><span><b>Click header</b>Sort</span><span><b>←→</b>Year</span><span><b>Esc</b>Close</span>
     </div>
   </dialog>
 </div>
