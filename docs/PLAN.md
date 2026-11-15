@@ -18,7 +18,7 @@ Each phase ends with a ✅ checkpoint reviewed by the project owner.
 The project owner reviews the built site and gives feedback in rounds, instead of signing off at each checkpoint.
 
 ## Preview
-`python pipeline/make_preview.py OUT_DIR` makes a copy of `site/` for publishing as a claude.ai preview. For local viewing: `cd site && python -m http.server`.
+`python pipeline/make_preview.py OUT_DIR` makes a copy of `site/` for publishing as a claude.ai preview (it restores `.html` in links). For local viewing: `python pipeline/serve.py`.
 
 ## Repository layout
 ```

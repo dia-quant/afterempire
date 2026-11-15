@@ -19,4 +19,14 @@ head = re.search(r"<head>(.*?)</head>", src, re.S).group(1)
 head = re.sub(r'\s*<meta charset="utf-8">|\s*<meta name="viewport"[^>]*>', "", head)
 body = re.search(r"<body>(.*?)</body>", src, re.S).group(1)
 (out / "index.html").write_text(head.strip() + "\n" + body.strip() + "\n", encoding="utf-8")
+
+# The live site uses extensionless links (GitHub Pages resolves /flows to flows.html);
+# the preview host does not, so put the extension back in the preview copy only.
+PAGES = ["flows", "systems", "metrics", "archive", "terms", "correspondence"]
+for f in list(out.glob("*.html")) + list((out / "js").glob("*.js")):
+    t = f.read_text(encoding="utf-8")
+    for pg in PAGES:
+        t = re.sub(rf'(["\'`(]){pg}(?=[#"\'`)])', rf"\1{pg}.html", t)
+    t = re.sub(r'(href=|["\'`])\./(?=["\'`])', r"\1index.html", t)
+    f.write_text(t, encoding="utf-8")
 print("preview written to", out)

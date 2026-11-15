@@ -58,7 +58,7 @@
     const all = $("w2-all").checked, decs = D.meta.decades;
     const rows = Object.entries(D.countries).filter(([, c]) => all || c.curated)
       .sort((a, b) => b[1].curated - a[1].curated || a[1].coloniser.localeCompare(b[1].coloniser) || short(a[1]).localeCompare(short(b[1])));
-    $("m2").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th>${decs.map((d) => `<th>${d}</th>`).join("")}</tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td class="name">${c.curated ? `<a href="systems.html#${iso}">${esc(short(c))}</a>` : esc(short(c))}</td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${c.coloniser} · ${c.indep}</td>${decs.map((d) => {
+    $("m2").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th>${decs.map((d) => `<th>${d}</th>`).join("")}</tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td class="name">${c.curated ? `<a href="systems#${iso}">${esc(short(c))}</a>` : esc(short(c))}</td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${c.coloniser} · ${c.indep}</td>${decs.map((d) => {
       const r = c.decades[d];
       if (!r || !r.nearest) return `<td class="cell none">—</td>`;
       const fg = r.nearest === "SUN" ? "#fff" : "#111";
@@ -78,7 +78,7 @@
   function sheet3() {
     const rows = Object.entries(D.countries).filter(([, c]) => c.curated).sort((a, b) => a[1].coloniser.localeCompare(b[1].coloniser) || short(a[1]).localeCompare(short(b[1])));
     const f = (v) => (v == null ? `<span style="color:#6a6864">not by 2019</span>` : `${v} yrs`);
-    $("t3").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th><th class="num">Independence</th><th class="num">Monetary arrangement</th><th class="num">Planning institution</th><th class="num">Planning regime</th></tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td><a href="systems.html#${iso}">${esc(short(c))}</a></td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${EMP[c.coloniser]}</td><td class="num">${c.indep}</td><td class="num">${f(c.persistence.monetary_arrangement)}</td><td class="num">${f(c.persistence.planning_institution)}</td><td class="num">${f(c.persistence.planning_regime)}</td></tr>`).join("")}</tbody>`;
+    $("t3").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th><th class="num">Independence</th><th class="num">Monetary arrangement</th><th class="num">Planning institution</th><th class="num">Planning regime</th></tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td><a href="systems#${iso}">${esc(short(c))}</a></td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${EMP[c.coloniser]}</td><td class="num">${c.indep}</td><td class="num">${f(c.persistence.monetary_arrangement)}</td><td class="num">${f(c.persistence.planning_institution)}</td><td class="num">${f(c.persistence.planning_regime)}</td></tr>`).join("")}</tbody>`;
   }
 
   // ---------------------------------------------------------- sheet 4
