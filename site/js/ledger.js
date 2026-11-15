@@ -32,7 +32,7 @@
     view: "globe", selected: null, playing: false, fast: false, timer: null,
     filters: new Set([...FOCUS, "OTH"]), labels: false, callouts: true,
     borders: new Map(), bordersYear: null, land: null, dots: null,
-    intro: { on: false, i: 0, timer: null }, zoom: d3.zoomIdentity,
+    intro: { on: false, i: 0, timer: null, ids: null, paused: false }, zoom: d3.zoomIdentity,
   };
 
   // ---------------------------------------------------------------- data helpers
@@ -149,6 +149,7 @@
     m.el.querySelector(".nm").textContent = displayName(m.h, st);
     m.el.setAttribute("aria-label", `${displayName(m.h, st)}: ${ctrlName(st.ctrl)} ${STATUS_NAME[st.p.st]}`);
     m.el.classList.toggle("sel", S.selected === m.h.id);
+    m.el.classList.toggle("hl", !!(S.intro.ids && S.intro.ids.has(m.h.id)));
   }
 
   // callouts
@@ -283,7 +284,9 @@
       const rad = (SIZE[h.kind] || 9) / 2 / Math.sqrt(k) + 0.5;
       drawBubble(ctx, xy[0], xy[1], rad, st, k);
       flat.hits.push({ id: h.id, x: xy[0], y: xy[1] });
-      if (S.labels && h.kind === "territory" || S.selected === h.id) sel.push([h, st, xy, rad]);
+      const hl = S.intro.ids && S.intro.ids.has(h.id);
+      if (hl) { ctx.beginPath(); ctx.arc(xy[0], xy[1], rad + 5 / k, 0, 6.283); ctx.strokeStyle = "#c8dbff"; ctx.lineWidth = 1 / k; ctx.stroke(); }
+      if (S.labels && h.kind === "territory" || S.selected === h.id || hl) sel.push([h, st, xy, rad]);
     }
     ctx.font = `${10.5 / k}px "IBM Plex Mono", ui-monospace, monospace`;
     ctx.textBaseline = "middle";
@@ -414,7 +417,8 @@
       const what = e.to ? (e.to === "SOV" ? "Independent" : `${ctrlName(e.to)} ${STATUS_NAME[e.st]}`) : "Merged";
       const nm = h.name.split(" / ")[e.to === "SOV" ? h.name.split(" / ").length - 1 : 0];
       const detail = !e.to || e.to === "SOV" || e.label.toLowerCase().includes((STATUS_NAME[e.st] || "~").split(" ")[0]) ? e.label : `${what} · ${e.label}`;
-      const code = e.to ? (e.from ? `${e.from === "GBRFRA" ? "CON" : e.from}>${e.to === "GBRFRA" ? "CON" : e.to}` : e.to) : `${e.from}>×`;
+      const cc = (x) => (x === "GBRFRA" ? "CON" : x);
+      const code = e.to ? (e.from && e.from !== e.to ? `${cc(e.from)}>${cc(e.to)}` : cc(e.to)) : `${cc(e.from)}>×`;
       return `<li><button data-id="${h.id}" style="--c:${c}"><span class="t">${fmtYear(e.t)}</span><span class="c">${escapeHtml(code)}</span><span class="m"><b>${escapeHtml(nm)}</b> <span>${escapeHtml(detail)}</span></span></button></li>`;
     }).join("");
     list.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { select(b.dataset.id); flyTo(S.byId.get(b.dataset.id)); }));
@@ -546,35 +550,104 @@
 
   // ---------------------------------------------------------------- intro tour
   const TOUR = [
-    { y: 1800, lat: 15, lng: 10, alt: 2.5, t: "1800 · Four empires at the threshold", x: "Britain, France, Portugal and the Netherlands hold scattered ports, islands and plantation colonies. Portugal still rules Brazil; the Dutch East India Company has just been dissolved." },
-    { y: 1811, lat: -5, lng: 95, alt: 1.9, t: "1811 · War moves the map", x: "With the Netherlands annexed by Napoleon, Britain seizes Java. Across the Napoleonic Wars, British forces occupy Dutch, French and Danish holdings from the Caribbean to India." },
-    { y: 1815, lat: -20, lng: 40, alt: 2.1, t: "1815 · The peace settlement", x: "The Cape, Ceylon, Mauritius, Malta and British Guiana stay British. Java, Réunion and the Caribbean islands are handed back." },
-    { y: 1825, lat: 8, lng: 95, alt: 1.6, t: "1825 · The Anglo-Dutch swap", x: "Under the 1824 treaty, Malacca and Chinsurah pass to Britain and the Netherlands keeps the archipelago: the line that later divides Malaysia from Indonesia." },
-    { y: 1858, lat: 20, lng: 80, alt: 1.6, t: "1858 · From company to Crown", x: "After the 1857 uprising the East India Company is abolished and the British Crown rules India directly. French, Portuguese and Danish enclaves remain inside it." },
-    { y: 1900, lat: 3, lng: 18, alt: 2.0, t: "1900 · The partition of Africa", x: "After the Berlin Conference, nearly all of Africa is under European rule. French West and Equatorial Africa and British East and Southern Africa take shape." },
-    { y: 1923, lat: 30, lng: 40, alt: 1.8, t: "1923 · Mandates", x: "Germany's colonies and the Ottoman Arab provinces become League of Nations mandates under Britain, France and the dominions." },
-    { y: 1943, lat: 5, lng: 110, alt: 1.8, t: "1943 · Japanese occupation", x: "Japan holds Burma, Malaya, Singapore, Hong Kong, the Dutch East Indies and Portuguese Timor. Colonial authority in Asia never fully recovers." },
-    { y: 1948, lat: 18, lng: 78, alt: 1.7, t: "1947–48 · South Asia", x: "India and Pakistan become dominions, then Burma and Ceylon follow. The French and Portuguese enclaves outlast the Raj by years." },
-    { y: 1960, lat: 5, lng: 10, alt: 2.0, t: "1960 · The year of Africa", x: "Seventeen African states become independent, most of them former French colonies that passed through a brief stage of autonomy in the French Community." },
-    { y: 1975, lat: -10, lng: 25, alt: 2.1, t: "1975 · The end of Portugal's empire", x: "After the Carnation Revolution, Angola, Mozambique, Cape Verde and São Tomé become independent. Timor-Leste is invaded by Indonesia." },
-    { y: 2025, lat: 10, lng: -40, alt: 2.4, t: "2025 · What remains", x: "Ringed markers show territories that are still dependent or integrated: French overseas departments, the Dutch Caribbean and British Overseas Territories." },
+    { y: 1800, ids: ["bra","idn","cap","lka","ind"], lat: 15, lng: 10, alt: 2.5, t: "1800 · Four empires at the threshold", x: "Britain, France, Portugal and the Netherlands hold scattered ports, islands and plantation colonies. Portugal still rules Brazil; the Dutch East India Company has just been dissolved." },
+    { y: 1811, ids: ["idn","reu","mus","glp","trq","srm"], lat: -5, lng: 95, alt: 1.9, t: "1811 · War moves the map", x: "With the Netherlands annexed by Napoleon, Britain seizes Java. Across the Napoleonic Wars, British forces occupy Dutch, French and Danish holdings from the Caribbean to India." },
+    { y: 1815, ids: ["cap","lka","mus","mlt","guy"], lat: -20, lng: 40, alt: 2.1, t: "1815 · The peace settlement", x: "The Cape, Ceylon, Mauritius, Malta and British Guiana stay British. Java, Réunion and the Caribbean islands are handed back." },
+    { y: 1825, ids: ["mlc","chn","pul","idn"], lat: 8, lng: 95, alt: 1.6, t: "1825 · The Anglo-Dutch swap", x: "Under the 1824 treaty, Malacca and Chinsurah pass to Britain and the Netherlands keeps the archipelago: the line that later divides Malaysia from Indonesia." },
+    { y: 1858, ids: ["ind","pdy","goa","trq"], lat: 20, lng: 80, alt: 1.6, t: "1858 · From company to Crown", x: "After the 1857 uprising the East India Company is abolished and the British Crown rules India directly. French, Portuguese and Danish enclaves remain inside it." },
+    { y: 1900, ids: ["nga","ken","sen","cmr","zwe","mdg"], lat: 3, lng: 18, alt: 2.0, t: "1900 · The partition of Africa", x: "After the Berlin Conference, nearly all of Africa is under European rule. French West and Equatorial Africa and British East and Southern Africa take shape." },
+    { y: 1923, ids: ["pse","irq","syr","tgo","tza","nam"], lat: 30, lng: 40, alt: 1.8, t: "1923 · Mandates", x: "Germany's colonies and the Ottoman Arab provinces become League of Nations mandates under Britain, France and the dominions." },
+    { y: 1943, ids: ["mmr","fms","sgp","hkg","idn","tls"], lat: 5, lng: 110, alt: 1.8, t: "1943 · Japanese occupation", x: "Japan holds Burma, Malaya, Singapore, Hong Kong, the Dutch East Indies and Portuguese Timor. Colonial authority in Asia never fully recovers." },
+    { y: 1948, ids: ["ind","pak","mmr","lka","pdy","goa"], lat: 18, lng: 78, alt: 1.7, t: "1947–48 · South Asia", x: "India and Pakistan become dominions, then Burma and Ceylon follow. The French and Portuguese enclaves outlast the Raj by years." },
+    { y: 1960, ids: ["sen","civ","cmr","mdg","nga","sml"], lat: 5, lng: 10, alt: 2.0, t: "1960 · The year of Africa", x: "Seventeen African states become independent, most of them former French colonies that passed through a brief stage of autonomy in the French Community." },
+    { y: 1975, ids: ["ago","moz","cpv","stp","tls"], lat: -10, lng: 25, alt: 2.1, t: "1975 · The end of Portugal's empire", x: "After the Carnation Revolution, Angola, Mozambique, Cape Verde and São Tomé become independent. Timor-Leste is invaded by Indonesia." },
+    { y: 2025, ids: ["reu","glp","cuw","gib","flk","ncl"], lat: 10, lng: -40, alt: 2.4, t: "2025 · What remains", x: "Ringed markers show territories that are still dependent or integrated: French overseas departments, the Dutch Caribbean and British Overseas Territories." },
   ];
+  const DWELL = 9000;
   function runIntro(i = 0) {
     stopIntro(false);
-    S.intro.on = true; S.intro.i = i;
+    const I = S.intro;
+    I.on = true; I.i = i; I.paused = false;
     play(false); select(null);
     const s = TOUR[i];
+    I.ids = new Set(s.ids);
     $("intro").hidden = false;
     $("intro-step").textContent = `INTRO ${String(i + 1).padStart(2, "0")}/${TOUR.length}`;
     $("intro-title").textContent = s.t;
     $("intro-text").textContent = s.x;
-    setYear(s.y);
+    $("intro-pause-ico").setAttribute("href", "#i-pause");
+    $("intro-pause").setAttribute("aria-label", "Pause tour");
+    $("intro-dots").innerHTML = TOUR.map((_, k) => `<button class="${k < i ? "done" : k === i ? "cur" : ""}" data-k="${k}" aria-label="Go to stop ${k + 1}: ${escapeHtml(TOUR[k].t)}"></button>`).join("");
+    $("intro-dots").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => runIntro(+b.dataset.k)));
     if (S.view === "globe") globe.pointOfView({ lat: s.lat, lng: s.lng, altitude: s.alt }, 1800);
-    S.intro.timer = setTimeout(() => (i + 1 < TOUR.length ? runIntro(i + 1) : stopIntro(true)), 7000);
+    // sweep the slider through the years so the changes are visible
+    animateYear(s.y, () => {
+      $("intro-ids").innerHTML = s.ids.map((id) => {
+        const h = S.byId.get(id), st = stateOf(h, S.year);
+        return `<button data-id="${id}" style="--c:${st ? st.color : "var(--sov)"}"><i></i>${escapeHtml(displayName(h, st))}</button>`;
+      }).join("");
+      $("intro-ids").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { pauseIntro(true); select(b.dataset.id); }));
+      startDwell(DWELL);
+    });
+  }
+  function animateYear(target, done) {
+    const I = S.intro;
+    cancelAnimationFrame(I.raf);
+    const from = S.year, dist = target - from;
+    if (!dist) { setYear(target); done(); return; }
+    const dur = Math.min(2200, 300 + Math.abs(dist) * 40), t0 = performance.now();
+    const tick = (now) => {
+      if (!I.on) return;
+      const k = Math.min(1, (now - t0) / dur);
+      const y = Math.round(from + dist * (1 - Math.pow(1 - k, 3)));
+      if (y !== S.year) setYear(y);
+      if (k < 1) I.raf = requestAnimationFrame(tick); else { setYear(target); done(); }
+    };
+    $("intro-hint").textContent = `moving to ${target}…`;
+    $("intro-fill").style.width = "0%";
+    I.raf = requestAnimationFrame(tick);
+  }
+  function startDwell(ms) {
+    const I = S.intro;
+    I.left = ms; I.t0 = performance.now();
+    clearTimeout(I.timer); cancelAnimationFrame(I.prog);
+    I.timer = setTimeout(() => (I.i + 1 < TOUR.length ? runIntro(I.i + 1) : endIntro()), ms);
+    const prog = (now) => {
+      if (!I.on || I.paused) return;
+      const left = Math.max(0, I.left - (now - I.t0));
+      $("intro-fill").style.width = `${(1 - left / DWELL) * 100}%`;
+      $("intro-hint").textContent = I.i + 1 < TOUR.length ? `next stop in ${Math.ceil(left / 1000)}s` : `tour ends in ${Math.ceil(left / 1000)}s`;
+      I.prog = requestAnimationFrame(prog);
+    };
+    I.prog = requestAnimationFrame(prog);
+  }
+  function pauseIntro(force) {
+    const I = S.intro;
+    if (!I.on) return;
+    const pause = force === undefined ? !I.paused : force;
+    if (pause === I.paused) return;
+    I.paused = pause;
+    $("intro-pause-ico").setAttribute("href", pause ? "#i-play" : "#i-pause");
+    $("intro-pause").setAttribute("aria-label", pause ? "Resume tour" : "Pause tour");
+    if (pause) {
+      clearTimeout(I.timer); cancelAnimationFrame(I.prog);
+      I.left = Math.max(0, I.left - (performance.now() - I.t0));
+      $("intro-hint").textContent = "paused · press play to continue";
+    } else startDwell(I.left || DWELL);
+  }
+  function endIntro() {
+    stopIntro(false);
+    $("intro-hint").textContent = "tour complete · explore freely or replay";
+    $("intro-fill").style.width = "100%";
+    $("intro-pause-ico").setAttribute("href", "#i-play");
+    $("intro-pause").setAttribute("aria-label", "Replay tour");
+    S.intro.ended = true;
   }
   function stopIntro(hide = true) {
-    clearTimeout(S.intro.timer); S.intro.on = false;
-    if (hide) $("intro").hidden = true;
+    const I = S.intro;
+    clearTimeout(I.timer); cancelAnimationFrame(I.raf); cancelAnimationFrame(I.prog);
+    I.on = false; I.ended = false;
+    if (hide) { $("intro").hidden = true; I.ids = null; if (S.data) setYear(S.year); }
   }
 
   // ---------------------------------------------------------------- view switching
@@ -681,6 +754,9 @@
     $("p-close").addEventListener("click", () => select(null));
     $("btn-intro").addEventListener("click", () => runIntro(0));
     $("intro-stop").addEventListener("click", () => stopIntro(true));
+    $("intro-prev").addEventListener("click", () => runIntro(Math.max(0, S.intro.i - 1)));
+    $("intro-next").addEventListener("click", () => (S.intro.i + 1 < TOUR.length ? runIntro(S.intro.i + 1) : endIntro()));
+    $("intro-pause").addEventListener("click", () => (S.intro.ended || !S.intro.on ? runIntro(S.intro.ended ? 0 : S.intro.i) : pauseIntro()));
     $("btn-table").addEventListener("click", openTable);
     $("table-close").addEventListener("click", () => $("table-dlg").close());
     $("table-filter").addEventListener("input", () => { T.cur = 0; renderTable(); });
@@ -702,6 +778,14 @@
     });
     document.addEventListener("keydown", (e) => {
       if (e.target.closest("input[type=search], dialog")) return;
+      if (!$("intro").hidden && ["ArrowLeft", "ArrowRight", " ", "Escape"].includes(e.key) && e.target.id !== "year") {
+        e.preventDefault();
+        if (e.key === "ArrowRight") $("intro-next").click();
+        else if (e.key === "ArrowLeft") $("intro-prev").click();
+        else if (e.key === " ") $("intro-pause").click();
+        else stopIntro(true);
+        return;
+      }
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         if (e.target.id === "year") return; // native slider handles it
         e.preventDefault(); stopIntro();

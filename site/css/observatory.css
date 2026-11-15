@@ -256,10 +256,34 @@ a.pg:hover { color: var(--phos-hi); }
 .soon-chip { font-size: 9.5px; letter-spacing: 0.1em; color: var(--text-dim); border: 1px dashed var(--line-dim); padding: 3px 6px; display: inline-block; }
 
 /* intro */
-.intro { left: 50%; transform: translateX(-50%); bottom: 18px; width: min(580px, calc(100% - 36px)); }
+.intro { left: 50%; transform: translateX(-50%); bottom: 18px; width: min(600px, calc(100% - 36px)); }
 .intro-body { padding: 10px 14px 14px; }
 .intro h3 { margin: 0 0 6px; font-family: var(--f-display); font-weight: 500; font-size: 22px; color: #efe9dc; }
 .intro p { margin: 0; font-family: var(--f-sans); font-size: 13px; line-height: 1.55; }
+.intro-focus { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; margin-top: 10px; font-size: 11px; }
+.intro-focus .k { font-size: 9.5px; letter-spacing: 0.16em; color: var(--phos-dim); margin-right: 4px; }
+.intro-focus button { background: none; border: 1px solid var(--line-dim); padding: 1px 6px; font-size: 11px; color: var(--phos-hi); }
+.intro-focus button i { display: inline-block; width: 7px; height: 7px; margin-right: 5px; background: var(--c); }
+.intro-focus button:hover { border-color: var(--phos); }
+.intro-ctrl { display: flex; align-items: center; gap: 4px; padding: 0 14px 12px; }
+.intro-ctrl .tp { height: 28px; min-width: 28px; }
+.intro-ctrl .tp svg { width: 11px; height: 11px; }
+.intro-prog { flex: 1; min-width: 0; margin-left: 10px; display: flex; flex-direction: column; gap: 4px; }
+.intro-prog .dots { display: flex; gap: 4px; }
+.intro-prog .dots button { flex: 1; height: 6px; padding: 0; border: 1px solid var(--phos-dim); background: transparent; }
+.intro-prog .dots button.done { background: var(--phos-dim); }
+.intro-prog .dots button.cur { background: var(--phos-hi); border-color: var(--phos-hi); }
+.intro-prog .bar-track { height: 2px; background: var(--line-dim); }
+.intro-prog .bar-track span { display: block; height: 100%; width: 0; background: var(--phos-hi); box-shadow: var(--glow); }
+.intro-prog small { font-size: 9.5px; letter-spacing: 0.1em; color: var(--text-dim); }
+.mk.hl { z-index: 2; }
+.mk.hl .b { transform: scale(1.5); }
+.mk.hl::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: calc(var(--s) + 14px); height: calc(var(--s) + 14px);
+  transform: translate(-50%, -50%); border: 1px solid var(--phos-hi); border-radius: 50%; animation: hl 1.6s ease-out infinite; pointer-events: none;
+}
+.mk.hl .nm { display: block; }
+@keyframes hl { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.7); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); } }
 
 /* ---------- markers ---------- */
 .b { --c: var(--sov); display: block; border-radius: 50%; position: relative; }
@@ -389,6 +413,6 @@ a.pg:hover { color: var(--phos-hi); }
   .term-keys { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mk.pulse .b { animation: none; }
+  .mk.pulse .b, .mk.hl::after { animation: none; }
   .loader, .mk, .callout, .mbar span { transition: none; }
 }
