@@ -1,0 +1,178 @@
+holding_id,name,kind,lat,lon,iso3,region,coldat_country
+jam,Jamaica,island,18.0,-76.8,JAM,Caribbean,Jamaica
+brb,Barbados,island,13.1,-59.6,BRB,Caribbean,Barbados
+tri,Trinidad,island,10.65,-61.5,TTO,Caribbean,Trinidad & Tobago
+tob,Tobago,island,11.25,-60.7,TTO,Caribbean,
+bhs,Bahamas,island,25.05,-77.35,BHS,Caribbean,Bahamas
+blz,British Honduras / Belize,territory,17.25,-88.77,BLZ,Caribbean,Belize
+guy,Demerara-Essequibo / British Guiana,territory,6.8,-58.16,GUY,South America,Guyana
+sur,Suriname,territory,5.85,-55.2,SUR,South America,Suriname
+grd,Grenada,island,12.05,-61.75,GRD,Caribbean,Grenada
+vct,Saint Vincent,island,13.16,-61.23,VCT,Caribbean,St. Vincent & Grenadines
+lca,Saint Lucia,island,14.01,-60.99,LCA,Caribbean,St. Lucia
+dma,Dominica,island,15.3,-61.39,DMA,Caribbean,Dominica
+atg,Antigua and Barbuda,island,17.12,-61.85,ATG,Caribbean,Antigua & Barbuda
+kna,Saint Kitts and Nevis,island,17.3,-62.72,KNA,Caribbean,St. Kitts & Nevis
+aia,Anguilla,island,18.22,-63.06,AIA,Caribbean,
+msr,Montserrat,island,16.7,-62.2,MSR,Caribbean,
+vgb,British Virgin Islands,island,18.43,-64.62,VGB,Caribbean,
+cym,Cayman Islands,island,19.3,-81.38,CYM,Caribbean,
+tca,Turks and Caicos Islands,island,21.46,-71.14,TCA,Caribbean,
+bmu,Bermuda,island,32.3,-64.78,BMU,Atlantic,
+flk,Falkland Islands,island,-51.7,-57.85,FLK,Atlantic,
+shn,Saint Helena,island,-15.93,-5.72,SHN,Atlantic,
+gib,Gibraltar,enclave,36.14,-5.35,GIB,Europe,
+mlt,Malta,island,35.9,14.51,MLT,Europe,Malta
+cyp,Cyprus,island,35.17,33.36,CYP,Europe,Cyprus
+irl,Ireland,island,53.35,-6.26,IRL,Europe,Ireland
+ion,Ionian Islands,island,39.62,19.92,GRC,Europe,
+hel,Heligoland,island,54.18,7.89,DEU,Europe,
+mnr,Menorca,island,39.89,4.26,ESP,Europe,
+dwi,Danish West Indies,island,18.34,-64.93,VIR,Caribbean,
+can,British North America / Canada,territory,45.42,-75.7,CAN,North America,Canada
+nfl,Newfoundland,island,47.56,-52.71,CAN,North America,
+mos,Mosquito Coast,territory,12.0,-83.75,NIC,Caribbean,
+lou,Louisiana,territory,29.95,-90.07,USA,North America,
+sdo,Saint-Domingue / Haiti,territory,18.54,-72.34,HTI,Caribbean,Haiti
+glp,Guadeloupe,island,16.24,-61.53,GLP,Caribbean,
+mtq,Martinique,island,14.6,-61.07,MTQ,Caribbean,
+guf,French Guiana,territory,4.93,-52.33,GUF,South America,
+spm,Saint-Pierre and Miquelon,island,46.78,-56.18,SPM,North America,
+blm,Saint Barthélemy,island,17.9,-62.85,BLM,Caribbean,
+fpo,Fernando Pó (Bioko),island,3.75,8.78,GNQ,Central Africa,Equatorial Guinea
+mvd,Montevideo / Banda Oriental (Uruguay),territory,-34.9,-56.19,URY,South America,Uruguay
+bra,Brazil,territory,-22.9,-43.2,BRA,South America,Brazil
+cuw,Curaçao,island,12.11,-68.93,CUW,Caribbean,
+abw,Aruba,island,12.52,-70.03,ABW,Caribbean,
+sxm,Sint Maarten,island,18.03,-63.05,SXM,Caribbean,
+sle,Sierra Leone,territory,8.48,-13.23,SLE,West Africa,Sierra Leone
+gmb,Gambia,territory,13.45,-16.58,GMB,West Africa,Gambia
+gha,Gold Coast / Ghana,territory,5.55,-0.2,GHA,West Africa,Ghana
+elm,Dutch Gold Coast (Elmina),enclave,5.08,-1.35,GHA,West Africa,
+chb,Danish Gold Coast (Christiansborg),enclave,5.54,-0.18,GHA,West Africa,
+tgb,British Togoland,territory,7.1,0.45,GHA,West Africa,
+lag,Lagos,enclave,6.45,3.4,NGA,West Africa,
+nga,Nigeria,territory,9.06,7.49,NGA,West Africa,Nigeria
+cmb,British Cameroons,territory,4.15,9.24,CMR,Central Africa,
+cmr,Kamerun / Cameroun,territory,3.87,11.52,CMR,Central Africa,Cameroon
+tgo,Togoland / Togo,territory,6.13,1.22,TGO,West Africa,Togo
+sen,Senegal,territory,14.69,-17.45,SEN,West Africa,Senegal
+mrt,Mauritania,territory,18.08,-15.98,MRT,West Africa,Mauritania
+mli,French Sudan / Mali,territory,12.64,-8.0,MLI,West Africa,Mali
+gin,French Guinea / Guinea,territory,9.51,-13.71,GIN,West Africa,Guinea
+civ,Côte d'Ivoire,territory,5.32,-4.03,CIV,West Africa,Côte d’Ivoire
+bfa,Upper Volta / Burkina Faso,territory,12.37,-1.52,BFA,West Africa,Burkina Faso
+ner,Niger,territory,13.51,2.11,NER,West Africa,Niger
+ben,Dahomey / Benin,territory,6.5,2.6,BEN,West Africa,Benin
+aju,São João Baptista de Ajudá,enclave,6.36,2.09,BEN,West Africa,
+gab,Gabon,territory,0.39,9.45,GAB,Central Africa,Gabon
+cog,French Congo / Congo,territory,-4.27,15.28,COG,Central Africa,Congo - Brazzaville
+caf,Ubangi-Shari / Central African Republic,territory,4.36,18.56,CAF,Central Africa,Central African Republic
+tcd,Chad,territory,12.13,15.06,TCD,Central Africa,Chad
+dza,Algeria,territory,36.75,3.06,DZA,North Africa,Algeria
+tun,Tunisia,territory,36.8,10.18,TUN,North Africa,Tunisia
+mar,Morocco,territory,34.02,-6.84,MAR,North Africa,Morocco
+egy,Egypt,territory,30.04,31.24,EGY,North Africa,Egypt
+sdn,Sudan,territory,15.6,32.53,SDN,East Africa,Sudan
+lby,Libya,territory,32.89,13.19,LBY,North Africa,Libya
+eri,Eritrea,territory,15.32,38.93,ERI,East Africa,Eritrea
+som,Italian Somaliland,territory,2.05,45.32,SOM,East Africa,
+sml,British Somaliland,territory,9.56,44.06,SOM,East Africa,Somalia
+dji,French Somaliland / Djibouti,territory,11.59,43.15,DJI,East Africa,Djibouti
+ken,Kenya,territory,-1.29,36.82,KEN,East Africa,Kenya
+uga,Uganda,territory,0.35,32.58,UGA,East Africa,Uganda
+tza,Tanganyika,territory,-6.8,39.28,TZA,East Africa,Tanzania
+zan,Zanzibar,island,-6.16,39.19,TZA,East Africa,
+mdg,Madagascar,island,-18.88,47.51,MDG,Indian Ocean,Madagascar
+com,Comoros,island,-11.7,43.26,COM,Indian Ocean,Comoros
+myt,Mayotte,island,-12.78,45.23,MYT,Indian Ocean,
+reu,Réunion,island,-20.88,55.45,REU,Indian Ocean,
+mus,Mauritius,island,-20.16,57.5,MUS,Indian Ocean,Mauritius
+syc,Seychelles,island,-4.62,55.45,SYC,Indian Ocean,Seychelles
+iot,Chagos / British Indian Ocean Territory,island,-7.31,72.41,IOT,Indian Ocean,
+cap,Cape Colony / South Africa,territory,-33.92,18.42,ZAF,Southern Africa,South Africa
+nat,Natal,territory,-29.86,31.03,ZAF,Southern Africa,
+trv,Transvaal,territory,-25.75,28.19,ZAF,Southern Africa,
+ofs,Orange Free State,territory,-29.12,26.21,ZAF,Southern Africa,
+lso,Basutoland / Lesotho,territory,-29.31,27.48,LSO,Southern Africa,Lesotho
+bwa,Bechuanaland / Botswana,territory,-24.65,25.91,BWA,Southern Africa,Botswana
+swz,Swaziland / Eswatini,territory,-26.31,31.14,SWZ,Southern Africa,Eswatini
+zwe,Southern Rhodesia / Zimbabwe,territory,-17.83,31.05,ZWE,Southern Africa,Zimbabwe
+zmb,Northern Rhodesia / Zambia,territory,-15.42,28.28,ZMB,Southern Africa,Zambia
+mwi,Nyasaland / Malawi,territory,-13.96,33.79,MWI,Southern Africa,Malawi
+nam,South West Africa / Namibia,territory,-22.56,17.08,NAM,Southern Africa,Namibia
+ago,Angola,territory,-8.84,13.23,AGO,Southern Africa,Angola
+moz,Mozambique,territory,-25.97,32.57,MOZ,Southern Africa,Mozambique
+gnb,Portuguese Guinea / Guinea-Bissau,territory,11.86,-15.6,GNB,West Africa,Guinea-Bissau
+cpv,Cape Verde,island,14.93,-23.51,CPV,West Africa,Cape Verde
+stp,São Tomé and Príncipe,island,0.34,6.73,STP,Central Africa,São Tomé & Príncipe
+pse,Palestine,territory,31.78,35.22,PSE,Middle East,Israel
+jor,Transjordan / Jordan,territory,31.95,35.93,JOR,Middle East,Jordan
+irq,Iraq,territory,33.31,44.36,IRQ,Middle East,Iraq
+syr,Syria,territory,33.51,36.29,SYR,Middle East,Syria
+lbn,Lebanon,territory,33.89,35.5,LBN,Middle East,Lebanon
+ade,Aden,enclave,12.79,45.03,YEM,Middle East,Yemen
+kwt,Kuwait,territory,29.37,47.98,KWT,Middle East,Kuwait
+bhr,Bahrain,island,26.23,50.59,BHR,Middle East,Bahrain
+qat,Qatar,territory,25.29,51.53,QAT,Middle East,Qatar
+are,Trucial States / UAE,territory,24.45,54.38,ARE,Middle East,United Arab Emirates
+ind,British India / India,territory,28.61,77.21,IND,South Asia,India
+pak,Sindh-Punjab / Pakistan,territory,24.86,67.0,PAK,South Asia,Pakistan
+bgd,Bengal / Bangladesh,territory,23.81,90.41,BGD,South Asia,Bangladesh
+hyd,Hyderabad (princely state),territory,17.39,78.49,IND,South Asia,
+mys_ps,Mysore (princely state),territory,12.3,76.64,IND,South Asia,
+skm,Sikkim,territory,27.33,88.61,IND,South Asia,
+btn,Bhutan,territory,27.47,89.64,BTN,South Asia,Bhutan
+pdy,Pondichéry,enclave,11.93,79.83,IND,South Asia,
+cdn,Chandernagore,enclave,22.87,88.37,IND,South Asia,
+mah,Mahé,enclave,11.7,75.54,IND,South Asia,
+kkl,Karikal,enclave,10.92,79.84,IND,South Asia,
+yan,Yanaon,enclave,16.73,82.21,IND,South Asia,
+goa,Goa,enclave,15.5,73.83,IND,South Asia,
+dam,Daman,enclave,20.41,72.83,IND,South Asia,
+diu,Diu,enclave,20.71,70.98,IND,South Asia,
+dnh,Dadra and Nagar Haveli,enclave,20.27,73.02,IND,South Asia,
+coc,Cochin,enclave,9.97,76.24,IND,South Asia,
+chn,Chinsurah,enclave,22.9,88.39,IND,South Asia,
+pul,Pulicat (Dutch Coromandel),enclave,13.42,80.32,IND,South Asia,
+trq,Tranquebar,enclave,11.03,79.85,IND,South Asia,
+srm,Serampore,enclave,22.75,88.34,IND,South Asia,
+lka,Ceylon / Sri Lanka,island,6.93,79.85,LKA,South Asia,Sri Lanka
+mdv,Maldives,island,4.18,73.51,MDV,South Asia,Maldives
+mmr,Burma / Myanmar,territory,16.87,96.2,MMR,Southeast Asia,Myanmar (Burma)
+pen,Penang,island,5.41,100.33,MYS,Southeast Asia,
+mlc,Malacca,enclave,2.19,102.25,MYS,Southeast Asia,
+sgp,Singapore,island,1.29,103.85,SGP,Southeast Asia,Singapore
+fms,Malay States / Malaya,territory,3.14,101.69,MYS,Southeast Asia,Malaysia
+srw,Sarawak,territory,1.55,110.34,MYS,Southeast Asia,
+nbo,North Borneo / Sabah,territory,5.98,116.07,MYS,Southeast Asia,
+brn,Brunei,territory,4.9,114.94,BRN,Southeast Asia,Brunei
+hkg,Hong Kong,enclave,22.28,114.16,HKG,East Asia,
+wei,Weihaiwei,enclave,37.51,122.12,CHN,East Asia,
+gzw,Guangzhouwan,enclave,21.27,110.36,CHN,East Asia,
+vnm_s,Cochinchina (South Vietnam),territory,10.82,106.63,VNM,Southeast Asia,Vietnam
+vnm_n,Tonkin and Annam (North Vietnam),territory,21.03,105.85,VNM,Southeast Asia,
+khm,Cambodia,territory,11.56,104.92,KHM,Southeast Asia,Cambodia
+lao,Laos,territory,17.97,102.6,LAO,Southeast Asia,Laos
+idn,Dutch East Indies / Indonesia,territory,-6.2,106.85,IDN,Southeast Asia,Indonesia
+wng,Western New Guinea,territory,-2.53,140.72,IDN,Oceania,
+tls,Portuguese Timor / Timor-Leste,island,-8.56,125.57,TLS,Southeast Asia,Timor-Leste
+mac,Macau,enclave,22.19,113.54,MAC,East Asia,
+aus,Australia,territory,-33.87,151.21,AUS,Oceania,Australia
+nzl,New Zealand,island,-41.29,174.78,NZL,Oceania,New Zealand
+fji,Fiji,island,-18.14,178.44,FJI,Oceania,Fiji
+pap,Papua,territory,-9.44,147.18,PNG,Oceania,Papua New Guinea
+ngu,German New Guinea / New Guinea,territory,-4.2,152.17,PNG,Oceania,
+slb,Solomon Islands,island,-9.43,159.95,SLB,Oceania,Solomon Islands
+kir,Gilbert Islands / Kiribati,island,1.45,172.98,KIR,Oceania,Kiribati
+tuv,Ellice Islands / Tuvalu,island,-8.52,179.2,TUV,Oceania,Tuvalu
+ton,Tonga,island,-21.14,-175.2,TON,Oceania,Tonga
+wsm,Samoa,island,-13.83,-171.76,WSM,Oceania,Samoa
+nru,Nauru,island,-0.53,166.92,NRU,Oceania,Nauru
+vut,New Hebrides / Vanuatu,island,-17.73,168.32,VUT,Oceania,Vanuatu
+pcn,Pitcairn Islands,island,-25.07,-130.1,PCN,Oceania,
+cok,Cook Islands,island,-21.21,-159.78,COK,Oceania,
+niu,Niue,island,-19.05,-169.87,NIU,Oceania,
+ncl,New Caledonia,island,-22.27,166.44,NCL,Oceania,
+pyf,French Polynesia,island,-17.53,-149.57,PYF,Oceania,
+wlf,Wallis and Futuna,island,-13.28,-176.17,WLF,Oceania,
