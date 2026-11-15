@@ -153,6 +153,10 @@ a.pg:hover { color: var(--phos-hi); }
 }
 .btn-table:hover { border-style: solid; }
 
+.credit { font-size: 11.5px; color: var(--text); }
+.credit p { margin: 0 0 4px; }
+.credit b { color: var(--phos-hi); font-weight: 500; }
+.credit a { color: var(--phos); }
 .legend { display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: var(--text); }
 .lg { display: flex; gap: 8px; align-items: center; }
 .lg .b { --c: var(--phos-hi); width: 11px; height: 11px; flex: none; }

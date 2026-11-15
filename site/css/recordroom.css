@@ -20,7 +20,7 @@ body { margin: 0; background: var(--stock); color: var(--ink); font-family: var(
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--stock); }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.topbar { --tb-bg: var(--stock); --tb-fg: var(--ink); --tb-dim: #5a5a5a; --tb-rule: var(--ink); --tb-btn-bg: var(--ink); --tb-btn-fg: var(--stock); --tb-accent: var(--ink); }
+.topbar, .sitefoot { --tb-bg: var(--stock); --tb-fg: var(--ink); --tb-dim: #5a5a5a; --tb-rule: var(--ink); --tb-btn-bg: var(--ink); --tb-btn-fg: var(--stock); --tb-accent: var(--ink); }
 
 .wrap {
   max-width: 1000px; margin: 0 auto;

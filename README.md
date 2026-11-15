@@ -1,5 +1,7 @@
 # Afterempire
 
+Created by **Dia Atal**. Contact via the site footer; corrections through [Correspondence](https://dia-quant.github.io/afterempire/correspondence).
+
 A geo-spatial, time-indexed tracker of colonial holdings and trade flows, 1800–2025, with an analysis of whether colonisers' development and planning systems shaped those of their former colonies.
 
 **Pages:** Territorial Ledger · Flows of Empire · Inherited Systems · Divergence Metrics · Terms of Account · The Archive · Correspondence
@@ -26,3 +28,6 @@ Built entirely on open data. Sources and licences are listed in The Archive.
 
 Raw downloads live in `data/raw/` and are not committed; see `docs/DECISIONS.md` and Terms of Account for sources.
 Reviewing codings: `docs/REVIEW_SHEET.md`.
+
+## Citation
+See [`CITATION.cff`](CITATION.cff). Suggested form: Atal, D. (2026). *Afterempire: colonial holdings, trade flows and inherited development systems, 1800–2025.* https://dia-quant.github.io/afterempire/
