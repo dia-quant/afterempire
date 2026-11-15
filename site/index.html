@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Territorial Ledger: colonial holdings of the British, French, Portuguese and Dutch empires, 1800–2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/observatory.css">
+</head>
+<body>
+<div id="app" class="app">
+
+  <!-- ===== Loading screen ===== -->
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <canvas id="loader-dots" width="220" height="220" aria-hidden="true"></canvas>
+    <div class="loader-text"><span>LOADING ARCHIVE</span> · <span id="loader-pct">0%</span></div>
+  </div>
+
+  <!-- ===== Left rail ===== -->
+  <aside class="rail" id="rail">
+    <div class="brand">
+      <div class="wordmark">Afterempire</div>
+      <div class="tag">TERRITORIAL LEDGER · 1800–2025</div>
+    </div>
+    <button class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="rail-body">Menu</button>
+
+    <div class="rail-body" id="rail-body">
+      <button class="btn-intro" id="btn-intro">▶ Play intro</button>
+
+      <div class="search">
+        <label for="search-input" class="lbl">Find a holding</label>
+        <input id="search-input" type="search" placeholder="Goa, Malacca, Cape Colony…" autocomplete="off">
+        <ul id="search-results" class="search-results" hidden></ul>
+      </div>
+
+      <div class="viewmode" role="group" aria-label="Projection">
+        <button id="view-globe" class="vm active" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 7h14M5 17h14"/></svg>
+          Globe
+        </button>
+        <button id="view-flat" class="vm" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6c3-2 6 2 9 0s6-2 9 0v12c-3-2-6 2-9 0s-6-2-9 0z"/><path d="M9 4.6v13M15 6v13"/></svg>
+          Flat
+        </button>
+      </div>
+
+      <nav class="pages" aria-label="Sections">
+        <div class="lbl">Observatory</div>
+        <a class="pg active" href="index.html" aria-current="page">Territorial Ledger</a>
+        <span class="pg soon" title="Built in Phase 4">Flows of Empire <em>phase 4</em></span>
+        <div class="lbl">Record Room</div>
+        <span class="pg soon" title="Built in Phase 5">Inherited Systems <em>phase 5</em></span>
+        <span class="pg soon" title="Built in Phase 5">Divergence Metrics <em>phase 5</em></span>
+        <a class="pg" href="archive.html">The Archive</a>
+        <span class="pg soon" title="Built in Phase 6">Terms of Account <em>phase 6</em></span>
+        <span class="pg soon" title="Built in Phase 6">Correspondence <em>phase 6</em></span>
+      </nav>
+
+      <div class="toggles">
+        <div class="lbl">Display</div>
+        <label class="tg"><input type="checkbox" id="tg-labels"> Labels</label>
+        <label class="tg"><input type="checkbox" id="tg-callouts" checked> Event callouts</label>
+        <label class="tg"><input type="checkbox" id="tg-contrast"> High contrast</label>
+        <button class="linkish" id="btn-table">Open ledger table</button>
+      </div>
+
+      <div class="legend">
+        <div class="lbl">Status</div>
+        <div class="lg"><i class="b solid"></i>Colony · protectorate · mandate</div>
+        <div class="lg"><i class="b ringed"></i>Integrated · still dependent</div>
+        <div class="lg"><i class="b half"></i>Self-governing · dominion</div>
+        <div class="lg"><i class="b hollow"></i>Sovereign (former holding)</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== Stage ===== -->
+  <main class="stage" id="stage">
+    <div id="globe" class="globe" aria-label="Globe of colonial holdings"></div>
+    <canvas id="flat" class="flat" hidden aria-label="Flat map of colonial holdings"></canvas>
+    <svg id="leader" class="leader" aria-hidden="true"><line id="leader-line"/><circle id="leader-dot" r="4"/></svg>
+
+    <div class="yearplate" aria-live="polite"><span id="year-big">1800</span><small id="year-sub">1,800 · holdings under rule</small></div>
+
+    <!-- Ledger feed: events of the selected year -->
+    <section class="hud feed" id="feed" aria-label="Transfers this year">
+      <div class="hud-in">
+        <header><span>LEDGER FEED</span><span id="feed-year">1800</span></header>
+        <ol id="feed-list"></ol>
+      </div>
+    </section>
+
+    <!-- Holding panel -->
+    <section class="hud panel" id="panel" hidden aria-label="Holding details">
+      <div class="hud-in">
+        <header><span id="p-code">HLD</span><button id="p-close" class="x" aria-label="Close">×</button></header>
+        <h2 id="p-name">—</h2>
+        <div class="p-meta" id="p-meta"></div>
+        <div class="p-status" id="p-status"></div>
+        <div class="p-timeline">
+          <div class="mini-lbl"><span>1800</span><span>OWNERSHIP</span><span>2025</span></div>
+          <div class="tl" id="p-tl"></div>
+        </div>
+        <div class="mini-lbl"><span>TRANSFERS</span></div>
+        <ol class="p-events" id="p-events"></ol>
+        <div class="p-foot"><span class="soon-chip">Open file → Inherited Systems · phase 5</span></div>
+      </div>
+    </section>
+
+    <!-- Intro caption -->
+    <section class="hud intro" id="intro" hidden aria-live="polite">
+      <div class="hud-in">
+        <header><span id="intro-step">INTRO 1/12</span><button id="intro-stop" class="x" aria-label="Stop intro">×</button></header>
+        <h3 id="intro-title"></h3>
+        <p id="intro-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Bottom dock ===== -->
+  <footer class="dock" id="dock">
+    <div class="filters" role="group" aria-label="Filter by empire">
+      <button class="flt on" data-emp="GBR" aria-pressed="true"><i></i>British</button>
+      <button class="flt on" data-emp="FRA" aria-pressed="true"><i></i>French</button>
+      <button class="flt on" data-emp="PRT" aria-pressed="true"><i></i>Portuguese</button>
+      <button class="flt on" data-emp="NLD" aria-pressed="true"><i></i>Dutch</button>
+      <button class="flt on" data-emp="OTH" aria-pressed="true"><i></i>Other powers</button>
+    </div>
+    <div class="timebar">
+      <div class="transport">
+        <button id="btn-play" class="tp" aria-label="Play">▶</button>
+        <button id="btn-fast" class="tp" aria-label="Fast forward" aria-pressed="false">⏩</button>
+      </div>
+      <div class="track">
+        <canvas id="density" class="density" height="28" aria-hidden="true"></canvas>
+        <input id="year" type="range" min="1800" max="2025" step="1" value="1800" aria-label="Year">
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="dock-note">Density strip: holdings under imperial rule (bars) and transfers (ticks) per year · Data: curated gazetteer, cross-checked with COLDAT · updated <span id="updated">—</span></div>
+  </footer>
+
+  <!-- ===== Ledger table (accessible equivalent) ===== -->
+  <dialog id="table-dlg" class="table-dlg" aria-labelledby="table-title">
+    <div class="hud-in">
+      <header><span id="table-title">LEDGER TABLE · <span id="table-year">1800</span></span><button class="x" id="table-close" aria-label="Close">×</button></header>
+      <div class="table-wrap"><table id="ledger-table"><thead><tr><th>Holding</th><th>Region</th><th>Controller</th><th>Status</th><th>Since</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </dialog>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.45.3/dist/globe.gl.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="js/ledger.js"></script>
+</body>
+</html>
