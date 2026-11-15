@@ -125,12 +125,19 @@
       <div class="rec-tag"><span id="p-code">HLD</span><i></i></div>
     </section>
 
-    <!-- Intro caption -->
-    <section class="frame intro" id="intro" hidden aria-live="polite">
-      <header class="bar"><span id="intro-step">INTRO 01/12</span><button id="intro-stop" class="x" aria-label="Stop intro">STOP ×</button></header>
+    <!-- Intro tour -->
+    <section class="frame intro" id="intro" hidden aria-live="polite" aria-label="Intro tour">
+      <header class="bar"><span id="intro-step">INTRO 01/12</span><button id="intro-stop" class="x" aria-label="Close intro">CLOSE ×</button></header>
       <div class="intro-body">
         <h3 id="intro-title"></h3>
         <p id="intro-text"></p>
+        <div class="intro-focus"><span class="k">IN FOCUS</span><span id="intro-ids"></span></div>
+      </div>
+      <div class="intro-ctrl">
+        <button id="intro-prev" class="tp" aria-label="Previous stop" title="Previous stop (←)"><svg><use href="#i-prev"/></svg></button>
+        <button id="intro-pause" class="tp" aria-label="Pause tour" title="Pause / resume (space)"><svg><use id="intro-pause-ico" href="#i-pause"/></svg></button>
+        <button id="intro-next" class="tp" aria-label="Next stop" title="Next stop (→)"><svg><use href="#i-next"/></svg></button>
+        <div class="intro-prog"><div class="dots" id="intro-dots"></div><div class="bar-track"><span id="intro-fill"></span></div><small id="intro-hint">next stop in 9s</small></div>
       </div>
     </section>
   </main>
