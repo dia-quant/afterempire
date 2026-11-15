@@ -1,0 +1,639 @@
+holding_id,start,end,controller,status,event,confidence
+jam,1655,1962-08-06,GBR,colony,English conquest from Spain,high
+jam,1962-08-06,,SOV,sovereign,Independence,high
+brb,1627,1966-11-30,GBR,colony,English settlement,high
+brb,1966-11-30,,SOV,sovereign,Independence,high
+tri,1498,1797-02-18,ESP,colony,Spanish rule,high
+tri,1797-02-18,1962-08-31,GBR,colony,Captured by Britain from Spain,high
+tri,1962-08-31,,SOV,sovereign,Independence as Trinidad and Tobago,high
+tob,1781,1793,FRA,colony,French rule,medium
+tob,1793,1802,GBR,occupation,British occupation,medium
+tob,1802,1803,FRA,colony,Returned to France (Peace of Amiens),medium
+tob,1803,1814,GBR,occupation,Recaptured by Britain,medium
+tob,1814,1889-01-01,GBR,colony,Ceded to Britain (Treaty of Paris),high
+bhs,1718,1973-07-10,GBR,colony,Crown colony,high
+bhs,1973-07-10,,SOV,sovereign,Independence,high
+blz,1798,1862,GBR,colony,Battle of St George's Caye secures British settlement,medium
+blz,1862,1981-09-21,GBR,colony,Crown colony of British Honduras,high
+blz,1981-09-21,,SOV,sovereign,Independence,high
+guy,1616,1796,NLD,colony,Dutch colonies of Essequibo and Demerara,high
+guy,1796,1802,GBR,occupation,British occupation,high
+guy,1802,1803,NLD,colony,Returned to the Batavian Republic,high
+guy,1803,1814,GBR,occupation,British reoccupation,high
+guy,1814,1966-05-26,GBR,colony,Ceded to Britain; British Guiana from 1831,high
+guy,1966-05-26,,SOV,sovereign,Independence as Guyana,high
+sur,1667,1799,NLD,colony,Dutch colony,high
+sur,1799,1802,GBR,occupation,British occupation,high
+sur,1802,1804,NLD,colony,Returned to the Batavian Republic,high
+sur,1804,1816,GBR,occupation,British reoccupation,high
+sur,1816,1954-12-15,NLD,colony,Returned to the Netherlands,high
+sur,1954-12-15,1975-11-25,NLD,self_governing,Constituent country of the Kingdom (Charter),high
+sur,1975-11-25,,SOV,sovereign,Independence,high
+grd,1783,1974-02-07,GBR,colony,British rule confirmed (Treaty of Versailles),high
+grd,1974-02-07,,SOV,sovereign,Independence,high
+vct,1783,1979-10-27,GBR,colony,British rule confirmed,high
+vct,1979-10-27,,SOV,sovereign,Independence,high
+lca,1784,1796,FRA,colony,French rule,medium
+lca,1796,1802,GBR,occupation,British occupation,medium
+lca,1802,1803,FRA,colony,Returned to France,medium
+lca,1803,1814,GBR,occupation,British reoccupation,medium
+lca,1814,1979-02-22,GBR,colony,Ceded to Britain (Treaty of Paris),high
+lca,1979-02-22,,SOV,sovereign,Independence,high
+dma,1783,1978-11-03,GBR,colony,British rule confirmed,high
+dma,1978-11-03,,SOV,sovereign,Independence,high
+atg,1632,1981-11-01,GBR,colony,English settlement,high
+atg,1981-11-01,,SOV,sovereign,Independence,high
+kna,1783,1983-09-19,GBR,colony,British rule confirmed,high
+kna,1983-09-19,,SOV,sovereign,Independence,high
+aia,1650,1983,GBR,colony,English settlement,high
+aia,1983,,GBR,still_dependent,British Dependent Territory,high
+msr,1632,1983,GBR,colony,English settlement,high
+msr,1983,,GBR,still_dependent,British Dependent Territory,high
+vgb,1672,1983,GBR,colony,English rule,high
+vgb,1983,,GBR,still_dependent,British Dependent Territory,high
+cym,1670,1983,GBR,colony,Ceded to England (Treaty of Madrid),high
+cym,1983,,GBR,still_dependent,British Dependent Territory,high
+tca,1799,1983,GBR,colony,Annexed to the Bahamas,medium
+tca,1983,,GBR,still_dependent,British Dependent Territory,high
+bmu,1612,1983,GBR,colony,English settlement,high
+bmu,1983,,GBR,still_dependent,British Dependent Territory,high
+flk,1833-01-03,1982-04-02,GBR,colony,British reassertion of control,high
+flk,1982-04-02,1982-06-14,ARG,occupation,Argentine invasion,high
+flk,1982-06-14,1983,GBR,colony,British recapture,high
+flk,1983,,GBR,still_dependent,British Dependent Territory,high
+shn,1659,1834,GBR,company,East India Company rule,high
+shn,1834,1983,GBR,colony,Crown colony,high
+shn,1983,,GBR,still_dependent,British Dependent Territory,high
+gib,1713,1983,GBR,colony,Ceded to Britain (Treaty of Utrecht),high
+gib,1983,,GBR,still_dependent,British Dependent Territory,high
+mlt,1798-06-12,1800-09-05,FRA,occupation,French occupation,high
+mlt,1800-09-05,1813,GBR,protectorate,British protectorate after French surrender,high
+mlt,1813,1964-09-21,GBR,colony,Crown colony,high
+mlt,1964-09-21,,SOV,sovereign,Independence,high
+cyp,1571,1878,OTT,colony,Ottoman rule,high
+cyp,1878,1914-11-05,GBR,protectorate,British administration (Cyprus Convention),high
+cyp,1914-11-05,1925,GBR,occupation,British annexation,high
+cyp,1925,1960-08-16,GBR,colony,Crown colony,high
+cyp,1960-08-16,,SOV,sovereign,Independence,high
+irl,1801-01-01,1922-12-06,GBR,integrated,Act of Union,high
+irl,1922-12-06,1937-12-29,GBR,dominion,Irish Free State,high
+irl,1937-12-29,,SOV,sovereign,Constitution of Ireland (republic 1949),high
+ion,1807,1809,FRA,occupation,French rule,medium
+ion,1809,1815,GBR,occupation,British capture,medium
+ion,1815,1864-05-21,GBR,protectorate,United States of the Ionian Islands,high
+ion,1864-05-21,,SOV,sovereign,Ceded to Greece,high
+hel,1714,1807,DNK,colony,Danish rule,high
+hel,1807,1814,GBR,occupation,British capture,high
+hel,1814,1890-08-09,GBR,colony,Ceded to Britain (Treaty of Kiel),high
+hel,1890-08-09,,DEU,integrated,Exchanged for Zanzibar (Heligoland-Zanzibar Treaty),high
+mnr,1798,1802,GBR,occupation,British occupation,high
+mnr,1802,,SOV,sovereign,Returned to Spain (Peace of Amiens),high
+dwi,1754,1801,DNK,colony,Danish colony,high
+dwi,1801,1802,GBR,occupation,British occupation,high
+dwi,1802,1807,DNK,colony,Returned to Denmark,high
+dwi,1807,1815,GBR,occupation,British reoccupation,high
+dwi,1815,1917-03-31,DNK,colony,Returned to Denmark,high
+dwi,1917-03-31,,USA,still_dependent,Sold to the United States,high
+can,1763,1867-07-01,GBR,colony,British North America,high
+can,1867-07-01,1931-12-11,GBR,dominion,Confederation,high
+can,1931-12-11,,SOV,sovereign,Statute of Westminster (patriation 1982),high
+nfl,1583,1855,GBR,colony,English claim,high
+nfl,1855,1907,GBR,self_governing,Responsible government,high
+nfl,1907,1934,GBR,dominion,Dominion of Newfoundland,high
+nfl,1934,1949-03-31,GBR,colony,Commission of Government (dominion suspended),high
+nfl,1949-03-31,,SOV,sovereign,Joins Canada,high
+mos,1740,1860,GBR,protectorate,British protectorate over the Miskito Kingdom,medium
+mos,1860,,SOV,sovereign,Treaty of Managua – transferred to Nicaragua,medium
+lou,1762,1800-10-01,ESP,colony,Spanish Louisiana,high
+lou,1800-10-01,1803-12-20,FRA,colony,Retroceded to France (Treaty of San Ildefonso),high
+lou,1803-12-20,,SOV,sovereign,Louisiana Purchase – sold to the United States,high
+sdo,1697,1804-01-01,FRA,colony,French Saint-Domingue,high
+sdo,1804-01-01,,SOV,sovereign,Haitian Revolution – independence,high
+glp,1635,1810,FRA,colony,French colony,high
+glp,1810,1813,GBR,occupation,British capture,high
+glp,1813,1814,SWE,colony,Ceded to Sweden,high
+glp,1814,1816,GBR,occupation,Returned; British reoccupation 1815-16,medium
+glp,1816,1946-03-19,FRA,colony,Returned to France,high
+glp,1946-03-19,,FRA,integrated,Overseas department,high
+mtq,1635,1794,FRA,colony,French colony,high
+mtq,1794,1802,GBR,occupation,British occupation,high
+mtq,1802,1809,FRA,colony,Returned to France,high
+mtq,1809,1814,GBR,occupation,British reoccupation,high
+mtq,1814,1946-03-19,FRA,colony,Returned to France,high
+mtq,1946-03-19,,FRA,integrated,Overseas department,high
+guf,1664,1809-01-12,FRA,colony,French colony,high
+guf,1809-01-12,1817-11-08,PRT,occupation,Portuguese-Brazilian occupation,high
+guf,1817-11-08,1946-03-19,FRA,colony,Returned to France,high
+guf,1946-03-19,,FRA,integrated,Overseas department,high
+spm,1763,1793,FRA,colony,French colony,medium
+spm,1793,1816,GBR,occupation,British occupation,medium
+spm,1816,1946,FRA,colony,Returned to France,high
+spm,1946,,FRA,still_dependent,Overseas territory / collectivity,high
+blm,1784,1878-03-16,SWE,colony,Swedish colony,high
+blm,1878-03-16,1946-03-19,FRA,colony,Sold back to France,high
+blm,1946-03-19,,FRA,integrated,Part of Guadeloupe department (collectivity 2007),high
+bra,1500,1815-12-16,PRT,colony,Portuguese colony (court in Rio from 1808),high
+bra,1815-12-16,1822-09-07,PRT,integrated,United Kingdom of Portugal Brazil and the Algarves,high
+bra,1822-09-07,,SOV,sovereign,Independence,high
+cuw,1634,1800,NLD,colony,Dutch colony,high
+cuw,1800,1803,GBR,occupation,British occupation,high
+cuw,1803,1807,NLD,colony,Returned to the Batavian Republic,high
+cuw,1807,1816,GBR,occupation,British reoccupation,high
+cuw,1816,1954-12-15,NLD,colony,Returned to the Netherlands,high
+cuw,1954-12-15,,NLD,self_governing,Netherlands Antilles (country of Curaçao 2010),high
+abw,1636,1805,NLD,colony,Dutch colony,high
+abw,1805,1816,GBR,occupation,British occupation,medium
+abw,1816,1954-12-15,NLD,colony,Returned to the Netherlands,high
+abw,1954-12-15,,NLD,self_governing,Netherlands Antilles (status aparte 1986),high
+sxm,1648,1810,NLD,colony,Dutch colony,high
+sxm,1810,1816,GBR,occupation,British occupation,high
+sxm,1816,1954-12-15,NLD,colony,Returned to the Netherlands,high
+sxm,1954-12-15,,NLD,self_governing,Netherlands Antilles (country of Sint Maarten 2010),high
+sle,1792,1808,GBR,company,Sierra Leone Company settlement,high
+sle,1808,1961-04-27,GBR,colony,Crown colony,high
+sle,1961-04-27,,SOV,sovereign,Independence,high
+gmb,1816,1965-02-18,GBR,colony,Bathurst founded,high
+gmb,1965-02-18,,SOV,sovereign,Independence,high
+gha,1750,1821,GBR,company,Company of Merchants forts,medium
+gha,1821,1957-03-06,GBR,colony,Crown control; Gold Coast Colony from 1874,high
+gha,1957-03-06,,SOV,sovereign,Independence as Ghana,high
+elm,1637,1872-04-06,NLD,colony,Dutch Gold Coast,high
+elm,1872-04-06,1957-03-06,GBR,colony,Sold to Britain (Gold Coast Treaty),high
+elm,1957-03-06,,SOV,sovereign,Part of independent Ghana,high
+chb,1661,1850-03-06,DNK,colony,Danish Gold Coast,high
+chb,1850-03-06,1957-03-06,GBR,colony,Sold to Britain,high
+chb,1957-03-06,,SOV,sovereign,Part of independent Ghana,high
+tgb,1884,1914,DEU,colony,German Togoland,high
+tgb,1914,1922,GBR,occupation,Allied occupation,high
+tgb,1922,1946,GBR,mandate,League of Nations mandate,high
+tgb,1946,1956-12-13,GBR,trust,UN trust territory,high
+tgb,1956-12-13,1957-03-06,GBR,colony,Merged with the Gold Coast after plebiscite,high
+tgb,1957-03-06,,SOV,sovereign,Part of independent Ghana,high
+lag,1861-08-06,1914-01-01,GBR,colony,Lagos annexed,high
+lag,1914-01-01,1960-10-01,GBR,colony,Amalgamated into Nigeria,high
+lag,1960-10-01,,SOV,sovereign,Part of independent Nigeria,high
+nga,1886,1900-01-01,GBR,company,Royal Niger Company charter,high
+nga,1900-01-01,1960-10-01,GBR,protectorate,Northern and Southern Nigeria protectorates; amalgamated 1914,high
+nga,1960-10-01,,SOV,sovereign,Independence,high
+cmb,1884,1916,DEU,colony,German Kamerun,high
+cmb,1916,1922,GBR,occupation,Allied occupation,high
+cmb,1922,1946,GBR,mandate,League of Nations mandate,high
+cmb,1946,1961-10-01,GBR,trust,UN trust territory,high
+cmb,1961-10-01,,SOV,sovereign,Plebiscite – north joins Nigeria; south joins Cameroon,high
+cmr,1884,1916,DEU,colony,German Kamerun,high
+cmr,1916,1922,FRA,occupation,Allied occupation,high
+cmr,1922,1946,FRA,mandate,League of Nations mandate,high
+cmr,1946,1960-01-01,FRA,trust,UN trust territory,high
+cmr,1960-01-01,,SOV,sovereign,Independence,high
+tgo,1884,1914,DEU,colony,German Togoland,high
+tgo,1914,1922,FRA,occupation,Allied occupation,high
+tgo,1922,1946,FRA,mandate,League of Nations mandate,high
+tgo,1946,1960-04-27,FRA,trust,UN trust territory,high
+tgo,1960-04-27,,SOV,sovereign,Independence,high
+sen,1659,1809,FRA,colony,Saint-Louis and Gorée (Gorée British 1800-1817),medium
+sen,1809,1817,GBR,occupation,British occupation of Saint-Louis,high
+sen,1817,1958-11-25,FRA,colony,Returned to France; French West Africa from 1895,high
+sen,1958-11-25,1960-06-20,FRA,self_governing,Autonomous republic in the French Community,high
+sen,1960-06-20,,SOV,sovereign,Independence (Mali Federation then Senegal),high
+mrt,1903,1958-11-28,FRA,colony,French protectorate then colony (1920),high
+mrt,1958-11-28,1960-11-28,FRA,self_governing,Autonomous republic in the French Community,high
+mrt,1960-11-28,,SOV,sovereign,Independence,high
+mli,1892,1958-11-24,FRA,colony,French Sudan,high
+mli,1958-11-24,1960-09-22,FRA,self_governing,Sudanese Republic in the French Community,high
+mli,1960-09-22,,SOV,sovereign,Independence,high
+gin,1891,1958-10-02,FRA,colony,French Guinea,high
+gin,1958-10-02,,SOV,sovereign,Independence after rejecting the French Community,high
+civ,1893,1958-12-04,FRA,colony,Colony of Côte d'Ivoire,high
+civ,1958-12-04,1960-08-07,FRA,self_governing,Autonomous republic in the French Community,high
+civ,1960-08-07,,SOV,sovereign,Independence,high
+bfa,1896,1958-12-11,FRA,colony,French conquest of the Mossi states; Upper Volta 1919,high
+bfa,1958-12-11,1960-08-05,FRA,self_governing,Autonomous republic in the French Community,high
+bfa,1960-08-05,,SOV,sovereign,Independence,high
+ner,1900,1958-12-18,FRA,colony,Military territory then colony (1922),high
+ner,1958-12-18,1960-08-03,FRA,self_governing,Autonomous republic in the French Community,high
+ner,1960-08-03,,SOV,sovereign,Independence,high
+ben,1894,1958-12-04,FRA,colony,Conquest of Dahomey,high
+ben,1958-12-04,1960-08-01,FRA,self_governing,Autonomous republic in the French Community,high
+ben,1960-08-01,,SOV,sovereign,Independence,high
+aju,1721,1961-07-31,PRT,colony,Portuguese fort at Ouidah,high
+aju,1961-07-31,,SOV,sovereign,Annexed by Dahomey,high
+gab,1885,1958-11-28,FRA,colony,French colony; French Equatorial Africa from 1910,high
+gab,1958-11-28,1960-08-17,FRA,self_governing,Autonomous republic in the French Community,high
+gab,1960-08-17,,SOV,sovereign,Independence,high
+cog,1882,1958-11-28,FRA,colony,Makoko treaty; Middle Congo,high
+cog,1958-11-28,1960-08-15,FRA,self_governing,Autonomous republic in the French Community,high
+cog,1960-08-15,,SOV,sovereign,Independence,high
+caf,1903,1958-12-01,FRA,colony,Ubangi-Shari,high
+caf,1958-12-01,1960-08-13,FRA,self_governing,Autonomous republic in the French Community,high
+caf,1960-08-13,,SOV,sovereign,Independence,high
+tcd,1900,1958-11-28,FRA,colony,Battle of Kousséri; military territory then colony,high
+tcd,1958-11-28,1960-08-11,FRA,self_governing,Autonomous republic in the French Community,high
+tcd,1960-08-11,,SOV,sovereign,Independence,high
+dza,1516,1830-07-05,OTT,colony,Regency of Algiers (Ottoman),high
+dza,1830-07-05,1848-11-04,FRA,colony,French conquest,high
+dza,1848-11-04,1962-07-05,FRA,integrated,Organised as French départements (Muslim majority without full citizenship),high
+dza,1962-07-05,,SOV,sovereign,Independence after the war of liberation,high
+tun,1574,1881-05-12,OTT,protectorate,Beylik of Tunis under Ottoman suzerainty,medium
+tun,1881-05-12,1956-03-20,FRA,protectorate,Treaty of Bardo,high
+tun,1956-03-20,,SOV,sovereign,Independence,high
+mar,1912-03-30,1956-03-02,FRA,protectorate,Treaty of Fez,high
+mar,1956-03-02,,SOV,sovereign,Independence,high
+egy,1517,1882-09-13,OTT,protectorate,Ottoman Egypt / Khedivate,medium
+egy,1882-09-13,1914-12-18,GBR,occupation,British occupation (veiled protectorate),high
+egy,1914-12-18,1922-02-28,GBR,protectorate,Sultanate under British protectorate,high
+egy,1922-02-28,,SOV,sovereign,Nominal independence (British troops until 1956),high
+sdn,1821,1885-01-26,OTT,colony,Turco-Egyptian rule,high
+sdn,1885-01-26,1899-01-19,SOV,sovereign,Mahdist state,high
+sdn,1899-01-19,1956-01-01,GBR,condominium,Anglo-Egyptian condominium (British-dominated),high
+sdn,1956-01-01,,SOV,sovereign,Independence,high
+lby,1551,1911-10-05,OTT,colony,Ottoman Tripolitania,high
+lby,1911-10-05,1943-02-01,ITA,colony,Italian conquest,high
+lby,1943-02-01,1951-12-24,GBR,occupation,British military administration (French in Fezzan),high
+lby,1951-12-24,,SOV,sovereign,Independence,high
+eri,1890,1941-04-01,ITA,colony,Italian Eritrea,high
+eri,1941-04-01,1952-09-15,GBR,occupation,British military administration,high
+eri,1952-09-15,,SOV,sovereign,Federated with Ethiopia (independent 1993),high
+som,1889,1941-02-25,ITA,colony,Italian Somaliland,high
+som,1941-02-25,1950-04-01,GBR,occupation,British military administration,high
+som,1950-04-01,1960-07-01,ITA,trust,UN trust territory under Italy,high
+som,1960-07-01,,SOV,sovereign,Independence; union with Somaliland,high
+sml,1884,1940-08-19,GBR,protectorate,British Somaliland,high
+sml,1940-08-19,1941-03-16,ITA,occupation,Italian occupation,high
+sml,1941-03-16,1960-06-26,GBR,protectorate,British reconquest,high
+sml,1960-06-26,,SOV,sovereign,Independence; union with Somalia,high
+dji,1884,1977-06-27,FRA,colony,French Somaliland (Afars and Issas 1967),high
+dji,1977-06-27,,SOV,sovereign,Independence,high
+ken,1888,1895-07-01,GBR,company,Imperial British East Africa Company,high
+ken,1895-07-01,1920-07-23,GBR,protectorate,East Africa Protectorate,high
+ken,1920-07-23,1963-12-12,GBR,colony,Kenya Colony,high
+ken,1963-12-12,,SOV,sovereign,Independence,high
+uga,1888,1894,GBR,company,Imperial British East Africa Company,high
+uga,1894,1962-10-09,GBR,protectorate,Uganda Protectorate,high
+uga,1962-10-09,,SOV,sovereign,Independence,high
+tza,1885,1891,DEU,company,German East Africa Company,high
+tza,1891,1916,DEU,colony,German East Africa,high
+tza,1916,1922,GBR,occupation,British occupation,high
+tza,1922,1946,GBR,mandate,League of Nations mandate,high
+tza,1946,1961-12-09,GBR,trust,UN trust territory,high
+tza,1961-12-09,,SOV,sovereign,Independence (union with Zanzibar 1964),high
+zan,1890-11-04,1963-12-10,GBR,protectorate,British protectorate (Heligoland-Zanzibar Treaty),high
+zan,1963-12-10,,SOV,sovereign,Independence (union with Tanganyika 1964),high
+mdg,1895-10-01,1896-08-06,FRA,protectorate,French protectorate,high
+mdg,1896-08-06,1942-05-05,FRA,colony,Annexed as colony,high
+mdg,1942-05-05,1943-01-08,GBR,occupation,British invasion (handed to Free France),high
+mdg,1943-01-08,1958-10-14,FRA,colony,French rule restored,high
+mdg,1958-10-14,1960-06-26,FRA,self_governing,Malagasy Republic in the French Community,high
+mdg,1960-06-26,,SOV,sovereign,Independence,high
+com,1886,1975-07-06,FRA,colony,French protectorate then colony (1912),high
+com,1975-07-06,,SOV,sovereign,Independence (Mayotte remains French),high
+myt,1843,1946,FRA,colony,French colony,high
+myt,1946,2011-03-31,FRA,still_dependent,Overseas territory / collectivity,high
+myt,2011-03-31,,FRA,integrated,Overseas department,high
+reu,1665,1810-07-09,FRA,colony,French colony (Île Bourbon),high
+reu,1810-07-09,1815-04-06,GBR,occupation,British occupation,high
+reu,1815-04-06,1946-03-19,FRA,colony,Returned to France,high
+reu,1946-03-19,,FRA,integrated,Overseas department,high
+mus,1715,1810-12-03,FRA,colony,French Île de France,high
+mus,1810-12-03,1814,GBR,occupation,British capture,high
+mus,1814,1968-03-12,GBR,colony,Ceded to Britain (Treaty of Paris),high
+mus,1968-03-12,,SOV,sovereign,Independence,high
+syc,1756,1810,FRA,colony,French colony,high
+syc,1810,1814,GBR,occupation,British occupation,high
+syc,1814,1976-06-29,GBR,colony,Ceded to Britain; separate colony 1903,high
+syc,1976-06-29,,SOV,sovereign,Independence,high
+iot,1814,1965-11-08,GBR,colony,Dependency of Mauritius,high
+iot,1965-11-08,,GBR,still_dependent,Detached as British Indian Ocean Territory (2025 treaty to transfer to Mauritius),high
+cap,1652,1795-09-16,NLD,company,Dutch East India Company Cape Colony,high
+cap,1795-09-16,1803-02-21,GBR,occupation,British occupation,high
+cap,1803-02-21,1806-01-18,NLD,colony,Batavian Republic,high
+cap,1806-01-18,1814,GBR,occupation,British reoccupation,high
+cap,1814,1872,GBR,colony,Ceded to Britain,high
+cap,1872,1910-05-31,GBR,self_governing,Responsible government,high
+cap,1910-05-31,1931-12-11,GBR,dominion,Union of South Africa,high
+cap,1931-12-11,,SOV,sovereign,Statute of Westminster (republic 1961),high
+nat,1843-05-12,1893,GBR,colony,British annexation of Natalia,high
+nat,1893,1910-05-31,GBR,self_governing,Responsible government,high
+trv,1852,1877-04-12,SOV,sovereign,South African Republic (Boer),high
+trv,1877-04-12,1881-08-03,GBR,colony,British annexation,high
+trv,1881-08-03,1900-09-01,SOV,sovereign,South African Republic restored (First Boer War),high
+trv,1900-09-01,1906,GBR,colony,British annexation (Second Boer War),high
+trv,1906,1910-05-31,GBR,self_governing,Responsible government,high
+ofs,1848,1854-02-23,GBR,colony,Orange River Sovereignty,high
+ofs,1854-02-23,1900-05-28,SOV,sovereign,Orange Free State (Boer),high
+ofs,1900-05-28,1907,GBR,colony,Orange River Colony,high
+ofs,1907,1910-05-31,GBR,self_governing,Responsible government,high
+lso,1868-03-12,1966-10-04,GBR,protectorate,Basutoland,high
+lso,1966-10-04,,SOV,sovereign,Independence,high
+bwa,1885-03-31,1966-09-30,GBR,protectorate,Bechuanaland Protectorate,high
+bwa,1966-09-30,,SOV,sovereign,Independence,high
+swz,1903,1968-09-06,GBR,protectorate,British protectorate,high
+swz,1968-09-06,,SOV,sovereign,Independence,high
+zwe,1890,1923-10-01,GBR,company,British South Africa Company,high
+zwe,1923-10-01,1965-11-11,GBR,self_governing,Self-governing colony,high
+zwe,1965-11-11,1979-12-12,RHO,self_governing,Unilateral Declaration of Independence (unrecognised settler regime),high
+zwe,1979-12-12,1980-04-18,GBR,colony,British rule restored (Lancaster House),high
+zwe,1980-04-18,,SOV,sovereign,Independence,high
+zmb,1891,1924-04-01,GBR,company,British South Africa Company,high
+zmb,1924-04-01,1964-10-24,GBR,protectorate,Northern Rhodesia Protectorate,high
+zmb,1964-10-24,,SOV,sovereign,Independence,high
+mwi,1891,1964-07-06,GBR,protectorate,British Central Africa / Nyasaland,high
+mwi,1964-07-06,,SOV,sovereign,Independence,high
+nam,1884,1915-07-09,DEU,colony,German South West Africa,high
+nam,1915-07-09,1920,ZAF,occupation,South African occupation,high
+nam,1920,1990-03-21,ZAF,mandate,League mandate (South African rule illegal after 1966),high
+nam,1990-03-21,,SOV,sovereign,Independence,high
+ago,1575,1975-11-11,PRT,colony,Portuguese Angola (overseas province 1951),high
+ago,1975-11-11,,SOV,sovereign,Independence,high
+moz,1505,1975-06-25,PRT,colony,Portuguese Mozambique (overseas province 1951),high
+moz,1975-06-25,,SOV,sovereign,Independence,high
+gnb,1630,1974-09-10,PRT,colony,Portuguese Guinea (separate colony 1879),high
+gnb,1974-09-10,,SOV,sovereign,Independence recognised,high
+cpv,1462,1975-07-05,PRT,colony,Portuguese Cape Verde,high
+cpv,1975-07-05,,SOV,sovereign,Independence,high
+stp,1470,1975-07-12,PRT,colony,Portuguese São Tomé,high
+stp,1975-07-12,,SOV,sovereign,Independence,high
+pse,1516,1917-12-09,OTT,colony,Ottoman rule,high
+pse,1917-12-09,1923-09-29,GBR,occupation,British capture of Jerusalem,high
+pse,1923-09-29,1948-05-14,GBR,mandate,British Mandate for Palestine,high
+pse,1948-05-14,,SOV,sovereign,Mandate ends; Israel declared; war and partition,high
+jor,1516,1918,OTT,colony,Ottoman rule,high
+jor,1918,1921-04-11,GBR,occupation,British occupation,high
+jor,1921-04-11,1946-05-25,GBR,mandate,Emirate of Transjordan under mandate,high
+jor,1946-05-25,,SOV,sovereign,Independence,high
+irq,1534,1917-03-11,OTT,colony,Ottoman rule,high
+irq,1917-03-11,1920,GBR,occupation,British capture of Baghdad,high
+irq,1920,1932-10-03,GBR,mandate,British Mandate for Mesopotamia,high
+irq,1932-10-03,1941-05-31,SOV,sovereign,Independence,high
+irq,1941-05-31,1947-10-26,GBR,occupation,British reoccupation (Anglo-Iraqi War),medium
+irq,1947-10-26,,SOV,sovereign,British withdrawal,medium
+syr,1516,1918-10-01,OTT,colony,Ottoman rule,high
+syr,1918-10-01,1923-09-29,FRA,occupation,Allied occupation; French from 1920,high
+syr,1923-09-29,1946-04-17,FRA,mandate,French Mandate for Syria,high
+syr,1946-04-17,,SOV,sovereign,Independence (evacuation of French troops),high
+lbn,1516,1918-10-01,OTT,colony,Ottoman rule,high
+lbn,1918-10-01,1923-09-29,FRA,occupation,Allied occupation,high
+lbn,1923-09-29,1943-11-22,FRA,mandate,French Mandate for Lebanon,high
+lbn,1943-11-22,,SOV,sovereign,Independence,high
+ade,1839-01-19,1937-04-01,GBR,colony,Captured by the East India Company; ruled from British India,high
+ade,1937-04-01,1963-01-18,GBR,colony,Crown colony,high
+ade,1963-01-18,1967-11-30,GBR,protectorate,Federation of South Arabia,high
+ade,1967-11-30,,SOV,sovereign,Independence as South Yemen,high
+kwt,1899-01-23,1961-06-19,GBR,protectorate,Anglo-Kuwaiti Agreement,high
+kwt,1961-06-19,,SOV,sovereign,Independence,high
+bhr,1861,1971-08-15,GBR,protectorate,Perpetual Truce of Peace and Friendship,high
+bhr,1971-08-15,,SOV,sovereign,Independence,high
+qat,1916,1971-09-03,GBR,protectorate,Anglo-Qatari Treaty,high
+qat,1971-09-03,,SOV,sovereign,Independence,high
+are,1820,1971-12-02,GBR,protectorate,General Maritime Treaty; Trucial States,high
+are,1971-12-02,,SOV,sovereign,Independence as the United Arab Emirates,high
+ind,1757,1858-08-02,GBR,company,East India Company rule,high
+ind,1858-08-02,1947-08-15,GBR,colony,Crown rule (British Raj),high
+ind,1947-08-15,1950-01-26,GBR,dominion,Dominion of India,high
+ind,1950-01-26,,SOV,sovereign,Republic of India,high
+pak,1843,1858-08-02,GBR,company,East India Company conquest of Sindh (Punjab 1849),high
+pak,1858-08-02,1947-08-14,GBR,colony,Crown rule (British Raj),high
+pak,1947-08-14,1956-03-23,GBR,dominion,Dominion of Pakistan,high
+pak,1956-03-23,,SOV,sovereign,Islamic Republic of Pakistan,high
+bgd,1757,1858-08-02,GBR,company,East India Company rule (Plassey),high
+bgd,1858-08-02,1947-08-14,GBR,colony,Crown rule (British Raj),high
+bgd,1947-08-14,1956-03-23,GBR,dominion,East Bengal in the Dominion of Pakistan,high
+bgd,1956-03-23,1971-12-16,SOV,sovereign,East Pakistan,high
+bgd,1971-12-16,,SOV,sovereign,Independence of Bangladesh,high
+hyd,1798,1858-08-02,GBR,protectorate,Subsidiary alliance with the East India Company,high
+hyd,1858-08-02,1948-09-18,GBR,protectorate,Princely state under British paramountcy,high
+hyd,1948-09-18,,SOV,sovereign,Annexed by India (Operation Polo),high
+mys_ps,1799,1947-08-15,GBR,protectorate,Princely state after the fall of Tipu Sultan,high
+mys_ps,1947-08-15,,SOV,sovereign,Acceded to India,high
+skm,1861,1947-08-15,GBR,protectorate,Treaty of Tumlong,high
+skm,1947-08-15,1950-12-05,SOV,sovereign,Lapse of British paramountcy,medium
+skm,1950-12-05,1975-05-16,IND,protectorate,Indian protectorate,high
+skm,1975-05-16,,SOV,sovereign,Merged into India,high
+btn,1910-01-08,1949-08-08,GBR,protectorate,Treaty of Punakha (British control of foreign affairs),medium
+btn,1949-08-08,,SOV,sovereign,Indo-Bhutan Treaty,medium
+pdy,1793,1816-12-04,GBR,occupation,British occupation,high
+pdy,1816-12-04,1954-11-01,FRA,colony,Returned to France,high
+pdy,1954-11-01,,SOV,sovereign,De facto transfer to India (de jure 1962),high
+cdn,1793,1816-12-04,GBR,occupation,British occupation,high
+cdn,1816-12-04,1950-05-02,FRA,colony,Returned to France,high
+cdn,1950-05-02,,SOV,sovereign,Transferred to India after referendum,high
+mah,1793,1816-12-04,GBR,occupation,British occupation,medium
+mah,1816-12-04,1954-11-01,FRA,colony,Returned to France,high
+mah,1954-11-01,,SOV,sovereign,De facto transfer to India,high
+kkl,1793,1816-12-04,GBR,occupation,British occupation,medium
+kkl,1816-12-04,1954-11-01,FRA,colony,Returned to France,high
+kkl,1954-11-01,,SOV,sovereign,De facto transfer to India,high
+yan,1793,1816-12-04,GBR,occupation,British occupation,medium
+yan,1816-12-04,1954-11-01,FRA,colony,Returned to France,high
+yan,1954-11-01,,SOV,sovereign,De facto transfer to India,high
+goa,1510,1799,PRT,colony,Portuguese Goa,high
+goa,1799,1813,GBR,occupation,British occupation during the Napoleonic Wars,high
+goa,1813,1961-12-19,PRT,colony,Portuguese rule restored,high
+goa,1961-12-19,,SOV,sovereign,Annexed by India,high
+dam,1559,1961-12-19,PRT,colony,Portuguese Daman,high
+dam,1961-12-19,,SOV,sovereign,Annexed by India,high
+diu,1535,1961-12-19,PRT,colony,Portuguese Diu,high
+diu,1961-12-19,,SOV,sovereign,Annexed by India,high
+dnh,1779,1954-08-02,PRT,colony,Portuguese Dadra and Nagar Haveli,high
+dnh,1954-08-02,,SOV,sovereign,Taken by pro-India forces (merged 1961),high
+coc,1663,1795-10-20,NLD,company,Dutch Malabar (VOC),high
+coc,1795-10-20,1814-08-13,GBR,occupation,British capture,high
+coc,1814-08-13,1858-08-02,GBR,company,Ceded to Britain (Anglo-Dutch Treaty 1814),high
+coc,1858-08-02,1947-08-15,GBR,colony,Crown rule,high
+coc,1947-08-15,,SOV,sovereign,Part of independent India,high
+chn,1656,1795,NLD,company,Dutch Bengal (VOC),high
+chn,1795,1817,GBR,occupation,British occupation,high
+chn,1817,1825-05-07,NLD,colony,Returned to the Netherlands,high
+chn,1825-05-07,1858-08-02,GBR,company,Exchanged with Britain (Anglo-Dutch Treaty 1824),high
+chn,1858-08-02,1947-08-15,GBR,colony,Crown rule,high
+chn,1947-08-15,,SOV,sovereign,Part of independent India,high
+pul,1610,1795,NLD,company,Dutch Coromandel (VOC),high
+pul,1795,1818,GBR,occupation,British occupation,high
+pul,1818,1825-06-01,NLD,colony,Returned to the Netherlands,high
+pul,1825-06-01,1858-08-02,GBR,company,Ceded to Britain (Anglo-Dutch Treaty 1824),high
+pul,1858-08-02,1947-08-15,GBR,colony,Crown rule,high
+pul,1947-08-15,,SOV,sovereign,Part of independent India,high
+trq,1620,1801,DNK,colony,Danish India,high
+trq,1801,1802,GBR,occupation,British occupation,high
+trq,1802,1808,DNK,colony,Returned to Denmark,high
+trq,1808,1815,GBR,occupation,British reoccupation,high
+trq,1815,1845-11-07,DNK,colony,Returned to Denmark,high
+trq,1845-11-07,1858-08-02,GBR,company,Sold to the East India Company,high
+trq,1858-08-02,1947-08-15,GBR,colony,Crown rule,high
+trq,1947-08-15,,SOV,sovereign,Part of independent India,high
+srm,1755,1801,DNK,colony,Danish Frederiksnagore,high
+srm,1801,1802,GBR,occupation,British occupation,high
+srm,1802,1808,DNK,colony,Returned to Denmark,high
+srm,1808,1815,GBR,occupation,British reoccupation,high
+srm,1815,1845-10-11,DNK,colony,Returned to Denmark,high
+srm,1845-10-11,1858-08-02,GBR,company,Sold to the East India Company,high
+srm,1858-08-02,1947-08-15,GBR,colony,Crown rule,high
+srm,1947-08-15,,SOV,sovereign,Part of independent India,high
+lka,1658,1796-02-16,NLD,company,Dutch Ceylon (VOC),high
+lka,1796-02-16,1802-03-25,GBR,occupation,British capture of Colombo,high
+lka,1802-03-25,1948-02-04,GBR,colony,Crown colony (Treaty of Amiens; Kandy annexed 1815),high
+lka,1948-02-04,1972-05-22,GBR,dominion,Dominion of Ceylon,high
+lka,1972-05-22,,SOV,sovereign,Republic of Sri Lanka,high
+mdv,1887-12-16,1965-07-26,GBR,protectorate,British protectorate,high
+mdv,1965-07-26,,SOV,sovereign,Independence,high
+mmr,1826-02-24,1858-08-02,GBR,company,Treaty of Yandabo (Arakan and Tenasserim); Lower Burma 1852,high
+mmr,1858-08-02,1937-04-01,GBR,colony,Province of British India (Upper Burma 1885),high
+mmr,1937-04-01,1942-05-01,GBR,colony,Separate crown colony,high
+mmr,1942-05-01,1945-05-03,JPN,occupation,Japanese occupation,high
+mmr,1945-05-03,1948-01-04,GBR,colony,British return,high
+mmr,1948-01-04,,SOV,sovereign,Independence,high
+pen,1786-08-11,1858-08-02,GBR,company,East India Company settlement (Straits Settlements 1826),high
+pen,1858-08-02,1941-12-19,GBR,colony,Straits Settlements (crown colony 1867),high
+pen,1941-12-19,1945-09-03,JPN,occupation,Japanese occupation,high
+pen,1945-09-03,1957-08-31,GBR,colony,British return; Malayan Union / Federation,high
+pen,1957-08-31,,SOV,sovereign,Independence of Malaya,high
+mlc,1641,1795-08-17,NLD,company,Dutch Malacca (VOC),high
+mlc,1795-08-17,1818,GBR,occupation,British occupation,high
+mlc,1818,1825-03-01,NLD,colony,Returned to the Netherlands,high
+mlc,1825-03-01,1858-08-02,GBR,company,Exchanged with Britain (Anglo-Dutch Treaty 1824),high
+mlc,1858-08-02,1942-01-15,GBR,colony,Straits Settlements,high
+mlc,1942-01-15,1945-09-03,JPN,occupation,Japanese occupation,high
+mlc,1945-09-03,1957-08-31,GBR,colony,British return,high
+mlc,1957-08-31,,SOV,sovereign,Independence of Malaya,high
+sgp,1819-02-06,1858-08-02,GBR,company,Raffles founds British settlement,high
+sgp,1858-08-02,1942-02-15,GBR,colony,Straits Settlements (crown colony 1867),high
+sgp,1942-02-15,1945-09-12,JPN,occupation,Japanese occupation (Syonan),high
+sgp,1945-09-12,1959-06-03,GBR,colony,British return; separate crown colony 1946,high
+sgp,1959-06-03,1963-09-16,GBR,self_governing,Self-government,high
+sgp,1963-09-16,1965-08-09,SOV,sovereign,Part of Malaysia,high
+sgp,1965-08-09,,SOV,sovereign,Independence of Singapore,high
+fms,1874-01-20,1941-12-08,GBR,protectorate,Pangkor Treaty; Federated Malay States 1895,high
+fms,1941-12-08,1945-09-03,JPN,occupation,Japanese occupation,high
+fms,1945-09-03,1957-08-31,GBR,protectorate,Malayan Union then Federation of Malaya,high
+fms,1957-08-31,,SOV,sovereign,Independence (Malaysia 1963),high
+srw,1841,1888,SOV,sovereign,Brooke Raj (independent),medium
+srw,1888,1941-12-16,GBR,protectorate,British protectorate,high
+srw,1941-12-16,1945-09-11,JPN,occupation,Japanese occupation,high
+srw,1945-09-11,1946-07-01,GBR,occupation,British Military Administration,high
+srw,1946-07-01,1963-09-16,GBR,colony,Crown colony,high
+srw,1963-09-16,,SOV,sovereign,Joins Malaysia,high
+nbo,1881,1942-01-19,GBR,company,British North Borneo Company,high
+nbo,1942-01-19,1945-09-10,JPN,occupation,Japanese occupation,high
+nbo,1945-09-10,1946-07-15,GBR,occupation,British Military Administration,high
+nbo,1946-07-15,1963-09-16,GBR,colony,Crown colony,high
+nbo,1963-09-16,,SOV,sovereign,Joins Malaysia,high
+brn,1888-09-17,1941-12-16,GBR,protectorate,British protectorate,high
+brn,1941-12-16,1945-06-10,JPN,occupation,Japanese occupation,high
+brn,1945-06-10,1984-01-01,GBR,protectorate,British protectorate restored,high
+brn,1984-01-01,,SOV,sovereign,Independence,high
+hkg,1841-01-26,1941-12-25,GBR,colony,British occupation; ceded 1842 (Treaty of Nanking),high
+hkg,1941-12-25,1945-08-30,JPN,occupation,Japanese occupation,high
+hkg,1945-08-30,1997-07-01,GBR,colony,British rule restored,high
+hkg,1997-07-01,,SOV,sovereign,Handover to China (special administrative region),high
+wei,1898-07-01,1930-10-01,GBR,leased,British leased territory,high
+wei,1930-10-01,,SOV,sovereign,Returned to China,high
+gzw,1898-04-22,1943-02-21,FRA,leased,French leased territory,high
+gzw,1943-02-21,1945-08-18,JPN,occupation,Japanese occupation,high
+gzw,1945-08-18,,SOV,sovereign,Returned to China,high
+vnm_s,1862-06-05,1945-03-09,FRA,colony,Cochinchina ceded (Treaty of Saigon),high
+vnm_s,1945-03-09,1945-09-02,JPN,occupation,Japanese coup against French administration,high
+vnm_s,1945-09-02,1954-07-21,FRA,occupation,French reoccupation; war of independence,medium
+vnm_s,1954-07-21,,SOV,sovereign,Geneva Accords (reunified 1976),high
+vnm_n,1883-08-25,1945-03-09,FRA,protectorate,Harmand Treaty – Annam and Tonkin protectorates,high
+vnm_n,1945-03-09,1945-09-02,JPN,occupation,Japanese coup against French administration,high
+vnm_n,1945-09-02,1946-12-19,SOV,sovereign,Democratic Republic of Vietnam declared,medium
+vnm_n,1946-12-19,1954-07-21,FRA,occupation,French war in Indochina,medium
+vnm_n,1954-07-21,,SOV,sovereign,Geneva Accords,high
+khm,1863-08-11,1945-03-09,FRA,protectorate,French protectorate,high
+khm,1945-03-09,1945-10-15,JPN,occupation,Japanese coup,high
+khm,1945-10-15,1953-11-09,FRA,protectorate,French return,high
+khm,1953-11-09,,SOV,sovereign,Independence,high
+lao,1893-10-03,1945-03-09,FRA,protectorate,Franco-Siamese Treaty,high
+lao,1945-03-09,1946-04-24,JPN,occupation,Japanese coup and Lao Issara,medium
+lao,1946-04-24,1953-10-22,FRA,protectorate,French return,high
+lao,1953-10-22,,SOV,sovereign,Independence,high
+idn,1610,1800-01-01,NLD,company,Dutch East India Company (VOC),high
+idn,1800-01-01,1810-07-09,NLD,colony,Batavian Republic / Kingdom of Holland,high
+idn,1810-07-09,1811-09-18,FRA,colony,Netherlands annexed by the French Empire,high
+idn,1811-09-18,1816-08-19,GBR,occupation,British invasion of Java,high
+idn,1816-08-19,1942-03-09,NLD,colony,Returned to the Netherlands,high
+idn,1942-03-09,1945-08-17,JPN,occupation,Japanese occupation,high
+idn,1945-08-17,1949-12-27,NLD,occupation,Indonesian Revolution (independence declared 1945),high
+idn,1949-12-27,,SOV,sovereign,Sovereignty transferred,high
+wng,1828,1962-10-01,NLD,colony,Dutch New Guinea,high
+wng,1962-10-01,1963-05-01,UN,trust,UN Temporary Executive Authority,high
+wng,1963-05-01,,SOV,sovereign,Transferred to Indonesia (1969 Act of Free Choice contested),high
+tls,1702,1942-02-20,PRT,colony,Portuguese Timor,high
+tls,1942-02-20,1945-09-05,JPN,occupation,Japanese occupation,high
+tls,1945-09-05,1975-11-28,PRT,colony,Portuguese rule restored,high
+tls,1975-11-28,1999-10-25,IDN,occupation,Indonesian invasion and occupation,high
+tls,1999-10-25,2002-05-20,UN,trust,UN Transitional Administration,high
+tls,2002-05-20,,SOV,sovereign,Independence,high
+mac,1557,1999-12-20,PRT,colony,Portuguese Macau (colony status formalised 1887),high
+mac,1999-12-20,,SOV,sovereign,Handover to China (special administrative region),high
+aus,1788-01-26,1901-01-01,GBR,colony,New South Wales founded; further colonies,high
+aus,1901-01-01,1942-10-09,GBR,dominion,Federation,high
+aus,1942-10-09,,SOV,sovereign,Statute of Westminster adopted,high
+nzl,1840-02-06,1856,GBR,colony,Treaty of Waitangi,high
+nzl,1856,1907-09-26,GBR,self_governing,Responsible government,high
+nzl,1907-09-26,1947-11-25,GBR,dominion,Dominion of New Zealand,high
+nzl,1947-11-25,,SOV,sovereign,Statute of Westminster adopted,high
+fji,1874-10-10,1970-10-10,GBR,colony,Deed of Cession,high
+fji,1970-10-10,,SOV,sovereign,Independence,high
+pap,1884-11-06,1888,GBR,protectorate,British New Guinea protectorate,high
+pap,1888,1906-09-01,GBR,colony,Colony of British New Guinea,high
+pap,1906-09-01,1975-09-16,AUS,colony,Territory of Papua under Australia,high
+pap,1975-09-16,,SOV,sovereign,Independence as Papua New Guinea,high
+ngu,1884,1914-09-17,DEU,colony,German New Guinea,high
+ngu,1914-09-17,1921,AUS,occupation,Australian occupation,high
+ngu,1921,1942-01-23,AUS,mandate,League mandate under Australia,high
+ngu,1942-01-23,1945-09-06,JPN,occupation,Japanese occupation,high
+ngu,1945-09-06,1975-09-16,AUS,trust,UN trust territory under Australia,high
+ngu,1975-09-16,,SOV,sovereign,Independence as Papua New Guinea,high
+slb,1893,1942-01-23,GBR,protectorate,British Solomon Islands Protectorate,high
+slb,1942-01-23,1943,JPN,occupation,Japanese occupation (Guadalcanal campaign),medium
+slb,1943,1978-07-07,GBR,protectorate,British return,high
+slb,1978-07-07,,SOV,sovereign,Independence,high
+kir,1892,1916,GBR,protectorate,Gilbert and Ellice Islands Protectorate,high
+kir,1916,1941-12-10,GBR,colony,Crown colony,high
+kir,1941-12-10,1943-11-23,JPN,occupation,Japanese occupation,high
+kir,1943-11-23,1979-07-12,GBR,colony,British return,high
+kir,1979-07-12,,SOV,sovereign,Independence,high
+tuv,1892,1916,GBR,protectorate,Gilbert and Ellice Islands Protectorate,high
+tuv,1916,1978-10-01,GBR,colony,Crown colony (separated 1975),high
+tuv,1978-10-01,,SOV,sovereign,Independence,high
+ton,1900-05-18,1970-06-04,GBR,protectorate,Treaty of Friendship (protected state),high
+ton,1970-06-04,,SOV,sovereign,Independence,high
+wsm,1900-03-01,1914-08-29,DEU,colony,German Samoa,high
+wsm,1914-08-29,1920,NZL,occupation,New Zealand occupation,high
+wsm,1920,1946,NZL,mandate,League mandate under New Zealand,high
+wsm,1946,1962-01-01,NZL,trust,UN trust territory,high
+wsm,1962-01-01,,SOV,sovereign,Independence,high
+nru,1888,1914-11-06,DEU,colony,German annexation,high
+nru,1914-11-06,1920,AUS,occupation,Australian occupation,high
+nru,1920,1942-08-26,AUS,mandate,British Empire mandate administered by Australia,high
+nru,1942-08-26,1945-09-13,JPN,occupation,Japanese occupation,high
+nru,1945-09-13,1968-01-31,AUS,trust,UN trust territory,high
+nru,1968-01-31,,SOV,sovereign,Independence,high
+vut,1906,1980-07-30,GBRFRA,condominium,Anglo-French Condominium of the New Hebrides,high
+vut,1980-07-30,,SOV,sovereign,Independence,high
+pcn,1838,1983,GBR,colony,British colony,high
+pcn,1983,,GBR,still_dependent,British Dependent Territory,high
+cok,1888,1901-06-11,GBR,protectorate,British protectorate,high
+cok,1901-06-11,1965-08-04,NZL,colony,Annexed to New Zealand,high
+cok,1965-08-04,,NZL,self_governing,Free association with New Zealand,high
+niu,1900,1901-06-11,GBR,protectorate,British protectorate,high
+niu,1901-06-11,1974-10-19,NZL,colony,Annexed to New Zealand,high
+niu,1974-10-19,,NZL,self_governing,Free association with New Zealand,high
+ncl,1853-09-24,1946,FRA,colony,French annexation,high
+ncl,1946,,FRA,still_dependent,Overseas territory (Nouméa Accord 1998),high
+pyf,1842,1880,FRA,protectorate,French protectorate over Tahiti,high
+pyf,1880,1946,FRA,colony,French colony,high
+pyf,1946,,FRA,still_dependent,Overseas territory / collectivity,high
+wlf,1888,1961-07-29,FRA,protectorate,French protectorate,high
+wlf,1961-07-29,,FRA,still_dependent,Overseas territory / collectivity,high
+fpo,1778,1827,ESP,colony,Spanish Guinea,high
+fpo,1827,1858,GBR,leased,British anti-slavery naval base at Clarence (Malabo),medium
+fpo,1858,1968-10-12,ESP,colony,Spanish rule restored,high
+fpo,1968-10-12,,SOV,sovereign,Independence of Equatorial Guinea,high
+mvd,1726,1807-02-03,ESP,colony,Spanish Montevideo,high
+mvd,1807-02-03,1807-09-09,GBR,occupation,British invasion of the Río de la Plata,high
+mvd,1807-09-09,1814-06-23,ESP,colony,Spanish rule restored,high
+mvd,1814-06-23,1817-01-20,SOV,sovereign,Revolutionary rule (Artigas),medium
+mvd,1817-01-20,1822-09-07,PRT,occupation,Portuguese-Brazilian invasion; Cisplatina province 1821,high
+mvd,1822-09-07,1828-08-27,BRA,occupation,Cisplatina under the Empire of Brazil,high
+mvd,1828-08-27,,SOV,sovereign,Independence of Uruguay (Treaty of Montevideo),high
