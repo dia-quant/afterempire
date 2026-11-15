@@ -198,7 +198,7 @@
       .htmlAltitude((d) => (d.type === "c" ? 0.07 : 0.01))
       .htmlElement((d) => d.el)
       .htmlTransitionDuration(0)
-      .onGlobeClick(() => select(null))
+      .onGlobeClick(({ lat, lng }) => pickNear(lat, lng))
       .pointOfView({ lat: 12, lng: 30, altitude: 2.4 });
     if (typeof globe.htmlElementVisibilityModifier === "function") {
       globe.htmlElementVisibilityModifier((elx, vis) => elx.classList.toggle("hidden-side", !vis));
@@ -226,6 +226,31 @@
   }
   function setGlobeBorders(lines) { if (globe) globe.pathsData(lines || []); }
 
+  // click on land/sea: open the nearest visible holding within PICK_KM
+  const PICK_KM = 900;
+  function kmBetween(lat1, lon1, lat2, lon2) {
+    const r = Math.PI / 180;
+    const a = Math.sin(((lat2 - lat1) * r) / 2) ** 2 + Math.cos(lat1 * r) * Math.cos(lat2 * r) * Math.sin(((lon2 - lon1) * r) / 2) ** 2;
+    return 12742 * Math.asin(Math.min(1, Math.sqrt(a)));
+  }
+  function pickNear(lat, lng) {
+    let best = null, bd = PICK_KM;
+    for (const h of S.data.holdings) {
+      const st = stateOf(h, S.year);
+      if (!visible(st)) continue;
+      const d = kmBetween(lat, lng, h.lat, h.lon);
+      if (d < bd) { bd = d; best = h; }
+    }
+    if (best) { select(best.id); return; }
+    select(null);
+    toast(`No holding of the tracked empires within ${PICK_KM} km of ${Math.abs(lat).toFixed(0)}°${lat >= 0 ? "N" : "S"} ${Math.abs(lng).toFixed(0)}°${lng >= 0 ? "E" : "W"} in ${S.year}.`);
+  }
+  let toastT;
+  function toast(msg) {
+    const el = $("toast"); el.textContent = msg; el.hidden = false;
+    clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 3200);
+  }
+
   // great-circle angle between camera centre and a point (degrees) -> for leader line culling
   function angleFromView(lat, lng) {
     const pov = globe.pointOfView();
@@ -243,9 +268,11 @@
     flat.cv.addEventListener("click", (e) => {
       const r = flat.cv.getBoundingClientRect();
       const [x, y] = S.zoom.invert([e.clientX - r.left, e.clientY - r.top]);
-      let best = null, bd = 12 / S.zoom.k;
+      let best = null, bd = 14 / S.zoom.k;
       for (const hit of flat.hits) { const d = Math.hypot(hit.x - x, hit.y - y); if (d < bd) { bd = d; best = hit; } }
-      select(best ? best.id : null);
+      if (best) { select(best.id); return; }
+      const ll = flat.proj.invert([x, y]);
+      if (ll && isFinite(ll[0])) pickNear(ll[1], ll[0]); else select(null);
     });
     sizeFlat();
   }
@@ -647,7 +674,11 @@
     const I = S.intro;
     clearTimeout(I.timer); cancelAnimationFrame(I.raf); cancelAnimationFrame(I.prog);
     I.on = false; I.ended = false;
-    if (hide) { $("intro").hidden = true; I.ids = null; if (S.data) setYear(S.year); }
+    if (hide) {
+      const wasOpen = !$("intro").hidden || I.ids;
+      $("intro").hidden = true; I.ids = null;
+      if (wasOpen && S.data) markers.forEach((m) => m.el.classList.remove("hl"));
+    }
   }
 
   // ---------------------------------------------------------------- view switching
@@ -725,7 +756,7 @@
 
   // ---------------------------------------------------------------- wiring
   function wire() {
-    $("year").addEventListener("input", (e) => { stopIntro(); setYear(+e.target.value); });
+    $("year").addEventListener("input", (e) => { const y = +e.target.value; stopIntro(); setYear(y); });
     $("btn-play").addEventListener("click", () => { stopIntro(); play(!S.playing); });
     $("btn-prev").addEventListener("click", () => { stopIntro(); play(false); setYear(S.year - 1); });
     $("btn-next").addEventListener("click", () => { stopIntro(); play(false); setYear(S.year + 1); });

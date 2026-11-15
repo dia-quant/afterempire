@@ -255,6 +255,12 @@ a.pg:hover { color: var(--phos-hi); }
 .p-foot { margin: 14px 14px 0; }
 .soon-chip { font-size: 9.5px; letter-spacing: 0.1em; color: var(--text-dim); border: 1px dashed var(--line-dim); padding: 3px 6px; display: inline-block; }
 
+/* toast */
+.toast {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 5; max-width: calc(100% - 32px);
+  background: var(--panel-solid); border: 1px solid var(--phos-dim); padding: 6px 12px; font-size: 11px; color: var(--phos-hi);
+}
+
 /* intro */
 .intro { left: 50%; transform: translateX(-50%); bottom: 18px; width: min(600px, calc(100% - 36px)); }
 .intro-body { padding: 10px 14px 14px; }
@@ -294,6 +300,7 @@ a.pg:hover { color: var(--phos-hi); }
 .b.condo { background: linear-gradient(90deg, var(--gbr) 50%, var(--fra) 50%); }
 .mk { position: relative; transform: translate(-50%, -50%); cursor: pointer; pointer-events: auto; transition: opacity .25s; }
 .mk .b { width: var(--s); height: var(--s); transition: background .4s, box-shadow .4s; }
+.mk::before { content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; transform: translate(-50%, -50%); border-radius: 50%; }
 .mk.pulse .b { animation: pulse 1.2s ease-out 1; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--c); } 100% { box-shadow: 0 0 0 16px transparent; } }
 .mk .nm {
