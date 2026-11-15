@@ -9,7 +9,7 @@ Each phase ends with a ✅ checkpoint reviewed by the project owner.
 | 2 | **Visual prototype** (parallel to 1): Territorial Ledger mock (globe, dots, bubbles, slider, filter strip, HUD) + one Record Room page | Look-and-feel sign-off | done (review deferred to built site) |
 | 3 | Territorial Ledger on real data: transfers, status styles, event callouts, intro tour, historical borders | Live preview | **v0.1 built** (globe, flat, intro, feed, panel, table, Archive) |
 | 4 | Trade pipeline (RICardo, TRADHIST, BACI, IMF) → percentile width classes, hover ratios, focus view. Flows of Empire page | Preview + spot-check known cases | **v0.1 built** (arcs, hover ratio, focus view, Flows of Empire page) |
-| 5 | Development data: coloniser profiles, automatic dimensions, drafted hand codings → review sheet. Inherited Systems + Divergence Metrics | Spot-check review sheet | |
+| 5 | Development data: coloniser profiles, automatic dimensions, drafted hand codings → review sheet. Inherited Systems + Divergence Metrics | Spot-check review sheet | **v0.1 built** (21 files, 94 ex-colonies, review sheet in docs/REVIEW_SHEET.md) |
 | 6 | The Archive, Terms of Account, Correspondence | | |
 | 7 | Monthly refresh Action, "updated on" stamps, Cloudflare Pages + R2 deploy, accessibility/mobile/performance pass, Zenodo DOI | Launch | |
 | 8 | Stories, more empires, earlier periods | | |

@@ -310,7 +310,8 @@ for y in sorted(flows):
 used = {c for rows in years_out.values() for r in rows for c in r[:2]}
 used |= {r[0] for d in per_h.values() for lst in d.values() for r in lst} | {r[4] for d in per_h.values() for lst in d.values() for r in lst}
 
-# independence year: first sovereign period that follows a non-sovereign one
+# independence year: first sovereign period that follows a non-sovereign one (overrides in curated CSV)
+OVR = {r["holding_id"]: int(r["year"]) for r in csv.DictReader(open(CUR / "independence_overrides.csv", encoding="utf-8"))}
 indep = {}
 for hid, ps in periods.items():
     seen = False
@@ -320,6 +321,7 @@ for hid, ps in periods.items():
         elif seen and s_ >= 1800:
             indep[hid] = int(s_)
             break
+indep.update({h: y for h, y in OVR.items() if h in periods})
 out = {
     "meta": {
         "generated": date.today().isoformat(), "topN": TOP_N, "latest": max(int(y) for y in years_out),

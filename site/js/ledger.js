@@ -508,6 +508,11 @@
     // events
     const t = tOf(S.year);
     renderPanelTrade(h);
+    const FILE = { ind: "IND", pak: "PAK", bgd: "BGD", lka: "LKA", mmr: "MMR", fms: "MYS", sgp: "SGP", idn: "IDN", vnm_n: "VNM", gha: "GHA", nga: "NGA",
+      ken: "KEN", tza: "TZA", sen: "SEN", civ: "CIV", gin: "GIN", dza: "DZA", tun: "TUN", mar: "MAR", ago: "AGO", moz: "MOZ" };
+    $("p-foot").innerHTML = FILE[h.id]
+      ? `<a class="soon-chip" style="color:var(--phos-hi);text-decoration:none" href="systems.html#${FILE[h.id]}">OPEN FILE → INHERITED SYSTEMS</a>`
+      : `<span class="soon-chip">NO DEVELOPMENT FILE FOR THIS HOLDING YET</span>`;
     $("p-count").textContent = `${String(h.periods.length).padStart(2, "0")} REC`;
     $("p-events").tBodies[0].innerHTML = h.periods.map((p) => {
       const cc = p.c === "SOV" ? (lastColonial(h, p.s) || "SOV") : p.c;

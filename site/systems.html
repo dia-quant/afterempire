@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inherited Systems · Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/systems.css">
+</head>
+<body>
+<header class="topbar" data-page="systems"></header>
+<main class="wrap">
+  <div class="crumbs">RECORD ROOM / DEVELOPMENT / FILES</div>
+  <h1>Inherited Systems</h1>
+  <p class="lede">One file per country: where its first post-independence economic system came from. Each file weighs five influences (the former coloniser, the Soviet bloc, the United States with the World Bank and IMF, regional neighbours, and homegrown ideas) and lists the evidence. The shares are the project's judgement from the cited sources, not measurements.</p>
+  <p class="stamp"><mark id="n-files">— files</mark> <span id="review-line"></span></p>
+  <div class="chips" role="group" aria-label="Filter by former coloniser" id="chips"></div>
+  <div class="keyline" aria-label="Influence key">
+    <span><i class="sw" style="--c:var(--ink-dim)"></i>Former coloniser (its empire colour)</span>
+    <span><i class="sw" style="--c:var(--soviet)"></i>Soviet bloc</span>
+    <span><i class="sw" style="--c:var(--uswb)"></i>US · World Bank · IMF</span>
+    <span><i class="sw hatch"></i>Regional</span>
+    <span><i class="sw" style="--c:var(--home)"></i>Homegrown</span>
+  </div>
+  <section class="stack" id="stack" aria-label="Country files"></section>
+  <p class="foot">Codings are drafted by the project and listed row by row in the review sheet (data/curated/systems_codings.csv). Quantitative comparisons are on <a href="metrics.html">Divergence Metrics</a>. Sources are in <a href="archive.html">The Archive</a>.</p>
+</main>
+<script src="js/nav.js"></script>
+<script src="js/systems.js"></script>
+</body>
+</html>
