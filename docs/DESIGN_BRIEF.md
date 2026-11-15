@@ -125,3 +125,14 @@ Wordmark: **Afterempire** in EB Garamond, with a small mono tag beneath: `TERRIT
 - High-contrast toggle. Keyboard control of the slider (←/→ = year, Shift = decade).
 - Respect `prefers-reduced-motion` (no particles, no pulse).
 - A text/table equivalent for every map state (the "Ledger table" view).
+
+## Page themes (as built)
+Every sub-page shares one header (js/nav.js, css/topbar.css); only colours change per theme.
+
+| Page | Theme | Idea |
+|---|---|---|
+| Territorial Ledger | blue-phosphor database terminal | the live instrument |
+| Flows of Empire | bluebar computer printout (tractor holes, perforations) | database records printed onto paper |
+| Inherited Systems | coloured office folders, index tab first | the case files |
+| Divergence Metrics | graph-paper worksheets | the analyst's working |
+| The Archive | high-contrast line-art filing drawer, yellow label | the source index |
