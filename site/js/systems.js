@@ -143,7 +143,7 @@
             <tr class="grp"><th rowspan="2">Decade</th><th colspan="3">Coded system</th><th colspan="2" class="g2">Economy (PWT)</th><th colspan="3" class="g3">UN voting agreement with</th></tr>
             <tr><th>Planning regime</th><th>Planning institution</th><th>Monetary arrangement</th><th class="num g2">Openness</th><th class="num">Gov. share</th><th class="num g3">${c.coloniser}</th><th class="num">US</th><th class="num">USSR/RUS</th></tr>
           </thead><tbody>${rows}</tbody></table></div></div>
-        <div class="full filed">FILED FROM: ${c.sources.map(esc).join(" · ")} · Openness and government share: Penn World Table 11 · UN agreement: Bailey, Strezhnev &amp; Voeten · <span class="review">${esc(revTxt)}</span></div>
+        <div class="full filed">FILED FROM: ${c.sources.map(esc).join(" · ")} · Openness and government share: Penn World Table 11 · UN agreement: Bailey, Strezhnev &amp; Voeten · <span class="review">${esc(revTxt)}</span> · <a href="correspondence.html#FILE-${iso}">Suggest a correction to this file</a></div>
       </div></div>
     </details>`;
   }
