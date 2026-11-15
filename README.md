@@ -11,7 +11,7 @@ A geo-spatial, time-indexed tracker of colonial holdings and trade flows, 1800�
 Built entirely on open data. Sources and licences are listed in The Archive.
 
 ## Site
-- Live: https://dia-quant.github.io/afterempire/ (once GitHub Pages is enabled: Settings → Pages → Source: GitHub Actions)
+- Live: **https://dia-quant.github.io/afterempire/**
 - Deploys automatically on every push to `main` that changes `site/` (`.github/workflows/pages.yml`).
 - Local preview: `cd site && python -m http.server`
 
