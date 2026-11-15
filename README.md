@@ -13,7 +13,7 @@ Built entirely on open data. Sources and licences are listed in The Archive.
 ## Site
 - Live: **https://dia-quant.github.io/afterempire/**
 - Deploys automatically on every push to `main` that changes `site/` (`.github/workflows/pages.yml`).
-- Local preview: `cd site && python -m http.server`
+- Local preview: `python pipeline/serve.py`, then open http://localhost:8000/ (resolves `/flows` to `flows.html` like GitHub Pages)
 
 ## Data pipeline
 | Step | Command |
