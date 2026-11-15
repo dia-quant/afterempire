@@ -1,0 +1,18 @@
+name: Correction
+description: Report a wrong date, holding, trade flow or coding
+labels: ["correspondence"]
+body:
+  - type: input
+    id: ref
+    attributes: { label: Reference, description: "Holding code, country file or page (e.g. HLD-IND-GOA, FILE-TUN)" }
+  - type: textarea
+    id: what
+    attributes: { label: What the site shows }
+    validations: { required: true }
+  - type: textarea
+    id: should
+    attributes: { label: What it should show }
+  - type: textarea
+    id: evidence
+    attributes: { label: Evidence, description: "Citation, archive reference or link" }
+    validations: { required: true }

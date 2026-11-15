@@ -513,6 +513,7 @@
     $("p-foot").innerHTML = FILE[h.id]
       ? `<a class="soon-chip" style="color:var(--phos-hi);text-decoration:none" href="systems.html#${FILE[h.id]}">OPEN FILE → INHERITED SYSTEMS</a>`
       : `<span class="soon-chip">NO DEVELOPMENT FILE FOR THIS HOLDING YET</span>`;
+    $("p-foot").innerHTML += ` <a class="soon-chip" style="color:var(--text);text-decoration:none" href="correspondence.html#${holdingCode(h)}">REPORT A CORRECTION</a>`;
     $("p-count").textContent = `${String(h.periods.length).padStart(2, "0")} REC`;
     $("p-events").tBodies[0].innerHTML = h.periods.map((p) => {
       const cc = p.c === "SOV" ? (lastColonial(h, p.s) || "SOV") : p.c;

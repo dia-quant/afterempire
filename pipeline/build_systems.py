@@ -230,6 +230,7 @@ for iso, e in out.items():
         row["metro_share"] = round(sum(by[dec]) / len(by[dec]), 3) if by.get(dec) else None
 
 payload = {"meta": {"generated": date.today().isoformat(), "decades": DECADES, "models": models, "model_order": MODELS,
+                    "institution_affinity": inst_aff, "monetary_affinity": mon_aff,
                     "review": dict(review)},
            "countries": out}
 with open(ROOT / "site/data/systems_panel.csv", "w", newline="", encoding="utf-8") as f:

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Correspondence · Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/correspondence.css">
+</head>
+<body>
+<header class="topbar" data-page="correspondence"></header>
+<main class="desk">
+  <div class="letter">
+    <div class="stamp-box" aria-hidden="true"><span>PAR AVION</span><b>AE</b></div>
+    <div class="dateline" id="dateline">—</div>
+    <h1>Correspondence</h1>
+    <p class="intro">Corrections, missing sources and disputed dates are welcome. Write your note below; it becomes an issue in the project repository, where each correction is reviewed and, if accepted, applied to the curated data with a public record of the change.</p>
+
+    <form id="form" novalidate>
+      <fieldset class="kind">
+        <legend>Regarding</legend>
+        <label><input type="radio" name="kind" value="holding" checked> A holding, date or transfer</label>
+        <label><input type="radio" name="kind" value="trade"> A trade flow</label>
+        <label><input type="radio" name="kind" value="coding"> A development coding or lineage</label>
+        <label><input type="radio" name="kind" value="source"> A source to add</label>
+        <label><input type="radio" name="kind" value="other"> Something else</label>
+      </fieldset>
+
+      <div class="field">
+        <label for="ref">Reference <span class="hint">holding code, country file or page, e.g. HLD-IND-GOA, FILE-TUN, Flows of Empire 1913</span></label>
+        <input id="ref" name="ref" type="text" autocomplete="off" spellcheck="false" maxlength="120">
+      </div>
+      <div class="field">
+        <label for="what">What the site shows <span class="req">required</span></label>
+        <textarea id="what" name="what" rows="3" maxlength="2000" required></textarea>
+      </div>
+      <div class="field">
+        <label for="should">What it should show</label>
+        <textarea id="should" name="should" rows="3" maxlength="2000"></textarea>
+      </div>
+      <div class="field">
+        <label for="evidence">Evidence <span class="req">required</span> <span class="hint">citation, archive reference or link</span></label>
+        <textarea id="evidence" name="evidence" rows="3" maxlength="2000" required></textarea>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="name">Signed <span class="hint">optional</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80">
+        </div>
+        <div class="field">
+          <label for="aff">Affiliation <span class="hint">optional</span></label>
+          <input id="aff" name="aff" type="text" autocomplete="organization" maxlength="120">
+        </div>
+      </div>
+      <p class="public">Submissions are published as repository issues. Do not include email addresses or other private details.</p>
+      <p class="err" id="err" role="alert" hidden></p>
+      <div class="actions">
+        <button type="submit" class="seal">Prepare letter</button>
+      </div>
+    </form>
+
+    <section class="outbox" id="outbox" hidden aria-live="polite">
+      <div class="ob-head">Ready to post</div>
+      <pre id="preview"></pre>
+      <div class="actions">
+        <a class="seal" id="issue-link" href="#" target="_blank" rel="noopener">Open as a GitHub issue ↗</a>
+        <button type="button" class="plain" id="copy">Copy the text</button>
+        <button type="button" class="plain" id="edit">Edit</button>
+      </div>
+      <p class="hint" id="copy-msg"></p>
+      <p class="hint">The issue opens on github.com with this text filled in; you post it from your GitHub account. If you cannot use GitHub, copy the text and send it to the project by any channel listed on the repository page.</p>
+    </section>
+  </div>
+</main>
+<script src="js/nav.js"></script>
+<script src="js/correspondence.js"></script>
+</body>
+</html>

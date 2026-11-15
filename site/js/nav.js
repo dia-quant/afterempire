@@ -6,8 +6,8 @@
     { id: "systems", name: "Inherited Systems", href: "systems.html" },
     { id: "metrics", name: "Divergence Metrics", href: "metrics.html" },
     { id: "archive", name: "The Archive", href: "archive.html" },
-    { id: "terms", name: "Terms of Account", phase: "P6" },
-    { id: "correspondence", name: "Correspondence", phase: "P6" },
+    { id: "terms", name: "Terms of Account", href: "terms.html" },
+    { id: "correspondence", name: "Correspondence", href: "correspondence.html" },
   ];
   const el = document.querySelector("header.topbar");
   if (!el) return;

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terms of Account · Afterempire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/terms.css">
+</head>
+<body>
+<header class="topbar" data-page="terms"></header>
+<main class="ledger">
+  <div class="folio"><span>AFTEREMPIRE · METHOD</span><span id="folio-date">—</span></div>
+  <h1>Terms of Account</h1>
+  <p class="lede">How every figure on the site is defined, built and limited. Each entry names the rule, where it lives in the repository, and what it cannot tell you.</p>
+
+  <nav class="contents" aria-label="Contents">
+    <div class="ch">Contents</div>
+    <ol>
+      <li><a href="#holdings">Holdings and status</a><span class="pg">I</span></li>
+      <li><a href="#trade">Trade flows</a><span class="pg">II</span></li>
+      <li><a href="#systems">Development systems</a><span class="pg">III</span></li>
+      <li><a href="#uncertainty">Estimates and uncertainty</a><span class="pg">IV</span></li>
+      <li><a href="#licences">Licences and reuse</a><span class="pg">V</span></li>
+      <li><a href="#updates">Versions and updates</a><span class="pg">VI</span></li>
+      <li><a href="#limits">Known limitations</a><span class="pg">VII</span></li>
+    </ol>
+  </nav>
+
+  <section id="holdings" class="entry">
+    <h2><span class="num">I</span>Holdings and status</h2>
+    <div class="cols">
+      <div class="body">
+        <p>A <b>holding</b> is a territory, enclave or island group with one representative point (its capital or main port) and a sequence of <b>control periods</b>. A country such as India is several holdings: British India, the princely states shown, and the French, Portuguese, Dutch and Danish enclaves.</p>
+        <p>Scope is every holding of Britain, France, Portugal and the Netherlands between 1800 and 2025, and any other power while it held one of them (for example Japan in the Dutch East Indies, 1942–45). "Colony" means any control stronger than soft power: colonies, protectorates, League mandates and UN trusts, chartered-company rule, condominiums, leases and military occupations. Informal empire is excluded.</p>
+        <p>The map shows the state at 1 July of the selected year. Periods are end-exclusive and must join without gaps or overlaps; the build stops if they do not.</p>
+      </div>
+      <aside class="margin">
+        <div class="mh">Status → marker</div>
+        <table class="acct">
+          <tr><td><i class="mk solid"></i></td><td>colony · protectorate · mandate · trust · company · condominium · occupation · lease</td></tr>
+          <tr><td><i class="mk ringed"></i></td><td>integrated territory · still dependent</td></tr>
+          <tr><td><i class="mk half"></i></td><td>self-governing · dominion</td></tr>
+          <tr><td><i class="mk hollow"></i></td><td>sovereign (former holding, still tracked)</td></tr>
+        </table>
+        <div class="ref">data/curated/holdings.csv · periods.csv · pipeline/build_holdings.py</div>
+      </aside>
+    </div>
+    <dl class="ruled">
+      <dt>Independence year</dt><dd>The first sovereign period after colonial rule, with stated exceptions in <code>independence_overrides.csv</code> (India and Pakistan 1947, Bangladesh 1971, Sri Lanka 1948, Vietnam 1954, and the Statute of Westminster dates for dominions).</dd>
+      <dt>Cross-check</dt><dd>Dates are compared with COLDAT (Becker 2019). Differences are definitional and listed in <code>docs/GAZETTEER_NOTES.md</code>: COLDAT ends dominions at 1919–20, ignores wartime occupations, and treats West New Guinea as part of Indonesia.</dd>
+      <dt>Confidence</dt><dd>Each period is rated high or medium. Medium means the date is debated or simplified; the record card shows “date debated”.</dd>
+    </dl>
+  </section>
+
+  <section id="trade" class="entry">
+    <h2><span class="num">II</span>Trade flows</h2>
+    <table class="acct wide">
+      <thead><tr><th>Years</th><th>Source</th><th>Unit</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>1800–1826</td><td>RICardo (Dedinger &amp; Girard)</td><td>£ sterling, current</td><td>reporter-based; exporter's report preferred</td></tr>
+        <tr><td>1827–2014</td><td>TRADHIST v4 (CEPII)</td><td>£ sterling, current</td><td>exporter → importer</td></tr>
+        <tr><td>2015–2020</td><td>CEPII Gravity V202211 (BACI; IMF as fallback)</td><td>US$, current</td><td>exporter → importer</td></tr>
+        <tr><td>2021–2025</td><td colspan="3">No newer open bilateral data; the site shows 2020, labelled “latest available”.</td></tr>
+      </tbody>
+    </table>
+    <dl class="ruled">
+      <dt>Which flows</dt><dd>Pairs where at least one side is a holding, or former holding, that exists in that year. The globe shows the 50 largest of these for the empires selected; clicking a holding shows its 20 largest partners.</dd>
+      <dt>Line width</dt><dd>Ranked within the year among the flows shown, in six classes from the percentile rank. The largest shown flow is always widest. Widths compare flows within a year, never across years.</dd>
+      <dt>Ratio</dt><dd>A→B exports against B→A exports, rounded to the nearest simple fraction with terms from 1 to 5 (beyond 5 : 1 it reads “&gt; 5 : 1”). If only one direction is recorded, the flow is marked “one-sided estimate”.</dd>
+      <dt>Aggregates</dt><dd>Where sources report a group (for example “British West Indies”), it is placed at a representative holding and named as an aggregate. The crosswalk is <code>data/curated/trade_codes.csv</code>.</dd>
+      <dt>Metropole share</dt><dd>Trade with the holding's colonial power (or, after independence, its last one) divided by the holding's total recorded bilateral trade. The erosion curve takes the median across former holdings by years since independence, where at least three holdings have data.</dd>
+    </dl>
+  </section>
+
+  <section id="systems" class="entry">
+    <h2><span class="num">III</span>Development systems</h2>
+    <div class="cols">
+      <div class="body">
+        <p>Each economy is described by dimensions that can be compared with three reference models: the country's own former coloniser (as it was c.1945–65), the Soviet model, and the US / Bretton Woods model.</p>
+        <p><b>Hand-coded</b> for the 21 curated countries, by decade: planning regime, planning institution and monetary arrangement; and once: legal origin and colonial administration. <b>Automatic</b> for all ex-colonies: UN General Assembly voting agreement with each reference country, and, as context only, trade openness and government share of GDP.</p>
+        <p>The <b>inheritance index</b> is the mean similarity to the former coloniser across the available dimensions. The <b>nearest model</b> is whichever of the three references has the highest mean similarity in that decade. A dimension <b>persists</b> until its similarity to the coloniser first falls below 0.75.</p>
+      </div>
+      <aside class="margin">
+        <div class="mh">Similarity rules</div>
+        <table class="acct">
+          <tr><td>Planning regime</td><td>1 − |a − b|</td></tr>
+          <tr><td>Institution</td><td>affinity table ↓</td></tr>
+          <tr><td>Monetary</td><td>affinity table ↓</td></tr>
+          <tr><td>Legal origin</td><td>1 if same family</td></tr>
+          <tr><td>UN voting</td><td>agreement score</td></tr>
+        </table>
+        <div class="ref">pipeline/build_systems.py · data/curated/systems_codings.csv · lineages.json</div>
+      </aside>
+    </div>
+    <div class="tables">
+      <div><div class="mh">Reference models</div><div class="twrap"><table class="acct" id="t-models"></table></div></div>
+      <div><div class="mh">Institution affinity (country type → model)</div><div class="twrap"><table class="acct" id="t-inst"></table></div></div>
+      <div><div class="mh">Monetary affinity</div><div class="twrap"><table class="acct" id="t-mon"></table></div></div>
+    </div>
+    <dl class="ruled">
+      <dt>Lineage shares</dt><dd>The five-way split shown in each file is an editorial judgement from the cited plan documents and studies. It is not used in any computed score.</dd>
+      <dt>What it shows</dt><dd>Resemblance, not cause. A high inheritance index says a system looked like its coloniser's; it does not say why.</dd>
+      <dt>Openness</dt><dd>Kept out of the similarity score: large economies such as the US are closed, so comparing openness levels with them made every closed economy look American.</dd>
+    </dl>
+  </section>
+
+  <section id="uncertainty" class="entry">
+    <h2><span class="num">IV</span>Estimates and uncertainty</h2>
+    <dl class="ruled">
+      <dt>Values</dt><dd>All money values are approximate, in current prices of the source's unit. No deflation or currency conversion is applied between periods.</dd>
+      <dt>Sparse years</dt><dd>Colonial trade records before about 1820 are thin. The site shows what exists and says so; it does not interpolate.</dd>
+      <dt>Density strip</dt><dd>Under the time slider, bars count holdings under imperial rule and ticks count transfers in each year, so thin years are visible before you read them.</dd>
+      <dt>Review status</dt><dd id="review-dd">Every hand coding starts “unreviewed”. The count of reviewed and flagged rows is shown on Inherited Systems.</dd>
+    </dl>
+  </section>
+
+  <section id="licences" class="entry">
+    <h2><span class="num">V</span>Licences and reuse</h2>
+    <table class="acct wide">
+      <thead><tr><th>Material</th><th>Licence</th><th>What it means here</th></tr></thead>
+      <tbody>
+        <tr><td>RICardo-derived flows (1800–1826)</td><td>ODbL 1.0</td><td>Share-alike: the derived flow data must stay under ODbL.</td></tr>
+        <tr><td>TRADHIST, CEPII Gravity</td><td>Etalab Open Licence 2.0</td><td>Reuse with attribution.</td></tr>
+        <tr><td>COLDAT, UN voting data</td><td>CC0 1.0</td><td>Public domain.</td></tr>
+        <tr><td>Historical border lines</td><td>GPL-3.0</td><td>Derived from historical-basemaps; the simplified files stay under GPL-3.0.</td></tr>
+        <tr><td>Penn World Table</td><td>Free with citation</td><td>Cite Feenstra, Inklaar &amp; Timmer (2015).</td></tr>
+        <tr><td>Afterempire gazetteer and codings</td><td>To be decided</td><td>CC BY 4.0 suggested; a Zenodo release with a DOI is planned.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="updates" class="entry">
+    <h2><span class="num">VI</span>Versions and updates</h2>
+    <dl class="ruled">
+      <dt>Historical layers</dt><dd>Frozen and versioned in the repository; each page shows the date its data were built.</dd>
+      <dt>Recent years</dt><dd>A scheduled job will refresh post-independence indicators and the newest trade year when sources publish them (Phase 7). Until then, the “updated” stamps show the last build.</dd>
+      <dt>Corrections</dt><dd>Submitted through <a href="correspondence.html">Correspondence</a>, reviewed, and applied to the curated files; each change is a commit in the repository history.</dd>
+    </dl>
+  </section>
+
+  <section id="limits" class="entry">
+    <h2><span class="num">VII</span>Known limitations</h2>
+    <ol class="limits">
+      <li>Large colonies are single points; internal frontiers and gradual conquest are not drawn.</li>
+      <li>Only Hyderabad and Mysore stand for the ~560 princely states.</li>
+      <li>Empires beyond the four appear only while holding one of their territories.</li>
+      <li>Trade shares depend on what the sources recorded; aggregates and one-sided reports remain.</li>
+      <li>Hand codings for 21 countries are drafts awaiting review; 73 other ex-colonies are compared on legal origin and UN voting only.</li>
+      <li>Reference models are stylised profiles of c.1945–65 and do not change over time.</li>
+    </ol>
+  </section>
+  <div class="endrule">— balance carried forward —</div>
+</main>
+<script src="js/nav.js"></script>
+<script src="js/terms.js"></script>
+</body>
+</html>
