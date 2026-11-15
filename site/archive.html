@@ -8,21 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/topbar.css">
 <link rel="stylesheet" href="css/recordroom.css">
 </head>
 <body>
-<header class="topbar">
-  <a class="wordmark" href="index.html">Afterempire</a>
-  <nav aria-label="Record Room">
-    <a href="flows.html">Flows of Empire</a>
-    <span title="Phase 5">Inherited Systems</span>
-    <span title="Phase 5">Divergence Metrics</span>
-    <a href="archive.html" aria-current="page">The Archive</a>
-    <span title="Phase 6">Terms of Account</span>
-    <span title="Phase 6">Correspondence</span>
-  </nav>
-  <a class="back" href="index.html">← Return to Observatory</a>
-</header>
+<header class="topbar" data-page="archive"></header>
 <main class="wrap">
   <div class="crumbs">RECORD ROOM / SOURCES</div>
   <h1>The Archive</h1>
@@ -237,5 +227,6 @@
   </section>
   <p class="foot">Spotted a missing source or a wrong date? Correspondence (Phase 6) will take corrections and source suggestions. Until then, open an issue on the project repository.</p>
 </main>
+<script src="js/nav.js"></script>
 </body>
 </html>

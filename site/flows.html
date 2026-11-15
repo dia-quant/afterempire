@@ -8,30 +8,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/observatory.css">
+<link rel="stylesheet" href="css/topbar.css">
 <link rel="stylesheet" href="css/flows.css">
 </head>
-<body class="page">
-<header class="ptop">
-  <a class="wordmark" href="index.html">Afterempire</a>
-  <nav aria-label="Observatory">
-    <a href="index.html">Territorial Ledger</a>
-    <a href="flows.html" aria-current="page">Flows of Empire</a>
-    <a href="archive.html">The Archive ↗</a>
-  </nav>
-  <span class="stamp" id="stamp">TRADE.DB</span>
-</header>
+<body>
+<header class="topbar" data-page="flows"></header>
+<div class="feed-l" aria-hidden="true"></div><div class="feed-r" aria-hidden="true"></div>
 
 <main class="pwrap">
+  <div class="runhead"><span>AFTEREMPIRE / TRADE.DB</span><span id="stamp">RUN —</span></div>
   <section class="intro-block">
-    <div class="crumbs">OBSERVATORY / TRADE</div>
     <h1>Flows of Empire</h1>
-    <p class="lede">How much of a colony's trade ran through its metropole, and how quickly that tie loosened after independence. Built from RICardo (1800–1826), TRADHIST (1827–2014) and CEPII Gravity (2015–2020). All values are approximate and in current prices.</p>
+    <p class="lede">How much of a colony's trade ran through its metropole, and how quickly that tie loosened after independence.</p>
+    <p class="lede-meta">SOURCES RICARDO 1800–1826 · TRADHIST 1827–2014 · CEPII GRAVITY 2015–2020 · VALUES APPROXIMATE, CURRENT PRICES</p>
   </section>
 
   <!-- 1. Erosion curve -->
-  <section class="frame-s" aria-labelledby="h-erosion">
-    <header class="bar"><span id="h-erosion">01 · THE EROSION CURVE</span><span id="ero-n"></span></header>
+  <div class="perf" aria-hidden="true"></div>
+  <section class="sheet" aria-labelledby="h-erosion">
+    <header class="sheet-head"><span class="no">REPORT 01</span><span class="ttl" id="h-erosion">The erosion curve</span><span class="pg" id="ero-n"></span></header>
     <div class="sbody">
       <p class="note">Median share of each former holding's recorded trade that went to or came from its former metropole, by years since independence. Lines appear where at least three holdings have data. Head, Mayer &amp; Ries (2010) estimate that trade with the former coloniser falls by about 65% within four decades.</p>
       <div class="legend-row" id="ero-legend"></div>
@@ -41,8 +36,9 @@
   </section>
 
   <!-- 2. Holding explorer -->
-  <section class="frame-s" aria-labelledby="h-explorer">
-    <header class="bar"><span id="h-explorer">02 · HOLDING EXPLORER</span><span id="ex-code"></span></header>
+  <div class="perf" aria-hidden="true"></div>
+  <section class="sheet" aria-labelledby="h-explorer">
+    <header class="sheet-head"><span class="no">REPORT 02</span><span class="ttl" id="h-explorer">Holding explorer</span><span class="pg" id="ex-code"></span></header>
     <div class="sbody">
       <div class="controls">
         <label for="ex-select" class="k">holding&gt;</label>
@@ -64,8 +60,9 @@
   </section>
 
   <!-- 3. Ranking -->
-  <section class="frame-s" aria-labelledby="h-rank">
-    <header class="bar"><span id="h-rank">03 · LARGEST FLOWS IN A YEAR</span><span id="rk-src"></span></header>
+  <div class="perf" aria-hidden="true"></div>
+  <section class="sheet" aria-labelledby="h-rank">
+    <header class="sheet-head"><span class="no">REPORT 03</span><span class="ttl" id="h-rank">Largest flows in a year</span><span class="pg" id="rk-src"></span></header>
     <div class="sbody">
       <div class="controls">
         <label for="rk-year" class="k">year&gt;</label>
@@ -76,11 +73,13 @@
     </div>
   </section>
 
+  <div class="endmark">— END OF REPORT —</div>
   <p class="foot">Shares use each holding's own recorded bilateral trade, so they depend on what the sources captured. Aggregates such as “British West Indies” appear where the sources report them. Sources and licences are listed in <a href="archive.html">The Archive</a>.</p>
 </main>
 
 <div class="ttip" id="ttip" hidden></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="js/flows.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>

@@ -23,23 +23,9 @@ body {
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-.topbar {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;
-  padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  background: var(--paper); border-bottom: 1px solid var(--ink);
-}
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
-.wordmark { font-family: var(--f-display); font-size: 24px; text-decoration: none; line-height: 1; }
-.topbar nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 13px; }
-.topbar nav a, .topbar nav span { text-decoration: none; color: var(--ink-dim); }
-.topbar nav a[aria-current] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.topbar nav span { opacity: 0.6; }
-.back {
-  margin-left: auto; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-decoration: none;
-  background: var(--ink); color: var(--paper); padding: 6px 10px;
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
-}
+/* shared header colours for the paper theme */
+.topbar { --tb-bg: var(--paper); --tb-fg: var(--ink); --tb-dim: #6a6a6a; --tb-rule: var(--ink); --tb-btn-bg: var(--ink); --tb-btn-fg: var(--paper); --tb-accent: var(--ink); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
 
 .wrap {
   max-width: 980px; margin: 0 auto;
