@@ -61,7 +61,8 @@
     $("m2").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th>${decs.map((d) => `<th>${d}</th>`).join("")}</tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td class="name">${c.curated ? `<a href="systems.html#${iso}">${esc(short(c))}</a>` : esc(short(c))}</td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${c.coloniser} · ${c.indep}</td>${decs.map((d) => {
       const r = c.decades[d];
       if (!r || !r.nearest) return `<td class="cell none">—</td>`;
-      return `<td class="cell${c.curated ? "" : " weak"}" style="background:${modelColour(r.nearest, c.coloniser)}" data-iso="${iso}" data-d="${d}">${modelName(r.nearest, c.coloniser)}</td>`;
+      const fg = r.nearest === "SUN" ? "#fff" : "#111";
+      return `<td class="cell${c.curated ? "" : " weak"}" style="background:${modelColour(r.nearest, c.coloniser)};color:${fg}" data-iso="${iso}" data-d="${d}">${modelName(r.nearest, c.coloniser)}</td>`;
     }).join("")}</tr>`).join("")}</tbody>`;
     $("m2").querySelectorAll("td.cell[data-iso]").forEach((td) => {
       td.addEventListener("mousemove", (ev) => {

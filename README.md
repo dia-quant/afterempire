@@ -9,3 +9,20 @@ A geo-spatial, time-indexed tracker of colonial holdings and trade flows, 1800�
 - Plan: [`docs/PLAN.md`](docs/PLAN.md)
 
 Built entirely on open data. Sources and licences are listed in The Archive.
+
+## Site
+- Live: https://dia-quant.github.io/afterempire/ (once GitHub Pages is enabled: Settings → Pages → Source: GitHub Actions)
+- Deploys automatically on every push to `main` that changes `site/` (`.github/workflows/pages.yml`).
+- Local preview: `cd site && python -m http.server`
+
+## Data pipeline
+| Step | Command |
+|---|---|
+| Holdings gazetteer | `python pipeline/build_holdings.py` |
+| Trade flows | `python pipeline/build_trade.py` |
+| Development systems | `python pipeline/build_systems.py` |
+| Archive cards | `python pipeline/build_archive.py` |
+| Check for newer source versions | `python pipeline/check_sources.py` (runs monthly; opens an issue if something is newer) |
+
+Raw downloads live in `data/raw/` and are not committed; see `docs/DECISIONS.md` and Terms of Account for sources.
+Reviewing codings: `docs/REVIEW_SHEET.md`.
