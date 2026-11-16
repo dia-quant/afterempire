@@ -31,3 +31,6 @@ Reviewing codings: `docs/REVIEW_SHEET.md`.
 
 ## Citation
 See [`CITATION.cff`](CITATION.cff). Suggested form: Atal, D. (2026). *Afterempire: colonial holdings, trade flows and inherited development systems, 1800–2025.* https://dia-quant.github.io/afterempire/
+
+## Licence
+The project's own data are under **CC BY 4.0** and the code under **MIT** (`LICENSE`). Files derived from third-party sources keep their original licences; see [`LICENSE-DATA.md`](LICENSE-DATA.md).

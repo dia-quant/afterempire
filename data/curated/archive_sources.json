@@ -4,7 +4,7 @@
   "status": "use",
   "use": "Ownership and status of every holding shown on the Territorial Ledger.",
   "citation": "Atal, D. (2026). Afterempire: Holdings gazetteer v0.1: data/curated/holdings.csv and periods.csv. 177 holdings, 638 control periods. Trade crosswalk: data/curated/trade_codes.csv.",
-  "licence": "To be decided by Dia Atal (CC BY 4.0 suggested).",
+  "licence": "CC BY 4.0 (code under MIT).",
   "coverage": "1800–2025 · GBR, FRA, PRT, NLD and powers that took their holdings",
   "link": "https://github.com/dia-quant/afterempire"
  },
@@ -211,7 +211,7 @@
   "status": "use",
   "use": "Planning regime, planning institution and monetary arrangement by decade for 21 countries, with qualitative lineages.",
   "citation": "Atal, D. (2026). Afterempire: data/curated/systems_codings.csv (review sheet) and data/curated/lineages.json. Drafted from the sources cited row by row; awaiting review.",
-  "licence": "To be decided by Dia Atal (CC BY 4.0 suggested).",
+  "licence": "CC BY 4.0 (code under MIT).",
   "coverage": "1950s–2010s",
   "link": "https://github.com/dia-quant/afterempire"
  }
