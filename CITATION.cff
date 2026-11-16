@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use Afterempire or its data, please cite it as below."
 title: "Afterempire: colonial holdings, trade flows and inherited development systems, 1800–2025"
 type: dataset
+license: CC-BY-4.0
 authors:
   - family-names: Atal
     given-names: Dia
@@ -9,5 +10,5 @@ authors:
 repository-code: "https://github.com/dia-quant/afterempire"
 url: "https://dia-quant.github.io/afterempire/"
 version: "0.1.0"
-date-released: "2026-11-15"
+date-released: "2026-11-16"
 keywords: [colonialism, decolonisation, trade, economic history, development planning, gazetteer]
