@@ -18,7 +18,7 @@
   const foot = document.createElement("footer");
   foot.className = "sitefoot";
   foot.innerHTML = `<span>Afterempire · created by <b>Dia Atal</b></span>
-    <span><a class="ae-mail" href="#">Contact</a> · <a href="correspondence">Send a correction</a> · <a href="https://github.com/dia-quant/afterempire" target="_blank" rel="noopener">Data and code</a></span>`;
+    <span><a class="ae-mail" href="#">Contact</a> · <a href="correspondence">Send a correction</a> · <a href="https://github.com/dia-quant/afterempire" target="_blank" rel="noopener">Data and code</a> · <a href="https://doi.org/10.5281/zenodo.24281902" target="_blank" rel="noopener">Cite (DOI)</a></span>`;
   document.body.appendChild(foot);
   el.innerHTML = `<a class="tb-mark" href="./">Afterempire</a>
     <nav class="tb-nav" aria-label="Sections">${items}</nav>

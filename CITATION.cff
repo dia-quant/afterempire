@@ -7,6 +7,14 @@ authors:
   - family-names: Atal
     given-names: Dia
     email: diaatal158@gmail.com
+doi: 10.5281/zenodo.24281902
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24281902
+    description: Concept DOI (all versions, resolves to the latest)
+  - type: doi
+    value: 10.5281/zenodo.24281903
+    description: Version 0.1.0
 repository-code: "https://github.com/dia-quant/afterempire"
 url: "https://dia-quant.github.io/afterempire/"
 version: "0.1.0"
