@@ -51,6 +51,7 @@
       keys.push(`<span><i class="sw" style="--c:${C[k]}"></i>${EMP[k]} (${group.length})</span>`);
     }
     $("w1-key").innerHTML = keys.join("");
+    window.Reveal && Reveal.chart(el);
   }
 
   // ---------------------------------------------------------- sheet 2
@@ -72,6 +73,7 @@
       });
       td.addEventListener("mouseleave", hideTip);
     });
+    window.Reveal && Reveal.cells($("m2"));
   }
 
   // ---------------------------------------------------------- sheet 3
@@ -79,6 +81,7 @@
     const rows = Object.entries(D.countries).filter(([, c]) => c.curated).sort((a, b) => a[1].coloniser.localeCompare(b[1].coloniser) || short(a[1]).localeCompare(short(b[1])));
     const f = (v) => (v == null ? `<span style="color:#6a6864">not by 2019</span>` : `${v} yrs`);
     $("t3").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th><th class="num">Independence</th><th class="num">Monetary arrangement</th><th class="num">Planning institution</th><th class="num">Planning regime</th></tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td><a href="systems#${iso}">${esc(short(c))}</a></td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${EMP[c.coloniser]}</td><td class="num">${c.indep}</td><td class="num">${f(c.persistence.monetary_arrangement)}</td><td class="num">${f(c.persistence.planning_institution)}</td><td class="num">${f(c.persistence.planning_regime)}</td></tr>`).join("")}</tbody>`;
+    window.Reveal && Reveal.rows($("t3"));
   }
 
   // ---------------------------------------------------------- sheet 4
@@ -105,6 +108,7 @@
     const n = pts.length, mx = d3.mean(pts, (p) => p.x), my = d3.mean(pts, (p) => p.y);
     const r = d3.sum(pts, (p) => (p.x - mx) * (p.y - my)) / Math.sqrt(d3.sum(pts, (p) => (p.x - mx) ** 2) * d3.sum(pts, (p) => (p.y - my) ** 2));
     $("w4-r").textContent = `n = ${n} country-decades · Pearson r = ${r.toFixed(2)}`;
+    window.Reveal && Reveal.chart(el);
   }
 
   (async function boot() {
@@ -112,7 +116,7 @@
     D = await fetch("data/systems.json").then((r) => r.json());
     const all = Object.values(D.countries);
     $("n-c").textContent = `${all.filter((c) => c.curated).length} curated · ${all.length} ex-colonies`;
-    $("meta-line").textContent = `updated ${D.meta.generated}`;
+    $("meta-line").textContent = `data up to date as of ${window.AE_ASOF || ""}`;
     sheet1(); sheet2(); sheet3(); sheet4();
     $("w2-all").addEventListener("change", sheet2);
     let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { sheet1(); sheet4(); }, 150); });

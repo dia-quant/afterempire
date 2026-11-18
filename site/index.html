@@ -181,7 +181,7 @@
         <div class="ticks" id="ticks" aria-hidden="true"></div>
       </div>
     </div>
-    <div class="dock-note">DENSITY: HOLDINGS UNDER RULE (BARS) · TRANSFERS (TICKS) · SPEED ×1 = 1.5 YR/S, ×5 = 7.5 YR/S · SRC: CURATED GAZETTEER × COLDAT · UPDATED <span id="updated">—</span></div>
+    <div class="dock-note">DENSITY: HOLDINGS UNDER RULE (BARS) · TRANSFERS (TICKS) · SPEED ×1 = 1.5 YR/S, ×5 = 7.5 YR/S · SRC: CURATED GAZETTEER × COLDAT · DATA UP TO DATE AS OF <span data-asof></span></div>
   </footer>
 
   <!-- ===== Ledger table (terminal) ===== -->
@@ -210,6 +210,7 @@
 <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.45.3/dist/globe.gl.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="js/ledger.js"></script>
+<script src="js/asof.js"></script>
 <script>(() => { const u = ["dia", "atal", "158"].join(""), d = ["gmail", "com"].join("."); document.querySelectorAll(".ae-mail").forEach((a) => { a.href = `mailto:${u}@${d}`; a.title = `${u}@${d}`; }); })();</script>
 </body>
 </html>

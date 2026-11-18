@@ -8,7 +8,7 @@
   --open: #f4f4f4;
   --ink: #000000;
   --ink-dim: #4d4d4d;
-  --marker: #f5e04a;
+  --marker: #e6dcc4;
   --line: 1.5px;
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -104,3 +104,6 @@ h1 { font-family: var(--f-sans); font-weight: 500; font-size: clamp(40px, 7vw, 6
   .card dd { margin-bottom: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { .card:hover .tab { transform: translateY(-100%); } }
+
+.divider.further { margin-top: 70px; }
+.divider.further span { background: #fff; color: var(--ink); border: var(--line) solid var(--ink); border-bottom: 0; clip-path: none; border-radius: 10px 10px 0 0; }

@@ -3,9 +3,9 @@
    Cream ruled paper with a red double margin rule. Deliberately single-theme. */
 :root {
   color-scheme: light;
-  --leaf: #f6f1e3;
-  --rule-blue: rgba(70, 110, 170, 0.18);
-  --rule-red: #b8443a;
+  --leaf: #f1efe7;
+  --rule-blue: rgba(42, 82, 209, 0.14);
+  --rule-red: #c23b2e;
   --ink: #1f1a14;
   --ink-2: #4a4237;
   --ink-dim: #7a7062;
@@ -88,3 +88,6 @@ dl.ruled dd { margin: 0; padding-bottom: 10px; border-top: 1px solid rgba(31, 26
   dl.ruled { grid-template-columns: 1fr; }
   dl.ruled dd { border-top: 0; }
 }
+
+.disclaimer { margin: 18px 0 0; font-family: var(--f-mono); font-size: 12px; line-height: 1.6; color: var(--ink-2); max-width: 82ch; }
+.disclaimer a { color: var(--rule-red); }

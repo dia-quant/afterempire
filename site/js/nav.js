@@ -14,10 +14,10 @@
   const cur = el.dataset.page;
   const items = SECTIONS.map((s) => s.href
     ? `<a href="${s.href}"${s.id === cur ? ' aria-current="page"' : ""}>${s.name}</a>`
-    : `<span class="soon" title="Built in phase ${s.phase.slice(1)}">${s.name}<sup>${s.phase}</sup></span>`).join("");
+    : `<span class="soon">${s.name}</span>`).join("");
   const foot = document.createElement("footer");
   foot.className = "sitefoot";
-  foot.innerHTML = `<span>Afterempire · created by <b>Dia Atal</b></span>
+  foot.innerHTML = `<span>Afterempire · created by <b>Dia Atal</b> · data up to date as of <span data-asof></span></span>
     <span><a class="ae-mail" href="#">Contact</a> · <a href="correspondence">Send a correction</a> · <a href="https://github.com/dia-quant/afterempire" target="_blank" rel="noopener">Data and code</a> · <a href="https://doi.org/10.5281/zenodo.24281902" target="_blank" rel="noopener">Cite (DOI)</a></span>`;
   document.body.appendChild(foot);
   el.innerHTML = `<a class="tb-mark" href="./">Afterempire</a>

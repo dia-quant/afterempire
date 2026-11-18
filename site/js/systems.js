@@ -97,82 +97,85 @@
       <li><b>Evidence:</b> national plan documents and trade records that run across independence are available for each.</li>
     </ol>
     <p>Large gaps remain: Egypt, Iraq, Sudan, Cameroon, Madagascar, Zambia, Zimbabwe, the Caribbean and Suriname have no file yet. The other 73 ex-colonies appear on Divergence Metrics with legal origin and UN voting only. More files can be added in the review sheet.</p>`;
-  function indexFolder() {
-    return `<details class="folder index" id="INDEX" style="--c:var(--ink);--x:0%">
-      <summary><span class="ftab">Index<small>terms · sources · selection</small></span></summary>
-      <div class="fbody"><div class="fsheet">
-        <div class="full"><h2>How to read a file</h2></div>
-        <div class="full"><div class="flabel">Terms and where they come from</div>
-          <div class="twrap"><table class="ctable glossary"><thead><tr><th>Term</th><th>Meaning</th><th>Values</th><th>Fetched from</th></tr></thead>
-          <tbody>${TERMS.map((t) => `<tr><td><b>${esc(t[0])}</b></td><td>${esc(t[1])}</td><td>${esc(t[2])}</td><td>${esc(t[3])}</td></tr>`).join("")}</tbody></table></div></div>
-        <div class="full why-block">${WHY}</div>
-      </div></div>
-    </details>`;
+  // ---------------------------------------------------------- file contents (opened with CaseFile)
+  const shortName = (c) => c.name.split(" / ").pop();
+  const folderColour = (col) => css(COL[col]);
+  function indexFile() {
+    return {
+      tab: "Index", stamp: "Index", title: "How to read a file", colour: css("--ink"),
+      postit: [["Files", "21 countries"], ["Empires", "British · French · Portuguese · Dutch"], ["Data up to date as of", esc(window.AE_ASOF || "")]],
+      markers: [["Terms", "cf-terms"], ["Selection", "cf-why"]],
+      body: `<section class="cf-section" id="cf-terms"><div class="cf-label">Terms and where they come from</div>
+          <div class="twrap" tabindex="0" role="region" aria-label="Terms and sources"><table class="ctable glossary"><thead><tr><th>Term</th><th>Meaning</th><th>Values</th><th>Fetched from</th></tr></thead>
+          <tbody>${TERMS.map((t) => `<tr><td><b>${esc(t[0])}</b></td><td>${esc(t[1])}</td><td>${esc(t[2])}</td><td>${esc(t[3])}</td></tr>`).join("")}</tbody></table></div></section>
+        <section class="cf-section why-block" id="cf-why"><div class="cf-label">Selection</div>${WHY}</section>`,
+    };
   }
-
-  function folderHTML(iso, c, i) {
-    const L = c.lineage;
-    const decs = Object.entries(c.decades);
+  function countryFile(iso, c) {
+    const L = c.lineage, decs = Object.entries(c.decades);
     const models = decs.map(([d, r]) => {
       const n = r.nearest, colour = n === c.coloniser ? css(COL[c.coloniser]) : n === "SUN" ? css("--soviet") : css("--uswb");
       return `<div class="mcell" style="--c:${colour}">${d}<b>${n === c.coloniser ? EMP[n] : MODEL[n] || "—"}</b><i></i><span>inherit ${r.inherit?.toFixed(2) ?? "—"}</span></div>`;
     }).join("");
-    const rows = codingsRows(c, decs);
-    const rev = c.review || {};
-    const revTxt = Object.entries(rev).map(([k, v]) => `${v} ${k}`).join(" · ");
-    const xs = ["0%", "18%", "36%", "54%"];
-    return `<details class="folder" id="${iso}" style="--c:var(${TAB[c.coloniser]});--x:${xs[i % 4]}" data-col="${c.coloniser}">
-      <summary><span class="ftab">${esc(c.name.split(" / ").pop())}<small>${c.coloniser} · ${c.indep}</small></span></summary>
-      <div class="fbody"><div class="fsheet">
-        <div>
-          <h2>${esc(L.summary)}</h2>
-          <dl class="fmeta">
-            <dt>File</dt><dd>${iso}</dd>
-            <dt>Rule</dt><dd>${EMP[c.coloniser]} until ${c.indep}</dd>
-            <dt>Legal origin</dt><dd>${esc(c.legal_origin)}</dd>
-            <dt>Administration</dt><dd>${esc(c.admin_tradition || "—")}</dd>
-            <dt>Confidence</dt><dd>${esc(L.confidence)}</dd>
-          </dl>
-        </div>
-        <div class="lineage"><div class="flabel">Lineage · first two decades</div>${lineageSVG(c)}</div>
-        <div class="full"><div class="flabel">Nearest model by decade (own coloniser · Soviet · US/Bretton Woods)</div><div class="models">${models}</div></div>
-        <div class="full"><div class="flabel">Evidence</div><ol class="notes">${L.notes.map((n) => `<li><span class="t">${esc(n.t)}</span><span>${esc(n.text)}<span class="src">${esc(n.src)}</span></span></li>`).join("")}</ol></div>
-        <div class="full"><div class="flabel">Codings by decade</div>
+    return {
+      tab: shortName(c), stamp: `File ${iso}`, title: shortName(c), colour: folderColour(c.coloniser), ink: css("--ink"),
+      postit: [["File", iso], ["Rule", `${EMP[c.coloniser]} until ${c.indep}`], ["Legal origin", esc(c.legal_origin)],
+        ["Administration", esc(c.admin_tradition || "—")], ["Confidence", esc(L.confidence)], ["Correction", `<a href="correspondence#FILE-${iso}">Suggest one</a>`]],
+      markers: [["Lineage", "cf-lineage"], ["Evidence", "cf-evidence"], ["Codings", "cf-codings"]],
+      body: `<p class="cf-lede">${esc(L.summary)}</p>
+        <section class="cf-section lineage" id="cf-lineage"><div class="cf-label">Lineage · first two decades</div>${lineageSVG(c)}</section>
+        <section class="cf-section"><div class="cf-label">Nearest model by decade (own coloniser · Soviet · US/Bretton Woods)</div><div class="models">${models}</div></section>
+        <section class="cf-section" id="cf-evidence"><div class="cf-label">Evidence</div><ol class="notes">${L.notes.map((n) => `<li><span class="t">${esc(n.t)}</span><span>${esc(n.text)}<span class="src">${esc(n.src)}</span></span></li>`).join("")}</ol></section>
+        <section class="cf-section" id="cf-codings"><div class="cf-label">Codings by decade</div>
           <div class="shade-key"><span>closer to ${EMP[c.coloniser]} system</span><i style="--c:${css(COL[c.coloniser])}"></i><span>further</span></div>
-          <div class="twrap"><table class="ctable grouped"><thead>
+          <div class="twrap" tabindex="0" role="region" aria-label="Codings by decade"><table class="ctable grouped"><thead>
             <tr class="grp"><th rowspan="2">Decade</th><th colspan="3">Coded system</th><th colspan="2" class="g2">Economy (PWT)</th><th colspan="3" class="g3">UN voting agreement with</th></tr>
             <tr><th>Planning regime</th><th>Planning institution</th><th>Monetary arrangement</th><th class="num g2">Openness</th><th class="num">Gov. share</th><th class="num g3">${c.coloniser}</th><th class="num">US</th><th class="num">USSR/RUS</th></tr>
-          </thead><tbody>${rows}</tbody></table></div></div>
-        <div class="full filed">FILED FROM: ${c.sources.map(esc).join(" · ")} · Openness and government share: Penn World Table 11 · UN agreement: Bailey, Strezhnev &amp; Voeten · <span class="review">${esc(revTxt)}</span> · <a href="correspondence#FILE-${iso}">Suggest a correction to this file</a></div>
-      </div></div>
-    </details>`;
+          </thead><tbody>${codingsRows(c, decs)}</tbody></table></div></section>
+        <p class="filed">FILED FROM: ${c.sources.map(esc).join(" · ")} · Openness and government share: Penn World Table 11 · UN agreement: Bailey, Strezhnev &amp; Voeten</p>`,
+    };
   }
 
+  // ---------------------------------------------------------- the stack
+  let order = [];
   function render() {
     const list = Object.entries(D.countries).filter(([, c]) => c.curated && (!filter || c.coloniser === filter))
-      .sort((a, b) => a[1].coloniser.localeCompare(b[1].coloniser) || a[1].name.split(" / ").pop().localeCompare(b[1].name.split(" / ").pop()));
-    $("stack").innerHTML = indexFolder() + list.map(([iso, c], i) => folderHTML(iso, c, i + 1)).join("");
-    $("stack").querySelectorAll("details").forEach((d) => d.addEventListener("toggle", () => {
-      if (d.open) { $("stack").querySelectorAll("details[open]").forEach((o) => { if (o !== d) o.open = false; }); history.replaceState(null, "", `#${d.id}`); }
-    }));
-    const h = location.hash.slice(1);
-    if (h && $(h)) { $(h).open = true; $(h).scrollIntoView({ block: "start" }); }
+      .sort((a, b) => a[1].coloniser.localeCompare(b[1].coloniser) || shortName(a[1]).localeCompare(shortName(b[1])));
+    order = ["INDEX", ...list.map(([iso]) => iso)];
+    const xs = ["0%", "18%", "36%", "54%"];
+    $("stack").innerHTML =
+      `<button type="button" class="folder index" data-id="INDEX" style="--c:var(--ink);--x:0%"><span class="ftab">Index<small>terms · sources · selection</small></span><span class="fopen">Open ›</span></button>` +
+      list.map(([iso, c], i) => `<button type="button" class="folder" data-id="${iso}" style="--c:var(${TAB[c.coloniser]});--x:${xs[(i + 1) % 4]}"><span class="ftab">${esc(shortName(c))}<small>${c.coloniser} · ${c.indep}</small></span><span class="fopen">File ${iso} ›</span></button>`).join("");
+    $("stack").querySelectorAll(".folder").forEach((b) => b.addEventListener("click", () => openFile(b.dataset.id)));
+  }
+  function openFile(id) {
+    const i = order.indexOf(id); if (i < 0) return;
+    const btn = $("stack").querySelector(`.folder[data-id="${id}"]`);
+    const f = id === "INDEX" ? indexFile() : countryFile(id, D.countries[id]);
+    history.replaceState(null, "", `#${id}`);
+    CaseFile.open({
+      ...f, from: btn, stack: $("stack"),
+      prev: i > 0 ? () => openFile(order[i - 1]) : null,
+      next: i < order.length - 1 ? () => openFile(order[i + 1]) : null,
+      onClose: () => { if (!CaseFile.isOpen()) history.replaceState(null, "", location.pathname); },
+    });
   }
 
   (async function boot() {
     D = await fetch("data/systems.json").then((r) => r.json());
     const cur = Object.values(D.countries).filter((c) => c.curated);
     $("n-files").textContent = `${cur.length} files`;
-    const rv = D.meta.review || {};
-    $("review-line").textContent = `· codings ${Object.entries(rv).map(([k, v]) => `${v} ${k}`).join(" · ")} · updated ${D.meta.generated}`;
+    $("review-line").textContent = `· data up to date as of ${window.AE_ASOF || ""}`;
     $("chips").innerHTML = `<button class="chip-btn" aria-pressed="true" data-c="">All</button>` +
-      ["GBR", "FRA", "PRT", "NLD"].map((k) => `<button class="chip-btn" aria-pressed="false" data-c="${k}" style="--c:var(${TAB[k]})"><i></i>${EMP[k]} (${cur.filter((c) => c.coloniser === k).length})</button>`).join("");
+      ["GBR", "FRA", "PRT", "NLD"].map((k) => `<button class="chip-btn" aria-pressed="false" data-c="${k}" style="--c:var(${COL[k]})"><i></i>${EMP[k]} (${cur.filter((c) => c.coloniser === k).length})</button>`).join("");
     $("chips").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
       filter = b.dataset.c || null;
       $("chips").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
       render();
     }));
     render();
-    window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h && $(h)) $(h).open = true; });
+    const h = location.hash.slice(1);
+    if (h && order.includes(h)) openFile(h);
+    window.addEventListener("hashchange", () => { const k = location.hash.slice(1); if (k && order.includes(k) && !CaseFile.isOpen()) openFile(k); });
   })();
 })();

@@ -10,10 +10,10 @@
  },
  {
   "name": "BACI world trade (CEPII)",
-  "status": "plan",
-  "use": "Reached through CEPII Gravity (below); not downloaded separately.",
+  "status": "further",
+  "use": "Product-level world trade data; the site draws on it through the CEPII Gravity database.",
   "citation": "Gaulier, G. and Zignago, S. (2010). BACI: International Trade Database at the Product-Level. CEPII Working Paper 2010-23.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "1995–present",
   "link": "https://www.cepii.fr/"
  },
@@ -37,10 +37,10 @@
  },
  {
   "name": "Correlates of War Trade",
-  "status": "plan",
-  "use": "Cross-check of bilateral trade totals, 1870 onward (Phase 4).",
+  "status": "further",
+  "use": "Bilateral trade totals from 1870, a long-run cross-check for the trade series.",
   "citation": "Barbieri, K. and Keshk, O. Correlates of War Project Trade Data Set, version 4.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "1870–2014",
   "link": "https://correlatesofwar.org/"
  },
@@ -55,19 +55,19 @@
  },
  {
   "name": "Federico-Tena World Trade Historical Database",
-  "status": "plan",
-  "use": "Benchmark totals for checking nineteenth-century trade (Phase 4).",
+  "status": "further",
+  "use": "World trade totals for the nineteenth and early twentieth centuries.",
   "citation": "Federico, G. and Tena-Junguito, A. (2016). World Trade Historical Database.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "1800–1938",
   "link": ""
  },
  {
   "name": "Garriga Central Bank Independence",
-  "status": "plan",
-  "use": "Central bank independence dimension in Inherited Systems (Phase 5).",
+  "status": "further",
+  "use": "Central bank independence scores for most countries from 1970.",
   "citation": "Garriga, A. C. (2016). Central Bank Independence in the World: A New Data Set. International Interactions 42(5).",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "1970–2023",
   "link": ""
  },
@@ -100,19 +100,19 @@
  },
  {
   "name": "ICOW Colonial History",
-  "status": "plan",
-  "use": "Second cross-check of independence dates and types (Phase 1b).",
+  "status": "further",
+  "use": "Independence dates and the type of transition for each former colony.",
   "citation": "Hensel, P. R. ICOW Colonial History Data Set, version 1.1.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "Country level",
   "link": "https://www.paulhensel.org/icowcol.html"
  },
  {
   "name": "Maddison Project Database",
-  "status": "plan",
-  "use": "Long-run GDP per capita for context in Inherited Systems (Phase 5).",
+  "status": "further",
+  "use": "Long-run estimates of GDP per capita and population.",
   "citation": "Bolt, J. and van Zanden, J. L. (2024). Maddison style estimates of the evolution of the world economy. Maddison Project Database 2023.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "Pre-1800 to 2022",
   "link": "https://www.rug.nl/ggdc/historicaldevelopment/maddison/"
  },
@@ -163,17 +163,17 @@
  },
  {
   "name": "V-Dem",
-  "status": "plan",
-  "use": "State ownership of the economy and institutional context (Phase 5).",
+  "status": "further",
+  "use": "Indicators of state ownership of the economy and of political institutions.",
   "citation": "Coppedge, M. et al. V-Dem Dataset. Varieties of Democracy Project.",
-  "licence": "To be checked before use.",
+  "licence": "See the provider's terms.",
   "coverage": "1789–present",
   "link": "https://v-dem.net/"
  },
  {
   "name": "Wikidata",
-  "status": "plan",
-  "use": "Links each holding to a stable identifier and cross-checks transfer dates (Phase 1b).",
+  "status": "further",
+  "use": "Stable identifiers and dates for historical territories.",
   "citation": "Wikidata contributors. Wikidata, the free knowledge base.",
   "licence": "CC0 1.0.",
   "coverage": "Global",
@@ -181,8 +181,8 @@
  },
  {
   "name": "World Bank World Development Indicators",
-  "status": "plan",
-  "use": "Post-independence indicators, refreshed monthly by the site's build (Phase 7).",
+  "status": "further",
+  "use": "Post-independence development indicators for every country.",
   "citation": "World Bank. World Development Indicators (API v2).",
   "licence": "CC BY 4.0.",
   "coverage": "1960–present",
@@ -210,7 +210,7 @@
   "name": "Afterempire development codings",
   "status": "use",
   "use": "Planning regime, planning institution and monetary arrangement by decade for 21 countries, with qualitative lineages.",
-  "citation": "Atal, D. (2026). Afterempire: data/curated/systems_codings.csv (review sheet) and data/curated/lineages.json. Drafted from the sources cited row by row; awaiting review. Zenodo, doi:10.5281/zenodo.24281902.",
+  "citation": "Atal, D. (2026). Afterempire: data/curated/systems_codings.csv (review sheet) and data/curated/lineages.json. Drafted from the sources cited row by row. Zenodo, doi:10.5281/zenodo.24281902.",
   "licence": "CC BY 4.0 (code under MIT).",
   "coverage": "1950s–2010s",
   "link": "https://doi.org/10.5281/zenodo.24281902"

@@ -136,3 +136,19 @@ Every sub-page shares one header (js/nav.js, css/topbar.css); only colours chang
 | Inherited Systems | coloured office folders, index tab first | the case files |
 | Divergence Metrics | graph-paper worksheets | the analyst's working |
 | The Archive | high-contrast line-art filing drawer, yellow label | the source index |
+
+## Interface palette (applies to UI, not to data)
+| Role | Colour |
+|---|---|
+| Blue, deep | `#1d3a6b` (navy ink: report headers, airmail stripes) |
+| Blue, bright | `#2a52d1` (accents, chart traces, graph-paper grid) |
+| Red | `#c23b2e` (page markers, pins, margin rules, links) |
+| Neutrals | black `#111`, greys, white (the Archive is black/grey only) |
+| Beige | `#f1efe7` paper, with `#e6dcc4` (same hue) for post-its and labels |
+
+Data colours (empire index, development models) keep their own validated values; country files are coloured by their former coloniser's index colour.
+
+## Motion
+- Charts on Flows of Empire and Divergence Metrics draw in as they scroll into view (`site/js/reveal.js`).
+- Files on Inherited Systems and cards in The Archive open as physical case files (`site/js/casefile.js`), after the folder interaction on mosbyfiles.com: the stack drops back, the folder rises and flattens, the cover swings open, the title rises, a pinned post-it carries the metadata, and page markers slide out of the folder edge.
+- Both respect `prefers-reduced-motion`.

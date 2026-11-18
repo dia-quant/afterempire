@@ -3,13 +3,13 @@
    Deliberately single-theme. */
 :root {
   color-scheme: light;
-  --desk: #d9d3c7;
-  --sheet: #fbf8f1;
+  --desk: #d6d6d4;
+  --sheet: #f7f5ef;
   --ink: #1d2230;
   --ink-2: #4b5060;
   --ink-dim: #5e626d;
-  --air-red: #b8443a;
-  --air-blue: #2f4f8f;
+  --air-red: #c23b2e;
+  --air-blue: #1d3a6b;
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }

@@ -97,6 +97,7 @@
       .on("mouseleave", () => { cross.attr("opacity", 0); hideTip(); });
     // table view
     const ts = [-20, -10, 0, 10, 20, 30, 40, 50, 60];
+    window.Reveal && Reveal.chart(el);
     $("ero-table").innerHTML = `<table class="dtable"><thead><tr><th>Empire</th>${ts.map((t) => `<th class="num">${t > 0 ? "+" + t : t}</th>`).join("")}</tr></thead><tbody>${FOCUS.map((k) => `<tr><td><span class="sw" style="--c:${C[k]}"></span>${NAME[k]}</td>${ts.map((t) => { const r = out[k].find((d) => d[0] === t); return `<td class="num">${r ? Math.round(r[1] * 100) + "%" : "—"}</td>`; }).join("")}</tr>`).join("")}</tbody></table>`;
   }
 
@@ -129,6 +130,7 @@
         showTip(`<b>${r[0]}</b><div>${r[2]}</div>`, ev);
       })
       .on("mouseleave", () => { cross.attr("opacity", 0); dot.attr("opacity", 0); hideTip(); });
+    window.Reveal && Reveal.chart(el);
   }
   async function drawExplorer(hid) {
     const h = byId.get(hid), series = T.share[hid] || [];
@@ -157,6 +159,7 @@
         return `<tr><td>${k}</td><td class="num">${money(all, y)}</td>${d[k].slice(0, 5).map((r) => `<td>${esc((T.nodes[r[0]] || { n: r[0] }).n)} <span class="dim">${Math.round((r[1] / all) * 100)}%</span></td>`).join("")}</tr>`;
       }).join("")}</tbody>`
       : `<tbody><tr><td class="dim">No recorded partners for this holding.</td></tr></tbody>`;
+    window.Reveal && Reveal.rows($("ex-partners"));
   }
 
   // ------------------------------------------------------------ 3. ranking
@@ -176,6 +179,7 @@
         return `<tr><td class="num dim">${String(i + 1).padStart(2, "0")}</td><td>${esc((T.nodes[a] || { n: a }).n)} ⇄ ${esc((T.nodes[b] || { n: b }).n)}</td><td class="num">${money(t, y)}</td><td>${ratio(ab, ba)}</td><td>${s ? `<span class="sw" style="--c:${s.colour}"></span>${esc(s.txt)}` : ""}</td></tr>`;
       }).join("")}</tbody>`
       : `<tbody><tr><td class="dim">No recorded flows touching a holding in ${y}.</td></tr></tbody>`;
+    if (!drawRanking.once) { drawRanking.once = true; window.Reveal && Reveal.rows($("rk-table")); }
   }
 
   // ------------------------------------------------------------ boot
@@ -184,7 +188,7 @@
       ink: css("--ink"), trace: css("--trace"), paper: css("--stock-hi") });
     const [t, h] = await Promise.all([fetch("data/trade.json").then((r) => r.json()), fetch("data/holdings.json").then((r) => r.json())]);
     T = t; H = h; byId = new Map(H.holdings.map((x) => [x.id, x]));
-    $("stamp").textContent = `${Object.keys(T.years).length} YEARS · RUN ${T.meta.generated}`;
+    $("stamp").textContent = `${Object.keys(T.years).length} YEARS · DATA UP TO DATE AS OF ${(window.AE_ASOF || "").toUpperCase()}`;
     drawErosion();
     const opts = Object.keys(T.share).filter((id) => byId.has(id) && T.share[id].length > 5).map((id) => [id, byId.get(id).name]).sort((a, b) => a[1].localeCompare(b[1]));
     $("ex-select").innerHTML = opts.map(([id, n]) => `<option value="${id}">${esc(n)}</option>`).join("");

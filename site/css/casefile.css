@@ -1,0 +1,118 @@
+/* Afterempire · case file: the open-a-folder view shared by Inherited Systems and The Archive.
+   A coloured folder with punch-holed paper, a pinned beige post-it for metadata, red page markers
+   on the folder's edge, and a cover that swings open. Colours come from the page via --cf-* tokens. */
+.cf-overlay {
+  --cf-folder: #2a52d1; --cf-folder-ink: #ffffff; --cf-paper: #fbfaf6; --cf-ink: #111111; --cf-ink-2: #4a4640;
+  --cf-postit: #e6dcc4; --cf-red: #c23b2e; --cf-dim: rgba(14, 18, 28, 0.62);
+  --cf-ease: cubic-bezier(0.33, 1, 0.68, 1);
+  position: fixed; inset: 0; z-index: 100; background: var(--cf-dim);
+  display: flex; flex-direction: column;
+}
+.cf-bar {
+  flex: none; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 12px; color: #fff;
+  background: #0e121c; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.cf-bar kbd { font: inherit; font-size: 10px; opacity: 0.7; margin-left: 6px; }
+.cf-bar button {
+  font: inherit; color: inherit; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 7px 12px; cursor: pointer; letter-spacing: 0.04em;
+}
+.cf-bar button:hover { background: rgba(255, 255, 255, 0.18); }
+.cf-bar button:disabled { opacity: 0.35; cursor: default; }
+.cf-bar .cf-nav { display: flex; gap: 6px; }
+.cf-scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 52px max(16px, env(safe-area-inset-right, 0px)) 60px max(16px, env(safe-area-inset-left, 0px)); }
+.cf-stage { max-width: 1060px; margin: 0 auto; perspective: 2200px; }
+
+.cf-folder {
+  position: relative; background: var(--cf-folder); border-radius: 6px 6px 4px 4px;
+  padding: 26px 46px 26px 26px; transform-origin: center top; transform-style: preserve-3d;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+.cf-folder::before { /* folder tab at top left */
+  content: attr(data-tab); position: absolute; left: 22px; top: 0; transform: translateY(-100%);
+  background: var(--cf-folder); color: var(--cf-folder-ink); padding: 7px 26px 6px; min-width: 180px;
+  font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.1;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
+}
+.cf-tabs { position: absolute; right: 0; top: 70px; transform: translateX(100%); display: flex; flex-direction: column; gap: 4px; z-index: 0; }
+.cf-tab {
+  writing-mode: vertical-rl; font-family: "EB Garamond", Georgia, serif; font-size: 15px; letter-spacing: 0.02em;
+  background: var(--cf-red); color: #fff; border: 0; padding: 14px 7px; cursor: pointer; border-radius: 0 8px 8px 0;
+  transition: transform 0.325s var(--cf-ease);
+}
+.cf-tab:nth-child(2) { background: var(--cf-ink); }
+.cf-tab:nth-child(3) { background: var(--cf-postit); color: var(--cf-ink); }
+.cf-tab:hover, .cf-tab:focus-visible { transform: translateX(6px); }
+
+.cf-sheet {
+  position: relative; background: var(--cf-paper); color: var(--cf-ink); min-height: 70vh;
+  padding: 44px 48px 48px 92px; border-radius: 2px;
+  background-image: linear-gradient(90deg, transparent 70px, rgba(194, 59, 46, 0.35) 70px, rgba(194, 59, 46, 0.35) 71px, transparent 71px);
+}
+.cf-holes { position: absolute; left: 26px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-around; padding: 60px 0; }
+.cf-holes i { width: 14px; height: 14px; border-radius: 50%; background: var(--cf-folder); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35); }
+.cf-stamp {
+  position: absolute; right: 30px; top: 26px; font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.08em;
+  color: var(--cf-ink); border: 1.5px solid var(--cf-ink); box-shadow: 3px 3px 0 var(--cf-folder); padding: 4px 8px; transform: rotate(1.5deg);
+}
+.cf-title {
+  margin: 10px 0 18px; font-family: "EB Garamond", Georgia, serif; font-style: italic; font-weight: 400;
+  font-size: clamp(36px, 6vw, 62px); line-height: 1.02; max-width: 15ch; text-wrap: balance;
+}
+.cf-title .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; }
+.cf-title .c { display: inline-block; }
+.cf-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 28px 36px; align-items: start; }
+.cf-body { min-width: 0; font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 14.5px; line-height: 1.6; }
+.cf-postit {
+  position: relative; background: var(--cf-postit); color: var(--cf-ink); padding: 26px 18px 18px; transform: rotate(-2.5deg);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16); font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 1.5;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 96% 100%, 0 100%);
+}
+.cf-postit .cf-pin {
+  position: absolute; left: 50%; top: 8px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e9806f, var(--cf-red) 55%, #7d2017); box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+.cf-postit dl { margin: 0; display: grid; gap: 2px 0; }
+.cf-postit dt { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cf-ink-2); margin-top: 8px; }
+.cf-postit dt:first-child { margin-top: 0; }
+.cf-postit dd { margin: 0; overflow-wrap: anywhere; }
+.cf-postit a { color: var(--cf-red); }
+.cf-section { scroll-margin-top: 20px; }
+.cf-section + .cf-section { margin-top: 26px; }
+.cf-label { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cf-ink-2); border-bottom: 1px dashed rgba(17, 17, 17, 0.25); padding-bottom: 4px; margin: 0 0 10px; }
+
+.cf-cover {
+  position: absolute; inset: 26px 46px 26px 26px; background: var(--cf-folder); border-radius: 2px;
+  transform-origin: left center; backface-visibility: hidden; z-index: 5;
+  display: flex; align-items: flex-end; justify-content: flex-end; padding: 26px;
+  box-shadow: inset -12px 0 24px rgba(0, 0, 0, 0.18);
+}
+.cf-cover span { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cf-folder-ink); opacity: 0.8; }
+
+body.cf-open { overflow: hidden; }
+.cf-away { transition: transform 0.65s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.65s cubic-bezier(0.33, 1, 0.68, 1); transform: translateY(40px) scale(0.98); opacity: 0.35; }
+
+@media (max-width: 760px) {
+  .cf-folder { padding: 14px 14px 14px 14px; }
+  .cf-tabs { display: none; }
+  .cf-cover { inset: 14px; }
+  .cf-sheet { padding: 30px 18px 30px 48px; background-image: linear-gradient(90deg, transparent 38px, rgba(194, 59, 46, 0.35) 38px, rgba(194, 59, 46, 0.35) 39px, transparent 39px); }
+  .cf-holes { left: 12px; }
+  .cf-holes i { width: 10px; height: 10px; }
+  .cf-stamp { right: 14px; top: 12px; font-size: 10.5px; }
+  .cf-layout { grid-template-columns: 1fr; }
+  .cf-postit { order: -1; transform: rotate(-1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) { .cf-tab, .cf-away { transition: none; } }
+
+/* shared sheet typography */
+.cf-lede { font-family: "EB Garamond", Georgia, serif; font-size: 22px; line-height: 1.35; margin: 0 0 22px; max-width: 46ch; color: var(--cf-ink); }
+.cf-cite { font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.7; margin: 0; padding: 14px 16px; border-left: 3px solid var(--cf-red); background: rgba(17, 17, 17, 0.03); }
+@media (max-width: 760px) {
+  .cf-bar { font-size: 11px; }
+  .cf-bar kbd { display: none; }
+  .cf-bar button { padding: 6px 9px; }
+  .cf-scroll { padding-top: 44px; }
+}

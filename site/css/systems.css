@@ -3,18 +3,20 @@
    Deliberately single-theme (paper); colours are set explicitly. */
 :root {
   color-scheme: light;
-  --paper: #e4e2dd;
-  --card: #f3f1ec;
+  --ui-navy: #1d3a6b; --ui-blue: #2a52d1; --ui-red: #c23b2e; --ui-beige: #f1efe7; --ui-beige-2: #e6dcc4;
+  --paper: var(--ui-beige);
+  --card: #f7f5ef;
   --card-hi: #fbfaf7;
   --ink: #111111;
   --ink-2: #3d3a36;
   --ink-dim: #5a5853;
   --rule: rgba(17, 17, 17, 0.18);
-  --marker: #f4e04d;
+  --marker: var(--ui-beige-2);
   --gbr: #cc6a55; --fra: #5d8bd4; --prt: #47a37e; --nld: #bb8b32; --oth: #a596bf; --sov: #8a93a3;
   --soviet: #8a2c6e; --uswb: #0a8fa8; --home: #3a3530;
   /* saturated folder-tab versions */
-  --tab-gbr: #c4553f; --tab-fra: #3f6fc6; --tab-prt: #2f8f68; --tab-nld: #b07a1c;
+  /* country files carry the index colour of their former coloniser */
+  --tab-gbr: var(--gbr); --tab-fra: var(--fra); --tab-prt: var(--prt); --tab-nld: var(--nld);
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --f-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -50,22 +52,25 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 
 /* ---------- folder stack (Inherited Systems) ---------- */
 .stack { margin-top: 36px; display: flex; flex-direction: column; }
-.folder { --c: var(--tab-gbr); position: relative; margin-top: -6px; scroll-margin-top: 110px; }
-.folder:first-child { margin-top: 0; }
-.folder > summary {
-  list-style: none; cursor: pointer; position: relative; display: flex; align-items: flex-end; height: 44px;
+.folder {
+  --c: var(--tab-gbr); position: relative; display: flex; align-items: flex-end; justify-content: space-between; width: 100%; height: 50px;
+  margin-top: -6px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; color: inherit;
+  transition: transform 0.325s cubic-bezier(0.33, 1, 0.68, 1);
 }
-.folder > summary::-webkit-details-marker { display: none; }
-.folder > summary::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--c); }
+.folder:first-child { margin-top: 0; }
+.folder::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--c); }
+.folder:hover, .folder:focus-visible { transform: translateY(-6px); }
+.folder:focus-visible { outline: 2px solid var(--ui-red); outline-offset: 2px; }
 .ftab {
   position: relative; z-index: 1; margin-left: var(--x, 0%); display: flex; align-items: center; gap: 22px;
-  background: var(--c); color: #fff; padding: 7px 26px 6px; min-width: 240px; max-width: 100%;
+  background: var(--c); color: var(--ink); padding: 7px 26px 6px; min-width: 240px; max-width: 100%;
   clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
   font-family: var(--f-display); font-size: 19px; line-height: 1.1;
 }
 .ftab small { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; opacity: 0.9; white-space: nowrap; }
-.folder:hover .ftab { filter: brightness(1.06); }
-.folder[open] > summary::before { height: 100%; top: 30px; }
+.fopen { position: relative; z-index: 1; align-self: flex-end; margin: 0 14px 1px 0; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink); line-height: 12px; }
+.stack:not(.cf-away) .folder:last-child::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; background: var(--c); }
+.cf-lede { font-family: var(--f-display); font-size: 22px; line-height: 1.35; margin: 0 0 22px; max-width: 46ch; color: var(--ink); }
 .fbody { position: relative; background: var(--c); padding: 0 10px 10px; }
 .fsheet { background: var(--card-hi); padding: 20px 22px 22px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 28px; }
 .fsheet .full { grid-column: 1 / -1; }
@@ -100,7 +105,9 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 .ctable.glossary td { white-space: normal; vertical-align: top; font-family: var(--f-sans); font-size: 12.5px; padding: 6px 12px 6px 0; }
 .ctable.glossary td:first-child { white-space: nowrap; font-family: var(--f-mono); font-size: 11.5px; }
 .ctable.glossary td:last-child { font-family: var(--f-mono); font-size: 11px; color: var(--ink-2); }
-.folder.index .ftab { color: var(--marker); }
+.folder.index .ftab { color: var(--ui-beige); }
+.folder.index .fopen { color: var(--ui-beige); }
+.stack { margin-bottom: 40px; }
 .why-block { font-size: 13.5px; max-width: 86ch; }
 .why-block p { margin: 0 0 8px; }
 .why { margin: 0 0 10px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
@@ -110,14 +117,14 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 /* ---------- graph paper (Divergence Metrics) ---------- */
 body.graph {
   background:
-    linear-gradient(rgba(10, 143, 168, 0.10) 1px, transparent 1px) 0 0 / 100% 40px,
-    linear-gradient(90deg, rgba(10, 143, 168, 0.10) 1px, transparent 1px) 0 0 / 40px 100%,
-    linear-gradient(rgba(10, 143, 168, 0.05) 1px, transparent 1px) 0 0 / 100% 8px,
-    linear-gradient(90deg, rgba(10, 143, 168, 0.05) 1px, transparent 1px) 0 0 / 8px 100%,
-    #eef0ea;
+    linear-gradient(rgba(42, 82, 209, 0.10) 1px, transparent 1px) 0 0 / 100% 40px,
+    linear-gradient(90deg, rgba(42, 82, 209, 0.10) 1px, transparent 1px) 0 0 / 40px 100%,
+    linear-gradient(rgba(42, 82, 209, 0.05) 1px, transparent 1px) 0 0 / 100% 8px,
+    linear-gradient(90deg, rgba(42, 82, 209, 0.05) 1px, transparent 1px) 0 0 / 8px 100%,
+    var(--ui-beige);
 }
-body.graph .topbar, body.graph .sitefoot { --tb-bg: #eef0ea; }
-body.graph::before { background: #eef0ea; }
+body.graph .topbar, body.graph .sitefoot { --tb-bg: var(--ui-beige); }
+body.graph::before { background: var(--ui-beige); }
 .worksheet { margin-top: 30px; background: rgba(251, 250, 247, 0.92); border: 1px solid var(--ink); }
 .ws-head { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: baseline; padding: 8px 14px; border-bottom: 1px solid var(--ink); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; }
 .ws-head .no { font-weight: 600; }
@@ -154,3 +161,6 @@ body.graph::before { background: #eef0ea; }
   .ws-head .aux { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.disclaimer { margin: 18px 0 0; padding-top: 10px; border-top: 1px solid var(--ink); font-size: 12.5px; font-style: italic; color: var(--ink-2); max-width: 82ch; }
+.disclaimer a { color: var(--ui-red); }

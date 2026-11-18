@@ -116,7 +116,7 @@
       <dt>Values</dt><dd>All money values are approximate, in current prices of the source's unit. No deflation or currency conversion is applied between periods.</dd>
       <dt>Sparse years</dt><dd>Colonial trade records before about 1820 are thin. The site shows what exists and says so; it does not interpolate.</dd>
       <dt>Density strip</dt><dd>Under the time slider, bars count holdings under imperial rule and ticks count transfers in each year, so thin years are visible before you read them.</dd>
-      <dt>Review status</dt><dd id="review-dd">Every hand coding starts “unreviewed”. The count of reviewed and flagged rows is shown on Inherited Systems.</dd>
+      <dt>Hand codings</dt><dd>Drafted by the author from the cited sources and recorded row by row in the review sheet, where each can be checked and corrected.</dd>
     </dl>
   </section>
 
@@ -139,8 +139,8 @@
   <section id="updates" class="entry">
     <h2><span class="num">VI</span>Versions and updates</h2>
     <dl class="ruled">
-      <dt>Historical layers</dt><dd>Frozen and versioned in the repository; each page shows the date its data were built. Each GitHub release is archived on Zenodo with its own DOI under the concept DOI <a href="https://doi.org/10.5281/zenodo.24281902">10.5281/zenodo.24281902</a>.</dd>
-      <dt>Recent years</dt><dd>A scheduled job will refresh post-independence indicators and the newest trade year when sources publish them (Phase 7). Until then, the “updated” stamps show the last build.</dd>
+      <dt>Historical layers</dt><dd>Frozen and versioned in the repository; every page shows the date the data are up to date as of. Each GitHub release is archived on Zenodo with its own DOI under the concept DOI <a href="https://doi.org/10.5281/zenodo.24281902">10.5281/zenodo.24281902</a>.</dd>
+      <dt>Recent years</dt><dd>A monthly check looks for newer releases of the trade and development sources; when one appears, the data are rebuilt and the “up to date as of” date moves forward.</dd>
       <dt>Corrections</dt><dd>Submitted through <a href="correspondence">Correspondence</a>, reviewed, and applied to the curated files; each change is a commit in the repository history.</dd>
     </dl>
   </section>
@@ -152,13 +152,15 @@
       <li>Only Hyderabad and Mysore stand for the ~560 princely states.</li>
       <li>Empires beyond the four appear only while holding one of their territories.</li>
       <li>Trade shares depend on what the sources recorded; aggregates and one-sided reports remain.</li>
-      <li>Hand codings for 21 countries are drafts awaiting review; 73 other ex-colonies are compared on legal origin and UN voting only.</li>
+      <li>Hand codings exist for 21 countries; 73 other ex-colonies are compared on legal origin and UN voting only.</li>
       <li>Reference models are stylised profiles of c.1945–65 and do not change over time.</li>
     </ol>
   </section>
   <div class="endrule">— balance carried forward —</div>
+  <p class="disclaimer">Codings and lineage shares on this page are provisional and still under review; corrections are welcome through <a href="correspondence">Correspondence</a>.</p>
 </main>
 <script src="js/nav.js"></script>
+<script src="js/asof.js"></script>
 <script src="js/terms.js"></script>
 </body>
 </html>

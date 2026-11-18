@@ -1089,7 +1089,6 @@
       $("loader").querySelector(".loader-text").textContent = `${err.message}. Reload the page to try again.`;
       return;
     }
-    $("updated").textContent = S.data.meta.generated;
     computeMeterScale();
     wire(); initSearch(); drawTicks();
     const small = window.matchMedia("(max-width: 760px)").matches;
