@@ -62,7 +62,9 @@
     $("m2").innerHTML = `<thead><tr><th>Country</th><th>Former coloniser</th>${decs.map((d) => `<th>${d}</th>`).join("")}</tr></thead><tbody>${rows.map(([iso, c]) => `<tr><td class="name">${c.curated ? `<a href="systems#${iso}">${esc(short(c))}</a>` : esc(short(c))}</td><td><i class="sw" style="--c:${C[c.coloniser]}"></i> ${c.coloniser} · ${c.indep}</td>${decs.map((d) => {
       const r = c.decades[d];
       if (!r || !r.nearest) return `<td class="cell none">—</td>`;
-      const fg = r.nearest === "SUN" ? "#fff" : "#111";
+      const bgc = modelColour(r.nearest, c.coloniser).replace("#", "");
+      const L = bgc.match(/../g).map((x) => parseInt(x, 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+      const fg = (L + 0.05) / 0.05 > 1.05 / (L + 0.05) ? "#111" : "#fff";
       return `<td class="cell${c.curated ? "" : " weak"}" style="background:${modelColour(r.nearest, c.coloniser)};color:${fg}" data-iso="${iso}" data-d="${d}">${modelName(r.nearest, c.coloniser)}</td>`;
     }).join("")}</tr>`).join("")}</tbody>`;
     $("m2").querySelectorAll("td.cell[data-iso]").forEach((td) => {

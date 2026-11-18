@@ -14,7 +14,7 @@
   --rule: rgba(27, 36, 51, 0.22);
   --blue: #1d3a6b;           /* report blue (headers, selection) */
   --trace: #2a52d1;          /* single-series chart line */
-  --gbr: #cc6a55; --fra: #5d8bd4; --prt: #47a37e; --nld: #bb8b32; --oth: #a596bf; --sov: #8a93a3;
+  --gbr: #c23b2e;   /* red */ --fra: #1d3a6b;   /* deep blue */ --prt: #2a52d1;   /* bright blue */ --nld: #977a3c;   /* sand (beige hue) */ --oth: #b3b6bd;   /* grey */ --sov: #8a93a3;
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --hole: 12px;

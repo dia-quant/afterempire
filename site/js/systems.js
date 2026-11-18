@@ -7,6 +7,11 @@
   const EMP = { GBR: "British", FRA: "French", PRT: "Portuguese", NLD: "Dutch" };
   const TAB = { GBR: "--tab-gbr", FRA: "--tab-fra", PRT: "--tab-prt", NLD: "--tab-nld" };
   const COL = { GBR: "--gbr", FRA: "--fra", PRT: "--prt", NLD: "--nld" };
+  const ON = { GBR: "--on-gbr", FRA: "--on-fra", PRT: "--on-prt", NLD: "--on-nld" };
+  // readable text on any background: white or ink by relative luminance
+  const lum = (hex) => { const v = hex.replace("#", "").match(/../g).map((x) => parseInt(x, 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; };
+  const mix = (hex, pct, base = "#fbfaf7") => { const a = hex.replace("#", "").match(/../g).map((x) => parseInt(x, 16)), b = base.replace("#", "").match(/../g).map((x) => parseInt(x, 16)); return "#" + a.map((v, i) => Math.round(v * pct / 100 + b[i] * (1 - pct / 100)).toString(16).padStart(2, "0")).join(""); };
+  const textOn = (hex) => ((lum(hex) + 0.05) / 0.05 > 1.05 / (lum(hex) + 0.05) ? "#111111" : "#ffffff");
   const PLAN = { 0: "none / market", 0.25: "limited", 0.5: "indicative", 0.75: "comprehensive", 1: "central" };
   const INST = { central_committee: "central planning committee", plan_ministry: "ministry / commissariat of plan", planning_commission: "planning commission",
     technocratic_board: "technocratic planning board", advisory: "advisory / forecasting body", none: "none" };
@@ -24,13 +29,13 @@
     const avail = H - gap * (keys.length - 1) - 20;
     let y = 10, ry = 10 + (H - 20 - avail) / 2;
     let out = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Influences on ${esc(c.name)}'s post-independence system">
-      <defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f3f1ec"/><line x1="0" y1="0" x2="0" y2="5" stroke="${css("--home")}" stroke-width="1.6"/></pattern></defs>`;
+      <defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f3f1ec"/><line x1="0" y1="0" x2="0" y2="5" stroke="${css("--ink")}" stroke-width="1.6"/></pattern></defs>`;
     for (const [k, label, fill] of keys) {
       const v = sh[k] || 0, h = (v / total) * avail;
       if (v > 0) {
         const t0 = y, t1 = y + h, r0 = ry, r1 = ry + h, mx = (x0 + bw + x1) / 2;
-        out += `<path d="M${x0 + bw},${t0} C${mx},${t0} ${mx},${r0} ${x1},${r0} L${x1},${r1} C${mx},${r1} ${mx},${t1} ${x0 + bw},${t1} Z" fill="${fill}" opacity="${fill.startsWith("url") ? 0.9 : 0.35}"/>`;
-        out += `<rect x="${x0}" y="${t0}" width="${bw}" height="${Math.max(1, h)}" fill="${fill}"/>`;
+        out += `<path d="M${x0 + bw},${t0} C${mx},${t0} ${mx},${r0} ${x1},${r0} L${x1},${r1} C${mx},${r1} ${mx},${t1} ${x0 + bw},${t1} Z" fill="${fill}" opacity="${fill.startsWith("url") || k === "homegrown" ? 0.9 : 0.35}"/>`;
+        out += `<rect x="${x0}" y="${t0}" width="${bw}" height="${Math.max(1, h)}" fill="${fill}"${k === "homegrown" ? ` stroke="${css("--ink")}" stroke-width="1"` : ""}/>`;
         out += `<text x="${x0 - 8}" y="${t0 + h / 2 + 4}" text-anchor="end">${esc(label)} ${v}%</text>`;
         ry += h;
       } else {
@@ -67,8 +72,8 @@
         if (!n) return "";
         const sv = r.sim?.[c.coloniser]?.[k];
         const pctMix = sv == null ? 0 : Math.round(12 + 68 * sv);
-        const dark = pctMix > 52;
-        return `<td class="cat" rowspan="${n}" style="background:color-mix(in srgb, ${base} ${pctMix}%, #fbfaf7);color:${dark ? "#fff" : "var(--ink)"}" title="similarity to ${c.coloniser}: ${sv == null ? "—" : sv.toFixed(2)}">${esc(f(r[k]))}</td>`;
+        const bg = mix(base, pctMix);
+        return `<td class="cat" rowspan="${n}" style="background:${bg};color:${textOn(bg)}" title="similarity to ${c.coloniser}: ${sv == null ? "—" : sv.toFixed(2)}">${esc(f(r[k]))}</td>`;
       }).join("");
       return `<tr><td class="dec">${d}</td>${cells}<td class="num g2">${pct(r.open)}</td><td class="num">${pct(r.gov)}</td><td class="num g3">${pct(r.un[c.coloniser])}</td><td class="num">${pct(r.un.USA)}</td><td class="num">${pct(r.un.SUN)}</td></tr>`;
     }).join("");
@@ -133,7 +138,7 @@
       return `<div class="mcell" style="--c:${colour}">${d}<b>${n === c.coloniser ? EMP[n] : MODEL[n] || "—"}</b><i></i><span>inherit ${r.inherit?.toFixed(2) ?? "—"}</span></div>`;
     }).join("");
     return {
-      tab: shortName(c), stamp: `File ${iso}`, title: shortName(c), colour: folderColour(c.coloniser), ink: css("--ink"),
+      tab: shortName(c), stamp: `File ${iso}`, title: shortName(c), colour: folderColour(c.coloniser), ink: css(ON[c.coloniser]),
       postit: [["File", iso], ["Rule", `${EMP[c.coloniser]} until ${c.indep}`], ["Legal origin", esc(c.legal_origin)],
         ["Administration", esc(c.admin_tradition || "—")], ["Confidence", esc(L.confidence)], ["Correction", `<a href="correspondence#FILE-${iso}">Suggest one</a>`]],
       markers: [["Lineage", "cf-lineage"], ["Evidence", "cf-evidence"], ["Codings", "cf-codings"]],
@@ -160,7 +165,7 @@
     const xs = ["0%", "18%", "36%", "54%"];
     $("stack").innerHTML =
       `<button type="button" class="folder index" data-id="INDEX" style="--c:var(--ink);--x:0%" aria-label="Index: colour index, terms, sources and selection"><span class="ftab">Index<small>colours · terms · selection</small></span><span class="fopen">Open ›</span></button>` +
-      list.map(([iso, c], i) => `<button type="button" class="folder" data-id="${iso}" style="--c:var(${TAB[c.coloniser]});--x:${xs[(i + 1) % 4]}"><span class="ftab">${esc(shortName(c))}<small>${c.coloniser} · ${c.indep}</small></span><span class="fopen">File ${iso} ›</span></button>`).join("");
+      list.map(([iso, c], i) => `<button type="button" class="folder" data-id="${iso}" style="--c:var(${TAB[c.coloniser]});--t:var(${ON[c.coloniser]});--x:${xs[(i + 1) % 4]}"><span class="ftab">${esc(shortName(c))}<small>${c.coloniser} · ${c.indep}</small></span><span class="fopen">File ${iso} ›</span></button>`).join("");
     $("stack").querySelectorAll(".folder").forEach((b) => b.addEventListener("click", () => openFile(b.dataset.id)));
   }
   function openFile(id) {

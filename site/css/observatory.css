@@ -20,11 +20,11 @@
   --glow: 0 0 6px rgba(143, 180, 240, 0.45);
 
   /* empires: earthy pastels */
-  --gbr: #cc6a55;   /* terracotta */
-  --fra: #5d8bd4;   /* slate blue */
-  --prt: #47a37e;   /* jade sage */
-  --nld: #bb8b32;   /* ochre */
-  --oth: #ab7ac9;   /* lavender */
+  --gbr: #e2574a;   /* red */
+  --fra: #5f7fc4;   /* deep blue */
+  --prt: #8fb3ff;   /* bright blue */
+  --nld: #e6dcc4;   /* beige */
+  --oth: #7d828c;   /* grey */
   --sov: #7d8696;
 
   --f-display: "EB Garamond", "Cormorant Garamond", Georgia, "Times New Roman", serif;

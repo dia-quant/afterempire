@@ -35,16 +35,16 @@ References (supplied screenshots): glowing wireframe globe; dotted particle glob
 | `--ink-dim` | `#6a6a6a` | metadata |
 | `--marker` | `#f4e04d` | highlight label (yellow tag) |
 
-### Empire colours (shared by both worlds)
-| Empire | Value | Notes |
-|---|---|---|
-| British | `#e0464e` (red/pink) | conventional imperial map colour |
-| French | `#3e7be6` (blue) | |
-| Portuguese | `#2fb36b` (green) | always paired with label/texture, never colour alone (red–green colour-blindness) |
-| Dutch | `#f08a24` (orange) | |
-| Other powers | `#9b86c9` (muted violet) | Japan, Germany, Denmark, USA, etc., distinguished by label |
+### Empire colours (drawn from the interface palette)
+| Empire | Paper pages | Dark Observatory | Notes |
+|---|---|---|---|
+| British | `#c23b2e` red | `#e2574a` | |
+| French | `#1d3a6b` navy | `#5f7fc4` | |
+| Portuguese | `#2a52d1` bright blue | `#8fb3ff` | the two blues are told apart by lightness, so always paired with a label |
+| Dutch | `#977a3c` deep beige | `#e6dcc4` beige | dark text on the paper version |
+| Other powers | `#b3b6bd` grey | `#7d828c` | Japan, Germany, Denmark, USA, etc., distinguished by label |
 
-Saturated folder-tab versions of these are used in the Record Room. Final values are validated for contrast in both themes during Phase 2.
+Development models: Soviet `#111111` (black), US / Bretton Woods `#6e737c` (grey), homegrown `#e6dcc4` (beige, ink outline); regional is an ink hatch. Text on any of these colours is white or ink, chosen by luminance (`--on-*` tokens, `textOn()` in systems.js). Separation between the colours passes in normal and colour-blind vision; because the palette is small, colour is never the only cue.
 
 ---
 
@@ -146,7 +146,7 @@ Every sub-page shares one header (js/nav.js, css/topbar.css); only colours chang
 | Neutrals | black `#111`, greys, white (the Archive is black/grey only) |
 | Beige | `#f1efe7` paper, with `#e6dcc4` (same hue) for post-its and labels |
 
-Data colours (empire index, development models) keep their own validated values; country files are coloured by their former coloniser's index colour.
+Data colours (empire index, development models) use the same palette (see Empire colours above); country files are coloured by their former coloniser's index colour.
 
 ## Motion
 - Charts on Flows of Empire and Divergence Metrics draw in as they scroll into view (`site/js/reveal.js`).

@@ -12,8 +12,10 @@
   --ink-dim: #5a5853;
   --rule: rgba(17, 17, 17, 0.18);
   --marker: var(--ui-beige-2);
-  --gbr: #cc6a55; --fra: #5d8bd4; --prt: #47a37e; --nld: #bb8b32; --oth: #a596bf; --sov: #8a93a3;
-  --soviet: #8a2c6e; --uswb: #0a8fa8; --home: #3a3530;
+  --gbr: #c23b2e;   /* red */ --fra: #1d3a6b;   /* deep blue */ --prt: #2a52d1;   /* bright blue */ --nld: #977a3c;   /* sand (beige hue) */ --oth: #b3b6bd;   /* grey */ --sov: #8a93a3;
+  --soviet: #111111; --uswb: #6e737c; --home: #e6dcc4;
+  /* text on each coloniser's colour */
+  --on-gbr: #ffffff; --on-fra: #ffffff; --on-prt: #ffffff; --on-nld: #111111;
   /* saturated folder-tab versions */
   /* country files carry the index colour of their former coloniser */
   --tab-gbr: var(--gbr); --tab-fra: var(--fra); --tab-prt: var(--prt); --tab-nld: var(--nld);
@@ -48,7 +50,7 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 .keyline { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--f-mono); font-size: 11px; color: var(--ink-2); margin: 8px 0 0; }
 .keyline span { display: inline-flex; align-items: center; gap: 6px; }
 .sw { display: inline-block; width: 12px; height: 12px; background: var(--c); border: 1px solid rgba(0, 0, 0, 0.15); }
-.sw.hatch { background: repeating-linear-gradient(135deg, var(--home) 0 1.5px, transparent 1.5px 4px); }
+.sw.hatch { background: repeating-linear-gradient(135deg, var(--ink) 0 1.5px, transparent 1.5px 4px); }
 
 /* ---------- folder stack (Inherited Systems) ---------- */
 .stack { margin-top: 36px; display: flex; flex-direction: column; }
@@ -63,12 +65,12 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 .folder:focus-visible { outline: 2px solid var(--ui-red); outline-offset: 2px; }
 .ftab {
   position: relative; z-index: 1; margin-left: var(--x, 0%); display: flex; align-items: center; gap: 22px;
-  background: var(--c); color: var(--ink); padding: 7px 26px 6px; min-width: 240px; max-width: 100%;
+  background: var(--c); color: var(--t, var(--ink)); padding: 7px 26px 6px; min-width: 240px; max-width: 100%;
   clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
   font-family: var(--f-display); font-size: 19px; line-height: 1.1;
 }
 .ftab small { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; opacity: 0.9; white-space: nowrap; }
-.fopen { position: relative; z-index: 1; align-self: flex-end; margin: 0 14px 1px 0; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink); line-height: 12px; }
+.fopen { position: relative; z-index: 1; align-self: flex-end; margin: 0 14px 1px 0; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--t, var(--ink)); line-height: 12px; }
 .stack:not(.cf-away) .folder:last-child::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; background: var(--c); }
 .cf-lede { font-family: var(--f-display); font-size: 22px; line-height: 1.35; margin: 0 0 22px; max-width: 46ch; color: var(--ink); }
 .fbody { position: relative; background: var(--c); padding: 0 10px 10px; }
@@ -176,7 +178,7 @@ body.graph::before { background: var(--ui-beige); }
 .ci li b { font-weight: 500; }
 .ci li small { display: block; font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-2); }
 .ci-sw { width: 22px; height: 22px; flex: none; background: var(--c); border: 1px solid rgba(0, 0, 0, 0.2); }
-.ci-sw.hatch { background: repeating-linear-gradient(135deg, var(--home) 0 1.5px, transparent 1.5px 4px); }
+.ci-sw.hatch { background: repeating-linear-gradient(135deg, var(--ink) 0 1.5px, transparent 1.5px 4px); }
 .ci-ramp { display: flex; flex-direction: column; gap: 4px; }
 .ci-ramp span { height: 12px; background: linear-gradient(90deg, color-mix(in srgb, var(--c) 80%, #fbfaf7), color-mix(in srgb, var(--c) 12%, #fbfaf7)); }
 .ci-ends { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 10.5px; }
