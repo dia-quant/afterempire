@@ -9,18 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/recordroom.css">
 <link rel="stylesheet" href="css/correspondence.css">
 </head>
 <body>
 <header class="topbar" data-page="correspondence"></header>
-<main class="desk">
-  <div class="letter">
-    <div class="stamp-box" aria-hidden="true"><span>PAR AVION</span><b>AE</b></div>
-    <div class="dateline" id="dateline">—</div>
-    <h1>Correspondence</h1>
-    <p class="intro">Corrections, missing sources and disputed dates are welcome. Write your note below; it becomes an issue in the project repository, where each correction is reviewed and, if accepted, applied to the curated data with a public record of the change.</p>
-
-    <form id="form" novalidate>
+<main class="wrap">
+  <div class="crumbs">REFERENCE / CONTACT</div>
+  <h1>Correspondence</h1>
+  <p class="lede">Corrections, missing sources and disputed dates are welcome. Write your note on the card below; it becomes an issue in the project repository, where each correction is reviewed and, if accepted, applied to the curated data with a public record of the change.</p>
+  <p class="stamp"><mark>Letters</mark> · <span id="dateline">—</span></p>
+  <section class="drawer letters" aria-label="Correspondence">
+    <div class="card letter" style="--x:6%;--n:2;--i:0">
+      <div class="tab" aria-hidden="true"><span class="no">001</span><span>Letter to the archive</span></div>
+      <div class="card-in">
+        <form id="form" novalidate>
       <fieldset class="kind">
         <legend>Regarding</legend>
         <label><input type="radio" name="kind" value="holding" checked> A holding, date or transfer</label>
@@ -62,8 +65,11 @@
         <button type="submit" class="seal">Prepare letter</button>
       </div>
     </form>
-
-    <section class="outbox" id="outbox" hidden aria-live="polite">
+      </div>
+    </div>
+    <div class="card letter outbox" id="outbox" hidden aria-live="polite" style="--x:38%;--n:2;--i:1">
+      <div class="tab" aria-hidden="true"><span class="no">002</span><span>Ready to post</span></div>
+      <div class="card-in">
       <div class="ob-head">Ready to post</div>
       <pre id="preview"></pre>
       <div class="actions">
@@ -73,8 +79,10 @@
       </div>
       <p class="hint" id="copy-msg"></p>
       <p class="hint">The issue opens on github.com with this text filled in; you post it from your GitHub account. If you cannot use GitHub, copy the text and send it to the project by any channel listed on the repository page.</p>
-    </section>
-  </div>
+    </div>
+    </div>
+    <div class="drawer-front" aria-hidden="true"><span class="label">afterempire · correspondence</span></div>
+  </section>
 </main>
 <script src="js/nav.js"></script>
 <script src="js/asof.js"></script>

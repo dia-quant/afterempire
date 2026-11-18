@@ -41,10 +41,10 @@
     $("preview").textContent = `${title}\n\n${text}`;
     const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}&labels=${encodeURIComponent(LABELS[kind])}`;
     $("issue-link").href = url;
-    form.hidden = true; $("outbox").hidden = false; $("copy-msg").textContent = "";
+    $("outbox").hidden = false; $("copy-msg").textContent = "";
     $("outbox").scrollIntoView({ behavior: "smooth", block: "start" });
   });
-  $("edit").addEventListener("click", () => { form.hidden = false; $("outbox").hidden = true; });
+  $("edit").addEventListener("click", () => { $("outbox").hidden = true; $("what").focus(); });
   $("copy").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(`${title}\n\n${text}`); $("copy-msg").textContent = "Copied."; }
     catch {

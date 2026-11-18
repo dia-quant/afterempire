@@ -1,10 +1,13 @@
 /* Renders the shared header into <header class="topbar" data-page="..."></header>.
    One list of sections for the whole site: edit SECTIONS to add or enable a page. */
 (() => {
+  // Content of the atlas, then the reference pages (sources, method, contact), kept visibly apart.
   const SECTIONS = [
     { id: "flows", name: "Flows of Empire", href: "flows" },
     { id: "systems", name: "Inherited Systems", href: "systems" },
     { id: "metrics", name: "Divergence Metrics", href: "metrics" },
+  ];
+  const REFERENCE = [
     { id: "archive", name: "The Archive", href: "archive" },
     { id: "terms", name: "Terms of Account", href: "terms" },
     { id: "correspondence", name: "Correspondence", href: "correspondence" },
@@ -12,9 +15,9 @@
   const el = document.querySelector("header.topbar");
   if (!el) return;
   const cur = el.dataset.page;
-  const items = SECTIONS.map((s) => s.href
-    ? `<a href="${s.href}"${s.id === cur ? ' aria-current="page"' : ""}>${s.name}</a>`
-    : `<span class="soon">${s.name}</span>`).join("");
+  const link = (s) => `<a href="${s.href}"${s.id === cur ? ' aria-current="page"' : ""}>${s.name}</a>`;
+  const items = `<span class="tb-group">${SECTIONS.map(link).join("")}</span>
+    <span class="tb-group tb-ref" role="group" aria-label="Reference"><span class="tb-label">Reference</span>${REFERENCE.map(link).join("")}</span>`;
   const foot = document.createElement("footer");
   foot.className = "sitefoot";
   foot.innerHTML = `<span>Afterempire · created by <b>Dia Atal</b> · data up to date as of <span data-asof></span></span>

@@ -100,12 +100,27 @@
   // ---------------------------------------------------------- file contents (opened with CaseFile)
   const shortName = (c) => c.name.split(" / ").pop();
   const folderColour = (col) => css(COL[col]);
+  function colourIndex() {
+    const sw = (c, extra = "") => `<i class="ci-sw${extra}" style="--c:${c}"></i>`;
+    const row = (swatch, name, note) => `<li>${swatch}<span><b>${name}</b>${note ? `<small>${note}</small>` : ""}</span></li>`;
+    return `<div class="ci">
+      <div><h4>Former coloniser</h4><p>Each file and folder carries its coloniser's colour; the same colours mark the coloniser on every page.</p><ul>
+        ${row(sw(css("--gbr")), "British", "11 files")}${row(sw(css("--fra")), "French", "7 files")}${row(sw(css("--prt")), "Portuguese", "2 files")}${row(sw(css("--nld")), "Dutch", "1 file")}${row(sw(css("--oth")), "Other powers", "on the map and trade pages")}</ul></div>
+      <div><h4>Reference models</h4><p>Used in “Nearest model” and on Divergence Metrics.</p><ul>
+        ${row(sw("conic-gradient(" + [css("--gbr"), css("--fra"), css("--prt"), css("--nld")].map((c, i) => `${c} ${i * 25}% ${(i + 1) * 25}%`).join(",") + ")"), "Own former coloniser", "shown in that coloniser's colour")}${row(sw(css("--soviet")), "Soviet model")}${row(sw(css("--uswb")), "US / Bretton Woods model")}</ul></div>
+      <div><h4>Lineage influences</h4><p>The bands in each file's lineage diagram.</p><ul>
+        ${row(sw("conic-gradient(" + [css("--gbr"), css("--fra"), css("--prt"), css("--nld")].map((c, i) => `${c} ${i * 25}% ${(i + 1) * 25}%`).join(",") + ")"), "Former coloniser")}${row(sw(css("--soviet")), "Soviet bloc")}${row(sw(css("--uswb")), "US · World Bank · IMF")}${row(sw("", " hatch"), "Regional")}${row(sw(css("--home")), "Homegrown")}</ul></div>
+      <div><h4>Codings shading</h4><p>Cells in the codings table are tinted with the coloniser's colour: the darker the cell, the closer that dimension is to the coloniser's own system.</p>
+        <div class="ci-ramp">${[css("--gbr"), css("--fra"), css("--prt"), css("--nld")].map((c) => `<span style="--c:${c}"></span>`).join("")}</div><p class="ci-ends"><span>close to coloniser</span><span>far from coloniser</span></p></div>
+    </div>`;
+  }
   function indexFile() {
     return {
       tab: "Index", stamp: "Index", title: "How to read a file", colour: css("--ink"),
       postit: [["Files", "21 countries"], ["Empires", "British · French · Portuguese · Dutch"], ["Data up to date as of", esc(window.AE_ASOF || "")]],
-      markers: [["Terms", "cf-terms"], ["Selection", "cf-why"]],
-      body: `<section class="cf-section" id="cf-terms"><div class="cf-label">Terms and where they come from</div>
+      markers: [["Colours", "cf-colours"], ["Terms", "cf-terms"], ["Selection", "cf-why"]],
+      body: `<section class="cf-section" id="cf-colours"><div class="cf-label">Colour index</div>${colourIndex()}</section>
+        <section class="cf-section" id="cf-terms"><div class="cf-label">Terms and where they come from</div>
           <div class="twrap" tabindex="0" role="region" aria-label="Terms and sources"><table class="ctable glossary"><thead><tr><th>Term</th><th>Meaning</th><th>Values</th><th>Fetched from</th></tr></thead>
           <tbody>${TERMS.map((t) => `<tr><td><b>${esc(t[0])}</b></td><td>${esc(t[1])}</td><td>${esc(t[2])}</td><td>${esc(t[3])}</td></tr>`).join("")}</tbody></table></div></section>
         <section class="cf-section why-block" id="cf-why"><div class="cf-label">Selection</div>${WHY}</section>`,
@@ -144,7 +159,7 @@
     order = ["INDEX", ...list.map(([iso]) => iso)];
     const xs = ["0%", "18%", "36%", "54%"];
     $("stack").innerHTML =
-      `<button type="button" class="folder index" data-id="INDEX" style="--c:var(--ink);--x:0%"><span class="ftab">Index<small>terms · sources · selection</small></span><span class="fopen">Open ›</span></button>` +
+      `<button type="button" class="folder index" data-id="INDEX" style="--c:var(--ink);--x:0%" aria-label="Index: colour index, terms, sources and selection"><span class="ftab">Index<small>colours · terms · selection</small></span><span class="fopen">Open ›</span></button>` +
       list.map(([iso, c], i) => `<button type="button" class="folder" data-id="${iso}" style="--c:var(${TAB[c.coloniser]});--x:${xs[(i + 1) % 4]}"><span class="ftab">${esc(shortName(c))}<small>${c.coloniser} · ${c.indep}</small></span><span class="fopen">File ${iso} ›</span></button>`).join("");
     $("stack").querySelectorAll(".folder").forEach((b) => b.addEventListener("click", () => openFile(b.dataset.id)));
   }

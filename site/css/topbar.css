@@ -37,3 +37,11 @@
 }
 .sitefoot b { font-weight: 600; }
 .sitefoot a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* two groups in the header: the atlas, then the reference pages */
+.topbar .tb-group { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; }
+.topbar .tb-ref { padding-left: 20px; border-left: 1px solid var(--tb-rule); font-size: 11px; gap: 6px 14px; }
+.topbar .tb-ref a { color: var(--tb-dim); }
+.topbar .tb-ref a[aria-current="page"] { color: var(--tb-accent); }
+.topbar .tb-label { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--tb-dim); }
+@media (max-width: 760px) { .topbar .tb-ref { padding-left: 0; border-left: 0; border-top: 1px solid var(--tb-rule); padding-top: 6px; width: 100%; } }

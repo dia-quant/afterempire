@@ -39,16 +39,16 @@ window.Reveal = (() => {
     }, () => {
       lines.forEach((p, i) => {
         p.animate([{ strokeDashoffset: lens[i] }, { strokeDashoffset: 0 }], { duration: 1400, delay: Math.min(i, 24) * 45, easing: EASE, fill: "forwards" })
-          .finished.then(() => { p.style.strokeDasharray = ""; p.style.strokeDashoffset = ""; }).catch(() => {});
+          .finished.then((a) => { p.style.strokeDasharray = ""; p.style.strokeDashoffset = ""; a.cancel(); }).catch(() => {});
       });
       dots.forEach((c, i) => {
         c.style.transformBox = "fill-box"; c.style.transformOrigin = "center";
         c.animate([{ opacity: 0, transform: "scale(0.2)" }, { opacity: 1, transform: "scale(1)" }], { duration: 500, delay: 200 + Math.min(i, 160) * 6, easing: EASE, fill: "forwards" })
-          .finished.then(() => { c.style.opacity = ""; }).catch(() => {});
+          .finished.then((a) => { c.style.opacity = ""; a.cancel(); }).catch(() => {});
       });
       labels.forEach((t, i) => {
         t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 900 + i * 60, easing: EASE, fill: "forwards" })
-          .finished.then(() => { t.style.opacity = ""; }).catch(() => {});
+          .finished.then((a) => { t.style.opacity = ""; a.cancel(); }).catch(() => {});
       });
     });
   }
@@ -57,8 +57,8 @@ window.Reveal = (() => {
     const items = [...el.querySelectorAll(selector)];
     schedule(el, () => { items.forEach((r) => { r.style.opacity = 0; }); }, () => {
       items.forEach((r, i) => {
-        r.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 450, delay: Math.min(i, 40) * 22, easing: EASE, fill: "forwards" })
-          .finished.then(() => { r.style.opacity = ""; }).catch(() => {});
+        const a = r.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, delay: Math.min(i, 40) * 22, easing: EASE, fill: "forwards" });
+        a.finished.then(() => { r.style.opacity = ""; a.cancel(); }).catch(() => {});
       });
     });
   }
@@ -69,7 +69,7 @@ window.Reveal = (() => {
       items.forEach((c) => {
         const tr = c.parentElement, row = [...tr.parentElement.children].indexOf(tr), col = [...tr.children].indexOf(c);
         c.animate([{ opacity: 0, transform: "scale(0.85)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: Math.min(row, 30) * 28 + col * 55, easing: EASE, fill: "forwards" })
-          .finished.then(() => { c.style.opacity = ""; }).catch(() => {});
+          .finished.then((a) => { c.style.opacity = ""; a.cancel(); }).catch(() => {});
       });
     });
   }

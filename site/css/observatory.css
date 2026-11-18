@@ -143,6 +143,9 @@ a.pg:hover { color: var(--phos-hi); }
 .pg.soon { color: var(--text-dim); cursor: default; }
 .pg em { font-style: normal; font-size: 9.5px; letter-spacing: 0.08em; color: var(--phos-dim); border: 1px solid var(--line-dim); padding: 0 4px; }
 
+.pages .pg-ref { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 2px 0 0; font-size: 11px; }
+.pages .pg-ref a { color: var(--text-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-dim); }
+.pages .pg-ref a:hover { color: var(--phos-hi); }
 .toggles { display: flex; flex-direction: column; gap: 7px; }
 .tg { display: flex; gap: 8px; align-items: center; font-size: 12px; cursor: pointer; }
 .tg input { appearance: none; width: 12px; height: 12px; margin: 0; border: 1px solid var(--phos-dim); background: transparent; display: grid; place-items: center; }

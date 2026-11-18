@@ -92,7 +92,7 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(40px, 7vw
 .mcell i { display: block; height: 4px; background: var(--c); margin-top: 4px; }
 .twrap { overflow-x: auto; }
 .ctable { width: 100%; border-collapse: collapse; font-family: var(--f-mono); font-size: 11.5px; font-variant-numeric: tabular-nums; }
-.ctable th { text-align: left; font-weight: 500; font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-dim); border-bottom: 1px solid var(--ink); padding: 4px 8px 4px 0; white-space: nowrap; }
+.ctable th { position: relative; text-align: left; font-weight: 500; font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-dim); border-bottom: 1px solid var(--ink); padding: 4px 8px 4px 0; white-space: nowrap; }
 .ctable td { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
 .ctable td.num, .ctable th.num { text-align: right; }
 .ctable.grouped { border-collapse: collapse; }
@@ -164,3 +164,20 @@ body.graph::before { background: var(--ui-beige); }
 
 .disclaimer { margin: 18px 0 0; padding-top: 10px; border-top: 1px solid var(--ink); font-size: 12.5px; font-style: italic; color: var(--ink-2); max-width: 82ch; }
 .disclaimer a { color: var(--ui-red); }
+
+/* Index folder: a band of the four index colours */
+.folder.index::before { background: linear-gradient(90deg, var(--gbr) 0 25%, var(--fra) 25% 50%, var(--prt) 50% 75%, var(--nld) 75% 100%); height: 10px; }
+/* Colour index inside the Index file */
+.ci { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 30px; }
+.ci h4 { margin: 0 0 4px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+.ci p { margin: 0 0 8px; font-size: 13px; color: var(--ink-2); }
+.ci ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.ci li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+.ci li b { font-weight: 500; }
+.ci li small { display: block; font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-2); }
+.ci-sw { width: 22px; height: 22px; flex: none; background: var(--c); border: 1px solid rgba(0, 0, 0, 0.2); }
+.ci-sw.hatch { background: repeating-linear-gradient(135deg, var(--home) 0 1.5px, transparent 1.5px 4px); }
+.ci-ramp { display: flex; flex-direction: column; gap: 4px; }
+.ci-ramp span { height: 12px; background: linear-gradient(90deg, color-mix(in srgb, var(--c) 80%, #fbfaf7), color-mix(in srgb, var(--c) 12%, #fbfaf7)); }
+.ci-ends { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 10.5px; }
+@media (max-width: 760px) { .ci { grid-template-columns: 1fr; } }

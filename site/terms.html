@@ -7,34 +7,23 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/recordroom.css">
 <link rel="stylesheet" href="css/terms.css">
 </head>
 <body>
 <header class="topbar" data-page="terms"></header>
-<main class="ledger">
-  <div class="folio"><span>AFTEREMPIRE · METHOD</span><span id="folio-date">—</span></div>
+<main class="wrap">
+  <div class="crumbs">REFERENCE / METHOD</div>
   <h1>Terms of Account</h1>
   <p class="byline">Compiled by Dia Atal</p>
-  <p class="lede">How every figure on the site is defined, built and limited. Each entry names the rule, where it lives in the repository, and what it cannot tell you.</p>
-
-  <nav class="contents" aria-label="Contents">
-    <div class="ch">Contents</div>
-    <ol>
-      <li><a href="#holdings">Holdings and status</a><span class="pg">I</span></li>
-      <li><a href="#trade">Trade flows</a><span class="pg">II</span></li>
-      <li><a href="#systems">Development systems</a><span class="pg">III</span></li>
-      <li><a href="#uncertainty">Estimates and uncertainty</a><span class="pg">IV</span></li>
-      <li><a href="#licences">Licences and reuse</a><span class="pg">V</span></li>
-      <li><a href="#updates">Versions and updates</a><span class="pg">VI</span></li>
-      <li><a href="#limits">Known limitations</a><span class="pg">VII</span></li>
-    </ol>
-  </nav>
-
-  <section id="holdings" class="entry">
-    <h2><span class="num">I</span>Holdings and status</h2>
-    <div class="cols">
+  <p class="lede">How every figure on the site is defined, built and limited. Each section names the rule, where it lives in the repository, and what it cannot tell you. Open a tab to read it.</p>
+  <p class="stamp"><mark>7 sections</mark> · data up to date as of <span data-asof></span></p>
+  <section class="drawer terms-drawer" aria-label="Method sections">
+<details class="card section" id="holdings" style="--x:4%;--n:7;--i:0">
+  <summary><div class="tab" aria-hidden="true"><span class="no">I</span><span>Holdings and status</span></div><h2><span class="num">I</span>Holdings and status</h2><span class="use-line">What counts as a holding, how status is drawn, and how dates are checked.</span></summary>
+  <div class="body"><div class="cols">
       <div class="body">
         <p>A <b>holding</b> is a territory, enclave or island group with one representative point (its capital or main port) and a sequence of <b>control periods</b>. A country such as India is several holdings: British India, the princely states shown, and the French, Portuguese, Dutch and Danish enclaves.</p>
         <p>Scope is every holding of Britain, France, Portugal and the Netherlands between 1800 and 2025, and any other power while it held one of them (for example Japan in the Dutch East Indies, 1942–45). "Colony" means any control stronger than soft power: colonies, protectorates, League mandates and UN trusts, chartered-company rule, condominiums, leases and military occupations. Informal empire is excluded.</p>
@@ -55,12 +44,11 @@
       <dt>Independence year</dt><dd>The first sovereign period after colonial rule, with stated exceptions in <code>independence_overrides.csv</code> (India and Pakistan 1947, Bangladesh 1971, Sri Lanka 1948, Vietnam 1954, and the Statute of Westminster dates for dominions).</dd>
       <dt>Cross-check</dt><dd>Dates are compared with COLDAT (Becker 2019). Differences are definitional and listed in <code>docs/GAZETTEER_NOTES.md</code>: COLDAT ends dominions at 1919–20, ignores wartime occupations, and treats West New Guinea as part of Indonesia.</dd>
       <dt>Confidence</dt><dd>Each period is rated high or medium. Medium means the date is debated or simplified; the record card shows “date debated”.</dd>
-    </dl>
-  </section>
-
-  <section id="trade" class="entry">
-    <h2><span class="num">II</span>Trade flows</h2>
-    <table class="acct wide">
+    </dl></div>
+</details>
+<details class="card section" id="trade" style="--x:13%;--n:7;--i:1">
+  <summary><div class="tab" aria-hidden="true"><span class="no">II</span><span>Trade flows</span></div><h2><span class="num">II</span>Trade flows</h2><span class="use-line">Sources by period, which flows are shown, line widths, ratios and shares.</span></summary>
+  <div class="body"><table class="acct wide">
       <thead><tr><th>Years</th><th>Source</th><th>Unit</th><th>Direction</th></tr></thead>
       <tbody>
         <tr><td>1800–1826</td><td>RICardo (Dedinger &amp; Girard)</td><td>£ sterling, current</td><td>reporter-based; exporter's report preferred</td></tr>
@@ -75,12 +63,11 @@
       <dt>Ratio</dt><dd>A→B exports against B→A exports, rounded to the nearest simple fraction with terms from 1 to 5 (beyond 5 : 1 it reads “&gt; 5 : 1”). If only one direction is recorded, the flow is marked “one-sided estimate”.</dd>
       <dt>Aggregates</dt><dd>Where sources report a group (for example “British West Indies”), it is placed at a representative holding and named as an aggregate. The crosswalk is <code>data/curated/trade_codes.csv</code>.</dd>
       <dt>Metropole share</dt><dd>Trade with the holding's colonial power (or, after independence, its last one) divided by the holding's total recorded bilateral trade. The erosion curve takes the median across former holdings by years since independence, where at least three holdings have data.</dd>
-    </dl>
-  </section>
-
-  <section id="systems" class="entry">
-    <h2><span class="num">III</span>Development systems</h2>
-    <div class="cols">
+    </dl></div>
+</details>
+<details class="card section" id="systems" style="--x:22%;--n:7;--i:2">
+  <summary><div class="tab" aria-hidden="true"><span class="no">III</span><span>Development systems</span></div><h2><span class="num">III</span>Development systems</h2><span class="use-line">Dimensions, similarity rules, reference models and what the scores mean.</span></summary>
+  <div class="body"><div class="cols">
       <div class="body">
         <p>Each economy is described by dimensions that can be compared with three reference models: the country's own former coloniser (as it was c.1945–65), the Soviet model, and the US / Bretton Woods model.</p>
         <p><b>Hand-coded</b> for the 21 curated countries, by decade: planning regime, planning institution and monetary arrangement; and once: legal origin and colonial administration. <b>Automatic</b> for all ex-colonies: UN General Assembly voting agreement with each reference country, and, as context only, trade openness and government share of GDP.</p>
@@ -107,22 +94,20 @@
       <dt>Lineage shares</dt><dd>The five-way split shown in each file is an editorial judgement from the cited plan documents and studies. It is not used in any computed score.</dd>
       <dt>What it shows</dt><dd>Resemblance, not cause. A high inheritance index says a system looked like its coloniser's; it does not say why.</dd>
       <dt>Openness</dt><dd>Kept out of the similarity score: large economies such as the US are closed, so comparing openness levels with them made every closed economy look American.</dd>
-    </dl>
-  </section>
-
-  <section id="uncertainty" class="entry">
-    <h2><span class="num">IV</span>Estimates and uncertainty</h2>
-    <dl class="ruled">
+    </dl></div>
+</details>
+<details class="card section" id="uncertainty" style="--x:31%;--n:7;--i:3">
+  <summary><div class="tab" aria-hidden="true"><span class="no">IV</span><span>Estimates and uncertainty</span></div><h2><span class="num">IV</span>Estimates and uncertainty</h2><span class="use-line">How estimates, sparse years and hand codings are handled.</span></summary>
+  <div class="body"><dl class="ruled">
       <dt>Values</dt><dd>All money values are approximate, in current prices of the source's unit. No deflation or currency conversion is applied between periods.</dd>
       <dt>Sparse years</dt><dd>Colonial trade records before about 1820 are thin. The site shows what exists and says so; it does not interpolate.</dd>
       <dt>Density strip</dt><dd>Under the time slider, bars count holdings under imperial rule and ticks count transfers in each year, so thin years are visible before you read them.</dd>
       <dt>Hand codings</dt><dd>Drafted by the author from the cited sources and recorded row by row in the review sheet, where each can be checked and corrected.</dd>
-    </dl>
-  </section>
-
-  <section id="licences" class="entry">
-    <h2><span class="num">V</span>Licences and reuse</h2>
-    <table class="acct wide">
+    </dl></div>
+</details>
+<details class="card section" id="licences" style="--x:40%;--n:7;--i:4">
+  <summary><div class="tab" aria-hidden="true"><span class="no">V</span><span>Licences and reuse</span></div><h2><span class="num">V</span>Licences and reuse</h2><span class="use-line">What you may reuse, and on what terms.</span></summary>
+  <div class="body"><table class="acct wide">
       <thead><tr><th>Material</th><th>Licence</th><th>What it means here</th></tr></thead>
       <tbody>
         <tr><td>RICardo-derived flows (1800–1826)</td><td>ODbL 1.0</td><td>Share-alike: the derived flow data must stay under ODbL.</td></tr>
@@ -133,30 +118,29 @@
         <tr><td>Afterempire gazetteer and codings</td><td>CC BY 4.0</td><td>Reuse freely with credit to Dia Atal. Archived on Zenodo: <a href="https://doi.org/10.5281/zenodo.24281902">doi:10.5281/zenodo.24281902</a> (always the latest version; v0.1.0 is <a href="https://doi.org/10.5281/zenodo.24281903">doi:10.5281/zenodo.24281903</a>).</td></tr>
         <tr><td>Afterempire code</td><td>MIT</td><td>The pipeline and site code may be reused with the copyright notice.</td></tr>
       </tbody>
-    </table>
-  </section>
-
-  <section id="updates" class="entry">
-    <h2><span class="num">VI</span>Versions and updates</h2>
-    <dl class="ruled">
+    </table></div>
+</details>
+<details class="card section" id="updates" style="--x:49%;--n:7;--i:5">
+  <summary><div class="tab" aria-hidden="true"><span class="no">VI</span><span>Versions and updates</span></div><h2><span class="num">VI</span>Versions and updates</h2><span class="use-line">How the data are versioned, refreshed and corrected.</span></summary>
+  <div class="body"><dl class="ruled">
       <dt>Historical layers</dt><dd>Frozen and versioned in the repository; every page shows the date the data are up to date as of. Each GitHub release is archived on Zenodo with its own DOI under the concept DOI <a href="https://doi.org/10.5281/zenodo.24281902">10.5281/zenodo.24281902</a>.</dd>
       <dt>Recent years</dt><dd>A monthly check looks for newer releases of the trade and development sources; when one appears, the data are rebuilt and the “up to date as of” date moves forward.</dd>
       <dt>Corrections</dt><dd>Submitted through <a href="correspondence">Correspondence</a>, reviewed, and applied to the curated files; each change is a commit in the repository history.</dd>
-    </dl>
-  </section>
-
-  <section id="limits" class="entry">
-    <h2><span class="num">VII</span>Known limitations</h2>
-    <ol class="limits">
+    </dl></div>
+</details>
+<details class="card section" id="limits" style="--x:58%;--n:7;--i:6">
+  <summary><div class="tab" aria-hidden="true"><span class="no">VII</span><span>Known limitations</span></div><h2><span class="num">VII</span>Known limitations</h2><span class="use-line">What the site cannot tell you.</span></summary>
+  <div class="body"><ol class="limits">
       <li>Large colonies are single points; internal frontiers and gradual conquest are not drawn.</li>
       <li>Only Hyderabad and Mysore stand for the ~560 princely states.</li>
       <li>Empires beyond the four appear only while holding one of their territories.</li>
       <li>Trade shares depend on what the sources recorded; aggregates and one-sided reports remain.</li>
       <li>Hand codings exist for 21 countries; 73 other ex-colonies are compared on legal origin and UN voting only.</li>
       <li>Reference models are stylised profiles of c.1945–65 and do not change over time.</li>
-    </ol>
+    </ol></div>
+</details>
+    <div class="drawer-front" aria-hidden="true"><span class="label">afterempire · method</span></div>
   </section>
-  <div class="endrule">— balance carried forward —</div>
   <p class="disclaimer">Codings and lineage shares on this page are provisional and still under review; corrections are welcome through <a href="correspondence">Correspondence</a>.</p>
 </main>
 <script src="js/nav.js"></script>
